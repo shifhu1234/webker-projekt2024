@@ -1,0 +1,48 @@
+<mat-sidenav-container>
+  <mat-sidenav>
+    <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page"></app-menu>
+  </mat-sidenav>
+  <mat-sidenav-content>
+    <mat-toolbar color="primary">
+      <button mat-icon-button>
+        <mat-icon>menu_book</mat-icon>
+      </button>
+      <div>Zőccség ódal</div>
+      <div>
+        <ul class="navigation-items">
+          <li><a routerLink="/main">Main</a></li>
+          <li><a routerLink="/login">Login</a></li>
+          <li><a routerLink="/signup">Register</a></li>
+          <li><a routerLink="/products">Termékek</a></li>
+          <li><a routerLink="/delivery">Szállítás</a></li>
+          <li><a routerLink="/gallery">Gallery</a></li>
+          <li><a routerLink="/contact">Contact</a></li>
+          <li><a routerLink="/profile">Profil</a></li>
+
+
+        </ul>
+      </div>
+    </mat-toolbar>
+    <router-outlet></router-outlet>
+  </mat-sidenav-content>
+</mat-sidenav-container>
+
+<!-- <ng-container [ngSwitch]="page">
+  <ng-container *ngSwitchCase="'main'">
+    <div class="main_component">
+      <app-main></app-main>
+    </div>
+  </ng-container>
+  <ng-container *ngSwitchCase="'gallery'">
+    <app-gallery></app-gallery>
+  </ng-container>
+  <ng-container *ngSwitchCase="'contact'">
+    <app-contact>
+      <h1>This is the contact page.</h1>
+    </app-contact>
+  </ng-container>
+  <ng-container *ngSwitchDefault>
+    <h1>Page not found...</h1>
+  </ng-container>
+</ng-container> -->
+
