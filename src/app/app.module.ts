@@ -11,6 +11,8 @@ import {MatSidenavModule} from "@angular/material/sidenav";
 import {MatToolbarModule} from "@angular/material/toolbar";
 import {MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
+import {FlexLayoutModule} from "@angular/flex-layout";
+import {MatListItem, MatNavList} from "@angular/material/list";
 
 @NgModule({
   declarations: [
@@ -25,7 +27,10 @@ import {MatIcon} from "@angular/material/icon";
     MatSidenavModule,
     MatToolbarModule,
     MatIconButton,
-    MatIcon
+    MatIcon,
+    FlexLayoutModule,
+    MatNavList,
+    MatListItem
   ],
   providers: [
     provideAnimationsAsync()

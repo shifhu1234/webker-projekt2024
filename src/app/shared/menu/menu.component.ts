@@ -9,7 +9,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
   @Input() currentPage: string = '';
   @Output() selectedPage: EventEmitter<string> = new EventEmitter();
-
+  @Output() onCloseSidenav: EventEmitter<boolean> = new EventEmitter();
   constructor() {
     console.log('constructor called.');
   }
@@ -24,5 +24,9 @@ export class MenuComponent implements OnInit, AfterViewInit {
 
   menuSwitch() {
     this.selectedPage.emit(this.currentPage);
+  }
+
+  close(){
+    this.onCloseSidenav.emit(true);
   }
 }

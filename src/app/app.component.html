@@ -1,15 +1,18 @@
 <mat-sidenav-container>
-  <mat-sidenav>
-    <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page"></app-menu>
+  <mat-sidenav #sidenav>
+    <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page" (onCloseSidenav)="onClose($event, sidenav)"></app-menu>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
-      <button mat-icon-button>
+
+      <div fxHide.gt-xs>
+      <button mat-icon-button (click)="onToggleSidenav(sidenav)">
         <mat-icon>menu_book</mat-icon>
       </button>
+      </div>
       <div>Zőccség ódal</div>
-      <div>
-        <ul class="navigation-items">
+      <div fxFlex fxLayout fxLayoutAlign="end center" fxHide.xs>
+        <ul fxLayout fxLayoutGap="10px" class="navigation-items">
           <li><a routerLink="/main">Main</a></li>
           <li><a routerLink="/login">Login</a></li>
           <li><a routerLink="/signup">Register</a></li>
