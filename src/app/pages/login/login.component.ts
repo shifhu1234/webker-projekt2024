@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit, OnDestroy {
 
   loadingSubscription?: Subscription;
   loadingObservation?: Observable<boolean>;
+  loading: boolean = false;
 
   constructor(private router: Router, private loadingService: FakeLoadingService) { }
 
@@ -23,6 +24,7 @@ export class LoginComponent implements OnInit, OnDestroy {
   }
 
   async login() {
+    this.loading = true;
     // Promise
     /* this.loadingService.loadingWithPromise(this.email.value, this.password.value).then((_: boolean) => {
       console.log('This executed second.');
@@ -52,7 +54,9 @@ export class LoginComponent implements OnInit, OnDestroy {
       .subscribe(
         {
           next: (data: boolean) => {
-            console.log(data);
+            //console.log(data);
+            this.router.navigateByUrl('/main');
+            this.loading = false;
           }, error: (error) => {
             console.error(error);
           }, complete: () => {
