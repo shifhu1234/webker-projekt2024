@@ -3,6 +3,8 @@ import { CommonModule } from '@angular/common';
 
 import { ContactRoutingModule } from './contact-routing.module';
 import { ContactComponent } from './contact.component';
+import {MatCardModule} from "@angular/material/card";
+import {MatIconModule} from "@angular/material/icon";
 
 
 @NgModule({
@@ -11,7 +13,9 @@ import { ContactComponent } from './contact.component';
   ],
   imports: [
     CommonModule,
-    ContactRoutingModule
+    ContactRoutingModule,
+    MatCardModule,
+    MatIconModule
   ]
 })
 export class ContactModule { }
