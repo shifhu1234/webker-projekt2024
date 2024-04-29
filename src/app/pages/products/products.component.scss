@@ -1,8 +1,19 @@
 .category-container{
   height: 100%;
-  width: 100%;
+  width: 50%;
   align-self: center;
   justify-content: center;
   align-items: center;
   vertical-align: center;
+  padding: 10px; /* Adjust padding as needed */
+}
+
+.category-card {
+  margin: 10px; /* Adjust margin as needed */
+}
+.outer-container {
+  height: 100vh; /* Set outer container height to full viewport height */
+  display: flex;
+  align-items: center; /* Vertically center items */
+  justify-content: center; /* Horizontally center items */
 }

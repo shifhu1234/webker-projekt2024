@@ -28,8 +28,8 @@ export class SignupComponent implements OnInit {
     console.log(this.signUpForm.value);
   }
 
-  goBack() {
-    this.location.back();
-  }
+  // goBack() {
+  //   this.location.back();
+  // }
 
 }
