@@ -105,6 +105,23 @@
             ],
             "scripts": []
           }
+        },
+        "deploy": {
+          "builder": "@angular/fire:deploy",
+          "options": {
+            "version": 2
+          },
+          "configurations": {
+            "production": {
+              "buildTarget": "webker-projekt-2024:build:production",
+              "serveTarget": "webker-projekt-2024:serve:production"
+            },
+            "development": {
+              "buildTarget": "webker-projekt-2024:build:development",
+              "serveTarget": "webker-projekt-2024:serve:development"
+            }
+          },
+          "defaultConfiguration": "production"
         }
       }
     }

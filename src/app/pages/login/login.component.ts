@@ -49,21 +49,24 @@ export class LoginComponent implements OnInit, OnDestroy {
 
     // Observable
     // memory leak
-    this.loadingObservation = this.loadingService.loadingWithObservable(this.email.value as string, this.password.value as string)
-    this.loadingSubscription = this.loadingObservation
-      .subscribe(
-        {
-          next: (data: boolean) => {
-            //console.log(data);
-            this.router.navigateByUrl('/main');
-            this.loading = false;
-          }, error: (error) => {
-            console.error(error);
-          }, complete: () => {
-            console.log('finally');
-          }
-        }
-      );
+    // this.loadingObservation = this.loadingService.loadingWithObservable(this.email.value as string, this.password.value as string)
+    // this.loadingSubscription = this.loadingObservation
+    //   .subscribe(
+    //     {
+    //       next: (data: boolean) => {
+    //         //console.log(data);
+    //         this.router.navigateByUrl('/main');
+    //         this.loading = false;
+    //       }, error: (error) => {
+    //         console.error(error);
+    //       }, complete: () => {
+    //         console.log('finally');
+    //       }
+    //     }
+    //   );
+
+
+
   }
 
   ngOnDestroy() {

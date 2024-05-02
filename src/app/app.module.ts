@@ -13,7 +13,11 @@ import {MatIconButton} from "@angular/material/button";
 import {MatIcon} from "@angular/material/icon";
 import {FlexLayoutModule} from "@angular/flex-layout";
 import {MatListItem, MatNavList} from "@angular/material/list";
-
+import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
+import { getAuth, provideAuth } from '@angular/fire/auth';
+import { getFirestore, provideFirestore } from '@angular/fire/firestore';
+import { getStorage, provideStorage } from '@angular/fire/storage';
+import {AngularFireModule} from '@angular/fire/compat'
 @NgModule({
   declarations: [
     AppComponent,
@@ -30,7 +34,12 @@ import {MatListItem, MatNavList} from "@angular/material/list";
     MatIcon,
     FlexLayoutModule,
     MatNavList,
-    MatListItem
+    MatListItem,
+    AngularFireModule,
+    //provideFirebaseApp(() => initializeApp({"projectId":"webfejl-projekt-2024","appId":"1:237724793716:web:ea394c11a58f1c1ce90a21","storageBucket":"webfejl-projekt-2024.appspot.com","apiKey":"AIzaSyDins7KBe3vEBr57f_Vj-4ZFKSWstpBJW8","authDomain":"webfejl-projekt-2024.firebaseapp.com","messagingSenderId":"237724793716","measurementId":"G-GD9JWHNEYS"})),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
   ],
   providers: [
     provideAnimationsAsync()

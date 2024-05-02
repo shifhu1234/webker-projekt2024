@@ -1,0 +1,9 @@
+{
+  "hosting": [
+    {
+      "target": "webker-projekt-2024",
+      "source": ".",
+      "frameworksBackend": {}
+    }
+  ]
+}
