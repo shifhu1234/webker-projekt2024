@@ -1,33 +1,49 @@
-.category-container{
+/* products.component.scss */
+
+.category-container {
   height: 100%;
   width: 50%;
   align-self: center;
   justify-content: center;
   align-items: center;
   vertical-align: center;
-  padding: 10px; /* Adjust padding as needed */
-  max-width: 1000px;
+  padding: 10px;
 }
 
 .category-card {
-  margin: 10px; /* Adjust margin as needed */
-  max-width: 500px; /* Beállítjuk a maximális szélességet */
-}
-.outer-container {
-  height: 100vh; /* Set outer container height to full viewport height */
-  display: flex;
-  align-items: center; /* Vertically center items */
-  justify-content: center; /* Horizontally center items */
+  margin: 10px;
+  max-width: 500px
 }
 
-.image-container{
+.outer-container {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+}
+
+.image-container {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
 }
 
+.category-title {
+  text-align: center;
+  font-size: 1.5em;
+  color: #333;
+  padding: 5px;
+  align-self: center;
+  justify-content: center;
+}
+
 .category-image {
   max-width: 250px;
-  max-height: 250px
+  max-height: 250px;
+}
+.category-button{
+  font-size: 1.5em;
+  align-self: center;
 }

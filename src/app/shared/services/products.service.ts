@@ -11,7 +11,6 @@ export class ProductsService {
   constructor(private http: HttpClient) { }
 
   getProducts(): Observable<Products[]> {
-    return this.http.get<Products[]>('assets/products.json');
+    return this.http.get<Products[]>('../constants/contants.ts');
   }
 }
-

@@ -1,16 +1,18 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 import {MatCardModule} from "@angular/material/card";
 import {NgForOf} from "@angular/common";
 import {FlexModule} from "@angular/flex-layout";
 import {Products} from "../../shared/models/Products";
 import {ProductsService} from "../../shared/services/products.service";
+import {MatButtonModule} from "@angular/material/button";
 @Component({
   selector: 'app-products',
   standalone: true,
   imports: [
     MatCardModule,
     NgForOf,
-    FlexModule
+    FlexModule,
+    MatButtonModule
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
@@ -21,6 +23,8 @@ export class ProductsComponent implements OnInit{
   categoriesName = ['gyumolcs', 'zoldseg', 'mez', 'szarazaru'];
   products?: Products[];
   categoryImages: string[] = [];
+
+  @Output() showAllProducts: EventEmitter<any> = new EventEmitter();
 
   constructor(private productsService: ProductsService) { }
 
