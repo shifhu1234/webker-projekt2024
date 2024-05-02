@@ -28,6 +28,10 @@ const routes: Routes = [
     loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule)
   },
   {
+    path: 'basket',
+    loadChildren: () => import('./pages/basket/basket.module').then(m => m.BasketModule)
+  },
+  {
     path: 'not-found',
     loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule)
   },
