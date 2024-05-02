@@ -3,9 +3,13 @@
     <mat-icon>menu</mat-icon>
     <span>Main</span>
 </a>
-  <a mat-list-item routerLink="/login" (click)="close()">
+  <a mat-list-item routerLink="/login" (click)="close()" *ngIf="!(loggenInUser)">
     <mat-icon>menu</mat-icon>
     <span>Login</span>
+  </a>
+  <a mat-list-item routerLink="/login" (click)="close(true)" *ngIf="(loggenInUser)">
+    <mat-icon>logout</mat-icon>
+    <span>Logout</span>
   </a>
   <a mat-list-item routerLink="/signup" (click)="close()">
     <mat-icon>menu</mat-icon>

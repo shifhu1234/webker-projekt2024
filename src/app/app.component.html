@@ -1,6 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
-    <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page" (onCloseSidenav)="onClose($event, sidenav)"></app-menu>
+    <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page" (onCloseSidenav)="onClose($event, sidenav)" [loggenInUser]="loggedInUser" (onLogout)="logout($event)"></app-menu>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary">
@@ -13,14 +13,15 @@
       <div fxFlex fxLayout fxLayoutAlign="end center" fxHide.xs>
         <ul fxLayout fxLayoutGap="10px" class="navigation-items">
           <li><a routerLink="/main">Main</a></li>
-          <li><a routerLink="/login">Login</a></li>
+          <li *ngIf="!(loggedInUser)"><a routerLink="/login">Login</a></li>
+          <li *ngIf="(loggedInUser)"><a routerLink="/login" (click)="logout()">Logout</a></li>
 <!--          <li><a routerLink="/signup">Register</a></li>-->
           <li><a routerLink="/products">Termékek</a></li>
           <li><a routerLink="/delivery">Szállítás</a></li>
           <li><a routerLink="/gallery">Gallery</a></li>
           <li><a routerLink="/contact">Contact</a></li>
           <li><a routerLink="/basket">Kosár</a></li>
-          <li><a routerLink="/profile">Profil</a></li>
+          <li *ngIf="(loggedInUser)"><a routerLink="/profile">Profil</a></li>
         </ul>
       </div>
     </mat-toolbar>
