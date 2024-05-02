@@ -8,8 +8,17 @@
         <img [src]="categoryImages[i]" alt="Category Image" class="category-image">
       </mat-card-content>
       <mat-card-actions class="category-button">
-        <button mat-raised-button color="primary">Tovább</button>
+        <button mat-raised-button color="primary" (click)="onSelectCategory(categoriesName[i])">Tovább</button>
       </mat-card-actions>
     </mat-card>
+  </div>
+
+  <div style="border: 1px solid black; width: 500px; height: 500px">
+    <ul *ngIf="filteredProducts.length > 0">
+      <li *ngFor="let product of filteredProducts">
+        {{ product.name }}
+      </li>
+    </ul>
+    <p *ngIf="filteredProducts.length === 0">Nincs találat</p> <!-- Show this if no products found -->
   </div>
 </div>
