@@ -35,7 +35,7 @@ import {AngularFireModule} from '@angular/fire/compat'
     FlexLayoutModule,
     MatNavList,
     MatListItem,
-    AngularFireModule,
+    AngularFireModule.initializeApp({"projectId":"webfejl-projekt-2024","appId":"1:237724793716:web:ea394c11a58f1c1ce90a21","storageBucket":"webfejl-projekt-2024.appspot.com","apiKey":"AIzaSyDins7KBe3vEBr57f_Vj-4ZFKSWstpBJW8","authDomain":"webfejl-projekt-2024.firebaseapp.com","messagingSenderId":"237724793716","measurementId":"G-GD9JWHNEYS"}),
     //provideFirebaseApp(() => initializeApp({"projectId":"webfejl-projekt-2024","appId":"1:237724793716:web:ea394c11a58f1c1ce90a21","storageBucket":"webfejl-projekt-2024.appspot.com","apiKey":"AIzaSyDins7KBe3vEBr57f_Vj-4ZFKSWstpBJW8","authDomain":"webfejl-projekt-2024.firebaseapp.com","messagingSenderId":"237724793716","measurementId":"G-GD9JWHNEYS"})),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),
