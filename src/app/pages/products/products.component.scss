@@ -6,14 +6,28 @@
   align-items: center;
   vertical-align: center;
   padding: 10px; /* Adjust padding as needed */
+  max-width: 1000px;
 }
 
 .category-card {
   margin: 10px; /* Adjust margin as needed */
+  max-width: 500px; /* Beállítjuk a maximális szélességet */
 }
 .outer-container {
   height: 100vh; /* Set outer container height to full viewport height */
   display: flex;
   align-items: center; /* Vertically center items */
   justify-content: center; /* Horizontally center items */
+}
+
+.image-container{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.category-image {
+  max-width: 250px;
+  max-height: 250px
 }
