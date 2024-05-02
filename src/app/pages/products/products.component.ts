@@ -64,9 +64,10 @@ export class ProductsComponent implements OnInit, OnChanges {
   }
 
   private loadFilteredCategoryImages(categoryType: string): void{
+    this.categoryImagesFiltered = [];
     this.filteredProducts.forEach(category =>{
       const imageUrl = `assets/img${categoryType.charAt(0).toUpperCase()}${categoryType.slice(1)}/${category.image_url}`;
-      console.log(imageUrl);
+      //console.log(imageUrl);
       this.categoryImagesFiltered.push(imageUrl);
       //console.log("kateg " + category.image_url);
     })
@@ -86,10 +87,8 @@ export class ProductsComponent implements OnInit, OnChanges {
   //   return this.filteredProducts.length;
   }
 
-
-
-  resetFilter(): void {
+  goBackToCategoires() {
     this.filteredProducts = [];
-    this.isFilterActive = false; // Reset the flag when filter is reset
+    this.isFilterActive = false;
   }
 }

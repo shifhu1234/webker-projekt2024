@@ -13,6 +13,15 @@
     </mat-card>
   </div>
 
+<div *ngIf="isFilterActive"><button color="primary" mat-raised-button (click)="goBackToCategoires();">Vissza a kategóriákhoz</button></div>
+<!--  <div style="border: 1px solid black; width: 500px; height: 500px" *ngIf="isFilterActive">-->
+
+<!--    <ul *ngIf="filteredProducts.length > 0">-->
+<!--      <li *ngFor="let product of filteredProducts">-->
+<!--        {{ product.name }}-->
+<!--      </li>-->
+<!--    </ul>-->
+<!--  </div>-->
 
   <div fxLayoutAlign="center center" fxLayout="row wrap" class="category-container" *ngIf="isFilterActive">
     <mat-card fxFlex="calc(50% - 25px)" class="category-card" *ngFor="let category of filteredProducts; let i = index">
@@ -31,12 +40,5 @@
 
 
 
-  <div style="border: 1px solid black; width: 500px; height: 500px">
-    <ul *ngIf="filteredProducts.length > 0">
-      <li *ngFor="let product of filteredProducts">
-        {{ product.name }}
-      </li>
-    </ul>
-    <p *ngIf="filteredProducts.length === 0">Nincs találat</p> <!-- Show this if no products found -->
-  </div>
+
 </div>
