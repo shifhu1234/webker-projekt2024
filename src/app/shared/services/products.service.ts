@@ -1,6 +1,6 @@
 import {Injectable} from '@angular/core';
 import {HttpClient} from "@angular/common/http";
-import {Observable} from "rxjs";
+import {map, Observable} from "rxjs";
 import {Products} from "../models/Products";
 
 @Injectable({
@@ -15,7 +15,28 @@ export class ProductsService {
     return this.http.get<Products[]>('assets/products.json');
   }
 
-  // getFruitProducts(): Observable<Products[]> {
-  //   return this.http.get('../constants/products_fruit.ts') as Observable<Products[]>;
-  // }
+  // Gyümölcs termékek lekérése
+  getFruitProducts(): Observable<Products[]> {
+    return this.getProducts().pipe(
+      map(products => products.filter(product => product.type === 'fruit'))
+    );
+  }
+  getVegetableProducts(): Observable<Products[]> {
+    return this.getProducts().pipe(
+      map(products => products.filter(product => product.type === 'vegetable'))
+    );
+  }
+
+  getHoneyProducts(): Observable<Products[]> {
+    return this.getProducts().pipe(
+      map(products => products.filter(product => product.type === 'honey'))
+    );
+  }
+  getPastaProducts(): Observable<Products[]> {
+    return this.getProducts().pipe(
+      map(products => products.filter(product => product.type === 'pasta'))
+    );
+  }
+
+
 }

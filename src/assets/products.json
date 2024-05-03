@@ -1,200 +1,240 @@
 [
   {
+    "id": "alma",
     "name": "Piros alma",
     "type": "fruit",
     "image_url": "alma.jpg"
   },
   {
+    "id": "szolo",
     "name": "Zöld szőlő",
     "type": "fruit",
     "image_url": "szolo.jpg"
   },
   {
+    "id": "narancs",
     "name": "Narancs",
     "type": "fruit",
     "image_url": "narancs.jpg"
   },
   {
+    "id": "korte",
     "name": "Körte",
     "type": "fruit",
     "image_url": "korte.jpg"
   },
   {
+    "id": "banan",
     "name": "Banán",
     "type": "fruit",
     "image_url": "banan.jpg"
   },
   {
+    "id": "eper",
     "name": "Eper",
     "type": "fruit",
     "image_url": "eper.jpg"
   },
   {
+    "id": "szilva",
     "name": "Szilva",
     "type": "fruit",
     "image_url": "szilva.jpg"
   },
   {
+    "id": "citrom",
     "name": "Citrom",
     "type": "fruit",
     "image_url": "citrom.jpg"
   },
   {
+    "id": "mango",
     "name": "Mangó",
     "type": "fruit",
     "image_url": "mango.jpg"
   },
   {
+    "id": "barack",
     "name": "Barack",
     "type": "fruit",
     "image_url": "barack.jpg"
   },
   {
+    "id": "paprika",
     "name": "Paprika",
     "type": "vegetable",
     "image_url": "paprika.jpg"
   },
   {
+    "id": "paradicsom",
     "name": "Paradicsom",
     "type": "vegetable",
     "image_url": "paradicsom.jpg"
   },
   {
+    "id": "repa",
     "name": "Répa",
     "type": "vegetable",
     "image_url": "repa.jpg"
   },
   {
+    "id": "uborka",
     "name": "Uborka",
     "type": "vegetable",
     "image_url": "uborka.jpg"
   },
   {
+    "id": "hagyma",
     "name": "Hagyma",
     "type": "vegetable",
     "image_url": "hagyma.jpg"
   },
   {
+    "id": "brokkoli",
     "name": "Brokkoli",
     "type": "vegetable",
     "image_url": "brokkoli.jpg"
   },
   {
+    "id": "karalabe",
     "name": "Karalábé",
     "type": "vegetable",
     "image_url": "karalabe.jpg"
   },
   {
+    "id": "kelbimbo",
     "name": "Kelbimbó",
     "type": "vegetable",
     "image_url": "kelbimbo.jpg"
   },
   {
+    "id": "sargarepa",
     "name": "Sárgarépa",
     "type": "vegetable",
     "image_url": "sargarepa.jpg"
   },
   {
+    "id": "zeller",
     "name": "Zeller",
     "type": "vegetable",
     "image_url": "zeller.jpg"
   },
   {
+    "id": "akacmez",
     "name": "Akácméz",
     "type": "honey",
     "image_url": "akacmez.jpg"
   },
   {
+    "id": "viragporos_mez",
     "name": "Virágporos méz",
     "type": "honey",
     "image_url": "viragporos_mez.jpg"
   },
   {
+    "id": "rezgos_mez",
     "name": "Rezgős méz",
     "type": "honey",
     "image_url": "rezgos_mez.jpg"
   },
   {
+    "id": "lavendulas_mez",
     "name": "Lavendulás méz",
     "type": "honey",
     "image_url": "lavendulas_mez.jpg"
   },
   {
+    "id": "citromos_mez",
     "name": "Citromos méz",
     "type": "honey",
     "image_url": "citromos_mez.jpg"
   },
   {
+    "id": "eukaliptusz_mez",
     "name": "Eukaliptusz méz",
     "type": "honey",
     "image_url": "eukaliptusz_mez.jpg"
   },
   {
+    "id": "tolgyfas_mez",
     "name": "Tölgyfás méz",
     "type": "honey",
     "image_url": "tolgyfas_mez.jpg"
   },
   {
+    "id": "szolovirag_mez",
     "name": "Szőlővirág méz",
     "type": "honey",
     "image_url": "szolovirag_mez.jpg"
   },
   {
+    "id": "sargabarackos_mez",
     "name": "Sárgabarackos méz",
     "type": "honey",
     "image_url": "sargabarackos_mez.jpg"
   },
   {
+    "id": "citrusos_mez",
     "name": "Citrusos méz",
     "type": "honey",
     "image_url": "citrusos_mez.jpg"
   },
   {
+    "id": "spagetti",
     "name": "Spagetti",
     "type": "pasta",
     "image_url": "spagetti.jpg"
   },
   {
+    "id": "penne",
     "name": "Penne",
     "type": "pasta",
     "image_url": "penne.jpg"
   },
   {
+    "id": "farfalle",
     "name": "Farfalle",
     "type": "pasta",
     "image_url": "farfalle.jpg"
   },
   {
+    "id": "tagliatelle",
     "name": "Tagliatelle",
     "type": "pasta",
     "image_url": "tagliatelle.jpg"
   },
   {
+    "id": "fusilli",
     "name": "Fusilli",
     "type": "pasta",
     "image_url": "fusilli.jpg"
   },
   {
+    "id": "rigatoni",
     "name": "Rigatoni",
     "type": "pasta",
     "image_url": "rigatoni.jpg"
   },
   {
+    "id": "linguine",
     "name": "Linguine",
     "type": "pasta",
     "image_url": "linguine.jpg"
   },
   {
+    "id": "cavatappi",
     "name": "Cavatappi",
     "type": "pasta",
     "image_url": "cavatappi.jpg"
   },
   {
+    "id": "conchiglie",
     "name": "Conchiglie",
     "type": "pasta",
     "image_url": "conchiglie.jpg"
   },
   {
+    "id": "orecchiette",
     "name": "Orecchiette",
     "type": "pasta",
     "image_url": "orecchiette.jpg"

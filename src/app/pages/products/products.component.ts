@@ -31,29 +31,38 @@ export class ProductsComponent implements OnInit, OnChanges {
 
   @Output() selectedCategory: EventEmitter<string> = new EventEmitter<string>();
   @Input() filteredProducts: Products[] = [];
+
   constructor(private productsService: ProductsService) {
   }
 
   ngOnChanges(): void {
 
-    }
+  }
 
-
+  teszt?: Products[];
 
   ngOnInit(): void {
     this.loadCategoryImages();
     this.productsService.getProducts().subscribe((data: Products[]) => {
       this.products = data;
 
-      //console.log("az adatok: " +JSON.stringify(data));
-      // for (const item of data) {
-      //   const name = item.name;
-      //   const type = item.type;
-      //   const imageUrl = item.image_url;
-      //   console.log(name, type, imageUrl);
-      // }
+
+      for (const a of data) {
+        console.log(a.name);
+      }
+    });
+
+
+    this.productsService.getFruitProducts().subscribe((data: Products[]) => {
+      this.teszt = data;
+
+      for (const a of data) {
+        console.log("teszt: " + a.name);
+      }
+
 
     });
+
   }
 
   private loadCategoryImages(): void {
@@ -63,9 +72,9 @@ export class ProductsComponent implements OnInit, OnChanges {
     });
   }
 
-  private loadFilteredCategoryImages(categoryType: string): void{
+  private loadFilteredCategoryImages(categoryType: string): void {
     this.categoryImagesFiltered = [];
-    this.filteredProducts.forEach(category =>{
+    this.filteredProducts.forEach(category => {
       const imageUrl = `assets/img${categoryType.charAt(0).toUpperCase()}${categoryType.slice(1)}/${category.image_url}`;
       //console.log(imageUrl);
       this.categoryImagesFiltered.push(imageUrl);
@@ -76,15 +85,15 @@ export class ProductsComponent implements OnInit, OnChanges {
   onSelectCategory(category: string): void {
     this.filteredProducts = [];
     for (const item of this.products as any)
-    if (category as string === item.type as string){
-      this.filteredProducts.push(item); // Add matching products to the filtered list
-      console.log(item.name)
-    }
+      if (category as string === item.type as string) {
+        this.filteredProducts.push(item); // Add matching products to the filtered list
+        console.log(item.name)
+      }
     this.isFilterActive = true;
     this.loadFilteredCategoryImages(category);
     this.selectedCategory.emit(category);
-  // console.log(this.filteredProducts.length)
-  //   return this.filteredProducts.length;
+    // console.log(this.filteredProducts.length)
+    //   return this.filteredProducts.length;
   }
 
   goBackToCategoires() {

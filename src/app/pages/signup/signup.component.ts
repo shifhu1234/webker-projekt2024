@@ -2,6 +2,8 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormControl, FormGroup } from '@angular/forms';
 import {AuthService} from "../../shared/services/auth.service";
+import {User} from "../../shared/models/User";
+import {UserService} from "../../shared/services/user.service";
 
 @Component({
   selector: 'app-signup',
@@ -20,7 +22,7 @@ export class SignupComponent implements OnInit {
     })
   });
 
-  constructor(private location: Location, private authService: AuthService) { }
+  constructor(private location: Location, private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
   }
@@ -28,6 +30,21 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     this.authService.signup(this.signUpForm.get('email')?.value as string, this.signUpForm.get('password')?.value as string).then(cred =>{
       console.log(cred);
+      const user: User= {
+        id: cred.user?.uid as string,
+        email: this.signUpForm.get('email')?.value as string,
+        username: this.signUpForm.get('email')?.value?.split('@')[0] as string,
+        name:{
+          firstname: this.signUpForm.get('name.firstname')?.value as string,
+          lastname: this.signUpForm.get('name.lastname')?.value as string
+        }
+      };
+      this.userService.create(user).then(_ =>{
+        console.log('USER ADDED SUCCESSFULLY.');
+      }).catch(error =>{
+        console.log(error);
+      });
+
     }).catch(error=>{
       console.log(error);
     });

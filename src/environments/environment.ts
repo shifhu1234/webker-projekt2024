@@ -3,9 +3,22 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false,
-  hostUrl: 'http://localhost:4200'
-};
+        firebase: {
+            "projectId":
+                "webfejl-projekt-2024", "appId":
+                "1:237724793716:web:ea394c11a58f1c1ce90a21", "storageBucket":
+                "webfejl-projekt-2024.appspot.com", "apiKey":
+                "AIzaSyDins7KBe3vEBr57f_Vj-4ZFKSWstpBJW8", "authDomain":
+                "webfejl-projekt-2024.firebaseapp.com", "messagingSenderId":
+                "237724793716", "measurementId":
+                "G-GD9JWHNEYS"
+        }
+        ,
+        production: false,
+        hostUrl:
+            'http://localhost:4200'
+    }
+;
 
 /*
  * For easier debugging in development mode, you can import the following file
