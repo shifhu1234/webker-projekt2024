@@ -3,13 +3,14 @@ import {HttpClient} from "@angular/common/http";
 import {map, Observable} from "rxjs";
 import {Products} from "../models/Products";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Injectable({
     providedIn: 'root'
 })
 export class ProductsService {
 
-    constructor(private http: HttpClient, private afs: AngularFirestore) {
+    constructor(private http: HttpClient, private afs: AngularFirestore, private storage: AngularFireStorage) {
     }
 
     collectionName = 'images';
@@ -22,5 +23,10 @@ export class ProductsService {
         return this.afs.collection<Products>(this.collectionName).valueChanges();
         //return this.afs.collection<Products>(`${this.collectionName}/imgFruit`).valueChanges();
     }
+
+  getFirebaseImage(imageName: string): Observable<any> {
+    const storageRef = this.storage.ref('images/' + imageName);
+    return storageRef.getDownloadURL();
+  }
 
 }
