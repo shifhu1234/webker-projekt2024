@@ -72,10 +72,10 @@
     "image_url": "paradicsom.jpg"
   },
   {
-    "id": "repa",
-    "name": "Répa",
+    "id": "feherrepa",
+    "name": "Fehér Répa",
     "type": "vegetable",
-    "image_url": "repa.jpg"
+    "image_url": "feherrepa.jpg"
   },
   {
     "id": "uborka",
