@@ -23,13 +23,12 @@ export class UserService {
 
     }
 
-    // email verification: ki kellett szedni firebaseben a Email enumeration protection (recommended) -t,
-    // hogy meg lehessen valtopztatni
+
 
     updateEmail(emailChange: string) {
         return this.auth.currentUser.then((user) => {
             if (user) {
-                const updatedUser = {...user, email: emailChange};
+                const updatedUser = { ...user, email: emailChange };
                 localStorage.setItem('user', JSON.stringify(updatedUser));
 
                 return user.updateEmail(emailChange)
@@ -54,33 +53,72 @@ export class UserService {
         });
     }
 
-    updatePassword(passwordChange: string) {
+    updatePassword(passwordChange: string): Promise<void> {
         return this.auth.currentUser.then((user) => {
             if (user) {
-                // const updatedUser = {...user, password: passwordChange};
-                // localStorage.setItem('user', JSON.stringify(updatedUser));
-
                 return user.updatePassword(passwordChange)
                     .then(() => {
-                        console.log('JELSZO SIKERESEN FRISITVE');
-
-                        return this.afs.collection('Users').doc(user.uid).update({
-                            password: passwordChange
-                        }).then(() => {
-                            console.log('SIKERES FRISSITES JELSZO');
-                        }).catch((error) => {
-                            console.error('Hiba', error);
-                        });
+                        console.log('Jelszó sikeresen frissítve');
                     })
                     .catch((error) => {
-                        console.error('Hiba', error);
+                        console.error('Hiba a jelszó frissítésekor', error);
                         throw error;
                     });
             } else {
-                return Promise.resolve();
+                throw new Error('Nincs bejelentkezett felhasználó');
             }
         });
     }
+
+    // email verification: ki kellett szedni firebaseben a Email enumeration protection (recommended) -t,
+    // hogy meg lehessen valtopztatni
+
+    // updateEmail(emailChange: string) {
+    //     return this.auth.currentUser.then((user) => {
+    //         if (user) {
+    //             const updatedUser = {...user, email: emailChange};
+    //             localStorage.setItem('user', JSON.stringify(updatedUser));
+    //
+    //             return user.updateEmail(emailChange)
+    //                 .then(() => {
+    //                     console.log('EMAIL SIKERESEN FRISITVE');
+    //
+    //                     return this.afs.collection('Users').doc(user.uid).update({
+    //                         email: emailChange
+    //                     }).then(() => {
+    //                         console.log('SIKERES FRISSITES');
+    //                     }).catch((error) => {
+    //                         console.error('Hiba', error);
+    //                     });
+    //                 })
+    //                 .catch((error) => {
+    //                     console.error('Hiba', error);
+    //                     throw error;
+    //                 });
+    //         } else {
+    //             return Promise.resolve();
+    //         }
+    //     });
+    // }
+    //
+    // updatePassword(passwordChange: string): Promise<void> {
+    //     return this.auth.currentUser.then((user) => {
+    //         if (user) {
+    //             return user.updatePassword(passwordChange)
+    //                 .then(() => {
+    //                     console.log('Jelszó sikeresen frissítve');
+    //                 })
+    //                 .catch((error) => {
+    //                     console.error('Hiba a jelszó frissítésekor', error);
+    //                     throw error;
+    //                 });
+    //         } else {
+    //             throw new Error('Nincs bejelentkezett felhasználó');
+    //         }
+    //     });
+    // }
+
+
 
 
     // update(emailChange: string) {
@@ -141,7 +179,31 @@ export class UserService {
     //   });
     // }
 
-    delete() {
 
+    delete(): Promise<void> {
+        return this.auth.currentUser.then(user => {
+            if (user) {
+                // Felhasználó törlése az autentikációs rendszerből
+                return user.delete()
+                    .then(() => {
+                        // Felhasználói adatok törlése a Firestore-ból
+                        return this.afs.collection('Users').doc(user.uid).delete()
+                            .then(() => {
+                                console.log('Felhasználói profil sikeresen törölve');
+                            })
+                            .catch(error => {
+                                console.error('Hiba a felhasználói adatok törlésekor', error);
+                                throw error;
+                            });
+                    })
+                    .catch(error => {
+                        console.error('Hiba a felhasználó törlésekor', error);
+                        throw error;
+                    });
+            } else {
+                throw new Error('Nincs bejelentkezett felhasználó');
+            }
+        });
     }
+
 }
