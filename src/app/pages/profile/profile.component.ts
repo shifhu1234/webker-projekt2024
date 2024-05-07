@@ -11,7 +11,6 @@ import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {NgIf} from "@angular/common";
 import {NameFormatPipe} from "../../shared/pipes/name-format.pipe";
 
-
 @Component({
     selector: 'app-profile',
     standalone: true,
@@ -30,6 +29,7 @@ import {NameFormatPipe} from "../../shared/pipes/name-format.pipe";
     styleUrl: './profile.component.scss'
 })
 export class ProfileComponent implements OnInit{
+
     loggedInUser: any;
     currentUser: any = null;
 

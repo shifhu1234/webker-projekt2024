@@ -10,7 +10,11 @@
       </button>
       </div>
       <div>Zőccség ódal</div>
-      <div fxFlex fxLayout fxLayoutAlign="end center" fxHide.xs>
+
+
+      <div fxFlex fxLayout fxLayoutGap="10px" fxLayoutAlign="end center" fxHide.xs>
+        <div fxLayout>jello</div>
+
         <ul fxLayout fxLayoutGap="10px" class="navigation-items">
           <li><a routerLink="/main">Main</a></li>
           <li *ngIf="!(loggedInUser)"><a routerLink="/login">Login</a></li>
