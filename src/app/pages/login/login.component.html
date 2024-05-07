@@ -1,23 +1,24 @@
 <span *ngIf="loading" class="loading-indicator"><mat-spinner></mat-spinner>
 </span>
 <div class="main_component">
-  <h1>Bejelentkezés</h1>
-  <mat-form-field>
-    <mat-label for="email">Email:</mat-label>
-    <input matInput type="text" [formControl]="email"/>
-  </mat-form-field>
-  <mat-form-field>
-    <mat-label for="password">Password:</mat-label>
-    <input matInput type="password" [formControl]="password"/>
-  </mat-form-field>
-  <span>
-      <span>
-        <button class="login-button" mat-raised-button color="primary" (click)="login()">Bejelentkezés</button></span>
-        <br><br>
-        <span><a href="" color="primary" [routerLink]="'/signup'">Még nincs fiókom</a></span>
-    <!--       <span> <button mat-raised-button color="primary" [routerLink]="'/signup'">Sign Up</button></span>-->
-    </span>
-  <!-- AsyncPipe -->
-  <!--<p>{{loadingObservation | async}}</p>-->
+  <div class="card">
+    <div class="card-body">
+      <h1>Bejelentkezés</h1>
+      <mat-form-field>
+        <mat-label for="email">Email cím:</mat-label>
+        <input matInput type="text" [formControl]="email"/>
+      </mat-form-field>
+      <mat-form-field>
+        <mat-label for="password">Jelszó:</mat-label>
+        <input matInput type="password" [formControl]="password"/>
+      </mat-form-field>
+      <button class="login-button" mat-raised-button color="primary" (click)="login()">Bejelentkezés</button>
+      <br>
+      <span><a href="" color="primary" [routerLink]="'/signup'">Még nincs fiókom</a></span>
+      <div *ngIf="loading" class="loading-indicator">
+        <mat-spinner></mat-spinner>
+      </div>
+    </div>
+  </div>
 </div>
 

@@ -68,12 +68,12 @@ export class LoginComponent implements OnInit, OnDestroy {
         //   );
 
         this.authService.login(this.email.value as string, this.password.value as string).then(cred => {
-            console.log(cred);
+            //console.log(cred);
             this.router.navigateByUrl('/main');
             this.loading = false;
         }).catch(error =>{
             this.loading = false;
-            console.log(error);
+            //console.log(error);
         });
 
     }

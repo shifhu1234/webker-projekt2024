@@ -1,1 +1,26 @@
-<p>profile works!</p>
+<div class="main_component">
+  <div class="card">
+    <div class="card-body">
+      <h1>Felhasználó profil</h1>
+      <h2>Név: {{ loggedInUser?.name }}</h2>
+      <h2>Email: {{ loggedInUser?.email }}</h2>
+      <form [formGroup]="userDataChangeGroup">
+        <mat-form-field class="form-field">
+          <mat-label for="emailChange">Email cím</mat-label>
+          <input matInput type="text" formControlName="emailChange">
+        </mat-form-field>
+        <div class="sub-form">
+          <mat-form-field class="sub-form-field">
+            <mat-label for="passwordChange">Jelszó:</mat-label>
+            <input matInput formControlName="passwordChange" type="password" />
+          </mat-form-field>
+          <mat-form-field class="sub-form-field">
+            <mat-label for="passwordAgainChange">Jelszó újra:</mat-label>
+            <input matInput formControlName="passwordAgainChange" type="password" />
+          </mat-form-field>
+        </div>
+        <button mat-raised-button color="primary" (click)="changeUserData()">Profil frissítése</button>
+      </form>
+    </div>
+  </div>
+</div>

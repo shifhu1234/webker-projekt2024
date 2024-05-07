@@ -38,11 +38,11 @@ export class AppComponent implements OnInit {
         });
 
         this.authService.isUserLoggedIn().subscribe(user=>{
-            console.log(user);
+            //console.log(user);
             this.loggedInUser = user;
             localStorage.setItem('user', JSON.stringify(this.loggedInUser))
         }, error => {
-            console.log(error);
+            //console.log(error);
             localStorage.setItem('user', JSON.stringify('null'));
         });
     }
@@ -64,9 +64,9 @@ export class AppComponent implements OnInit {
 
     logout(_?:boolean) {
         this.authService.logout().then(()=>{
-            console.log("Logged out!");
+            //console.log("Logged out!");
         }).catch(error =>{
-            console.log(error);
+            //console.log(error);
         });
     }
 }

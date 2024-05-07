@@ -1,0 +1,42 @@
+.main_component {
+  height: 100vh;
+  align-items: center;
+  overflow: hidden;
+  font-family: 'Banchrift', sans-serif;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.sub-form-field{
+  align-self: center;
+  padding: 5px 25px 5px 25px;
+  width: 30%;
+}
+.main_component *{
+  font-family: "Signika Negative Light", cursive;
+  font-weight: bold;
+}
+
+.card {
+  width: 50%;
+  height: 50%;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+.card-body {
+  text-align: center;
+}
+
+.form-field {
+  width: 50%;
+  margin-bottom: 20px;
+}
+h2{
+  text-align: left;
+  margin-left: 10px;
+}

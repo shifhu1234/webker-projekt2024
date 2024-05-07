@@ -1,12 +1,13 @@
 import {Injectable} from '@angular/core';
 import {AngularFireAuth} from "@angular/fire/compat/auth";
+import {AngularFirestore} from "@angular/fire/compat/firestore";
 
 @Injectable({
     providedIn: 'root'
 })
 export class AuthService {
 
-    constructor(private auth: AngularFireAuth) {
+    constructor(private auth: AngularFireAuth, private afs: AngularFirestore) {
     }
 
     login(email: string, password: string) {
@@ -17,12 +18,13 @@ export class AuthService {
         return this.auth.createUserWithEmailAndPassword(email, password);
     }
 
-    isUserLoggedIn(){
+    isUserLoggedIn() {
         return this.auth.user;
     }
 
     logout() {
-       return this.auth.signOut();
+        return this.auth.signOut();
     }
+
 
 }
