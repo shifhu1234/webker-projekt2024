@@ -5,7 +5,8 @@
       <div *ngIf="loggedInUser">
         <h3>Üdv, {{ loggedInUser.name.firstname }}!</h3>
       </div>
-      <h2 >Jelenlegi név: {{ loggedInUser?.name.lastname}} {{ loggedInUser?.name.firstname}}</h2>
+<!--      <h2 >Jelenlegi név: {{ loggedInUser?.name.lastname}} {{ loggedInUser?.name.firstname}}</h2>-->
+      <h2>Jelenlegi név: {{ loggedInUser | nameFormat }}</h2>
       <h2>Jelenlegi email: {{ loggedInUser?.email }}</h2>
       <form [formGroup]="userDataChangeGroup">
         <mat-form-field class="form-field">

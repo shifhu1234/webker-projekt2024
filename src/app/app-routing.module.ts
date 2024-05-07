@@ -32,7 +32,8 @@ const routes: Routes = [
   },
   {
     path: 'basket',
-    loadChildren: () => import('./pages/basket/basket.module').then(m => m.BasketModule)
+    loadChildren: () => import('./pages/basket/basket.module').then(m => m.BasketModule),
+    canActivate: [AuthGuard]
   },
   {
     path: 'not-found',

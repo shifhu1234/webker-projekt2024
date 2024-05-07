@@ -9,6 +9,7 @@ import {UserService} from "../../shared/services/user.service";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {NgIf} from "@angular/common";
+import {NameFormatPipe} from "../../shared/pipes/name-format.pipe";
 
 
 @Component({
@@ -22,7 +23,8 @@ import {NgIf} from "@angular/common";
         MatButtonModule,
         ReactiveFormsModule,
         FlexModule,
-        NgIf
+        NgIf,
+        NameFormatPipe
     ],
     templateUrl: './profile.component.html',
     styleUrl: './profile.component.scss'

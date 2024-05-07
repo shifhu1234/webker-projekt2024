@@ -203,7 +203,11 @@ export class UserService {
             } else {
                 throw new Error('Nincs bejelentkezett felhasználó');
             }
+        }).catch(error => {
+            console.error('Hiba a felhasználó törlésekor', error);
+            throw error;
         });
     }
+
 
 }
