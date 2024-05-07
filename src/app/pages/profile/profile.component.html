@@ -2,7 +2,10 @@
   <div class="card">
     <div class="card-body">
       <h1>Felhasználó profil</h1>
-      <h2>Név: {{ loggedInUser?.name }}</h2>
+      <div *ngIf="loggedInUser">
+        <p>Üdv, {{ loggedInUser.name.firstname }}!</p>
+      </div>
+      <h2>Név: {{ loggedInUser?.name.lastname }} {{ loggedInUser?.name.firstname }}</h2>
       <h2>Email: {{ loggedInUser?.email }}</h2>
       <form [formGroup]="userDataChangeGroup">
         <mat-form-field class="form-field">
