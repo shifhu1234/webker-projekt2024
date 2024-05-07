@@ -26,7 +26,7 @@ export class UserService {
     // email verification: ki kellett szedni firebaseben a Email enumeration protection (recommended) -t,
     // hogy meg lehessen valtopztatni
 
-    update(emailChange: string) {
+    updateEmail(emailChange: string) {
         return this.auth.currentUser.then((user) => {
             if (user) {
                 const updatedUser = {...user, email: emailChange};
@@ -53,6 +53,35 @@ export class UserService {
             }
         });
     }
+
+    updatePassword(passwordChange: string) {
+        return this.auth.currentUser.then((user) => {
+            if (user) {
+                // const updatedUser = {...user, password: passwordChange};
+                // localStorage.setItem('user', JSON.stringify(updatedUser));
+
+                return user.updatePassword(passwordChange)
+                    .then(() => {
+                        console.log('JELSZO SIKERESEN FRISITVE');
+
+                        return this.afs.collection('Users').doc(user.uid).update({
+                            password: passwordChange
+                        }).then(() => {
+                            console.log('SIKERES FRISSITES JELSZO');
+                        }).catch((error) => {
+                            console.error('Hiba', error);
+                        });
+                    })
+                    .catch((error) => {
+                        console.error('Hiba', error);
+                        throw error;
+                    });
+            } else {
+                return Promise.resolve();
+            }
+        });
+    }
+
 
     // update(emailChange: string) {
     //     return this.auth.currentUser.then((user) => {
