@@ -124,7 +124,7 @@ export class ProductsComponent implements OnInit, OnChanges {
       for (let i = 0; i < this.filteredProducts.length; i++) {
         const category = this.filteredProducts[i];
         this.productsService.getFirebaseImage(category.image_url).subscribe((url: string) => {
-          this.categoryImagesFiltered[i] = url; // Megfelelő indexre helyezés
+          this.categoryImagesFiltered[i] = url;
         });
       }
     }
