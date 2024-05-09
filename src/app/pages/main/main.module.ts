@@ -3,6 +3,7 @@ import {CommonModule} from '@angular/common';
 
 import {MainRoutingModule} from './main-routing.module';
 import {MainComponent} from './main.component';
+import {MatIcon} from "@angular/material/icon";
 
 @NgModule({
     declarations: [
@@ -10,7 +11,8 @@ import {MainComponent} from './main.component';
     ],
     imports: [
         CommonModule,
-        MainRoutingModule
+        MainRoutingModule,
+        MatIcon
     ]
 })
 export class MainModule {

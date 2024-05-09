@@ -5,16 +5,6 @@ mat-icon {
   vertical-align: middle;
 }
 
-a{
-  vertical-align: middle;
-  text-decoration: none;
-  color: white;
-}
-
-a:hover, a:active{
-  color: lightgray;
-}
-
 mat-sidenav{
   width: 250px;
 }
@@ -47,3 +37,41 @@ mat-icon{
   margin-right: 0.5vh;
 }
 
+
+//a{
+//  vertical-align: middle;
+//  text-decoration: none;
+//  color: white;
+//}
+//
+//a:hover, a:active{
+//  color: lightgray;
+//}
+a {
+  text-decoration: none;
+  color: white;
+  position: relative;
+
+}
+
+a::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0;
+  height: 2px;
+  background-color: white;
+  transition: width 0.3s; /* Áttűnése a szélességnek */
+}
+
+a:hover::after {
+  width: 100%; /* A csík teljes szélessége, ha az egér fölötte van */
+}
+a:active::after{
+  background-color: lightgray;
+}
+
+a:active{
+  color:lightgray;
+}

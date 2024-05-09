@@ -1,3 +1,4 @@
+
 div {
     display: flex;
     flex-direction: column;
@@ -5,7 +6,23 @@ div {
     text-align: center;
     height: 100%;
 }
-
+h1{
+    font-family: "Signika Negative Light", cursive;
+    font-weight: bold;
+}
+h3{
+    font-family: "Signika Negative Light", cursive;
+    font-size: 2vh;
+}
 .main_component {
     height: 80vh;
+}
+.heart{
+    font-weight: bold;
+    font-style: italic;
+}
+
+mat-icon{
+    color: red;
+    vertical-align: middle;
 }
