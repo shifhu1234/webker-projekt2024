@@ -8,6 +8,7 @@ import {MatButtonModule} from "@angular/material/button";
 import {Observable} from "rxjs";
 import {combineChange} from "@angular/fire/compat/firestore";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {MatSelectModule} from "@angular/material/select";
 
 @Component({
   selector: 'app-products',
@@ -17,7 +18,8 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
     NgForOf,
     FlexModule,
     MatButtonModule,
-    NgIf
+    NgIf,
+    MatSelectModule
   ],
   templateUrl: './products.component.html',
   styleUrl: './products.component.scss'
@@ -34,6 +36,9 @@ export class ProductsComponent implements OnInit, OnChanges {
 
   @Output() selectedCategory: EventEmitter<string> = new EventEmitter<string>();
   @Input() filteredProducts: Products[] = [];
+
+  quantities: number[] = [1, 2, 3, 4, 5, 6];
+  selectedQuantities: number[] = new Array(this.filteredProducts.length).fill(1);
 
   constructor(private productsService: ProductsService, private storage: AngularFireStorage) {
   }

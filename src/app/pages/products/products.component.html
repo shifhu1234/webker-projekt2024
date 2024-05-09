@@ -22,6 +22,14 @@
       <mat-card-content class="image-container">
         <img [src]="categoryImagesFiltered[i]" alt="Category Image" class="category-image">
         <p class="price">Ár: {{category.price}} Ft /kg </p>
+        <mat-form-field>
+          <mat-label>Mennyiség (kg)</mat-label>
+          <mat-select [(value)]="selectedQuantities[i]">
+            <mat-option *ngFor="let quantity of quantities" [value]="quantity">
+              {{ quantity }} kg - {{ quantity * category.price }} Ft
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
         <button mat-raised-button color="accent">Kosárba teszem</button>
       </mat-card-content>
     </mat-card>
