@@ -1,7 +1,8 @@
 /* products.component.scss */
-*{
+* {
   overflow: visible;
 }
+
 .category-container {
   height: 100%;
   width: 50%;
@@ -13,30 +14,11 @@
 }
 
 .category-card {
-  margin: 10px;
-  max-width: 500px
-}
-
-
-/*
-.category-container {
-  height: 100%;
-  width: 50%;
-  align-self: center;
-  justify-content: center;
-  align-items: center;
-  vertical-align: center;
-  padding: 10px;
-  overflow-y: auto;
-}
-*/
-/*
-.category-card {
-  margin: 10px;
   max-width: 500px;
-  margin-bottom: 20px;
+  margin: 10px 10px 20px;
+  display: flex;
+  flex-direction: column;
 }
-*/
 
 .outer-container {
   height: 100vh;
@@ -51,6 +33,8 @@
   display: flex;
   justify-content: center;
   align-items: center;
+  flex-direction: column;
+
 }
 
 .category-title {
@@ -66,12 +50,13 @@
   max-width: 250px;
   max-height: 250px;
 }
-.category-button{
+
+.category-button {
   font-size: 1.5em;
   align-self: center;
 }
 
-mat-card-content img{
+mat-card-content img {
   width: 400px;
   height: 200px;
 }
