@@ -11,6 +11,9 @@
   align-items: center;
   vertical-align: center;
   padding: 10px;
+  //display: flex
+  //flex-wrap: wrap;
+
 }
 
 .category-card {
@@ -18,6 +21,21 @@
   margin: 10px 10px 20px;
   display: flex;
   flex-direction: column;
+  align-items: center;
+}
+
+//.category-card {
+//  max-width: 250px;
+//  margin: 10px;
+//  display: flex;
+//  flex-direction: column;
+//
+//}
+
+.back-to-top-button{
+  position: fixed;
+  top: 45%;
+  left: 10%;
 }
 .back-to-categ-button {
   position: fixed;
@@ -66,3 +84,13 @@ mat-card-content img {
   height: 200px;
 }
 
+.price{
+  margin-top: 10px;
+  font-size: 2vh;
+  font-family: "Signika Negative Light", monospace;
+  font-weight: bold;
+}
+
+//.basket-button{
+//   background-color: #41B06E !important;
+//}

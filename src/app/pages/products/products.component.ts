@@ -134,4 +134,5 @@ export class ProductsComponent implements OnInit, OnChanges {
     this.isFilterActive = false;
     this.createCategoryCards();
   }
+
 }
