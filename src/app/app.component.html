@@ -15,16 +15,16 @@
 <!--        <div fxLayout>jello</div>-->
 
         <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-          <li><mat-icon>home</mat-icon><a routerLink="/main">Főoldal</a>  </li>
-          <li *ngIf="!(loggedInUser)"><mat-icon>login</mat-icon><a routerLink="/login">Bejelentkezés</a>  </li>
-          <li *ngIf="(loggedInUser)"><a routerLink="/login" (click)="logout()">Logout</a></li>
+          <li><mat-icon>home</mat-icon><a routerLink="/main">Főoldal</a></li>
 <!--          <li><a routerLink="/signup">Register</a></li>-->
           <li><mat-icon>shopping_cart</mat-icon><a routerLink="/products">Termékek</a>  </li>
           <li><mat-icon>local_shipping</mat-icon><a routerLink="/delivery">Szállítás</a></li>
 <!--          <li><a routerLink="/gallery">Gallery</a></li>-->
-          <li><mat-icon>alternate_email</mat-icon><a routerLink="/contact">Kapcsolat</a> </li>
-          <li><mat-icon>shopping_basket</mat-icon><a routerLink="/basket">Kosár</a> </li>
-          <li *ngIf="(loggedInUser)"><a routerLink="/profile">Profil</a></li>
+          <li><mat-icon>alternate_email</mat-icon><a routerLink="/contact">Rólunk</a> </li>
+          <li><mat-icon>shopping_basket</mat-icon><a class="before-login-icon" routerLink="/basket">Kosár</a> </li>
+          <li *ngIf="!(loggedInUser)"><mat-icon>login</mat-icon><a routerLink="/login">Bejelentkezés</a>  </li>
+          <li *ngIf="(loggedInUser)"><mat-icon>account_circle</mat-icon><a routerLink="/profile">Profil</a></li>
+          <li *ngIf="(loggedInUser)"><mat-icon>logout</mat-icon><a routerLink="/login" (click)="logout()">Logout</a></li>
         </ul>
       </div>
     </mat-toolbar>
