@@ -13,14 +13,19 @@ import {NgForOf} from "@angular/common";
 })
 export class BasketComponent implements OnInit{
   basketItems: any[] = [];
-
+  totalAmount: number = 0;
   constructor(private basketService: BasketService) { }
 
   ngOnInit(): void {
     this.basketItems = this.basketService.getBasketItems();
+    this.calculateTotalAmount();
     console.log("basket: "+ this.basketItems);
     for (const a of this.basketItems){
       console.log(a.price)
     }
+  }
+
+  calculateTotalAmount() {
+    this.totalAmount = this.basketService.calculateTotalAmount();
   }
 }

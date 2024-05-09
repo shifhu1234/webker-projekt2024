@@ -19,5 +19,12 @@ export class BasketService {
     getBasketItems() {
         return this.basketItems;
     }
+    calculateTotalAmount(): number {
+        let totalAmount = 0;
+        for (const item of this.basketItems) {
+            totalAmount += item.quantity * item.category.price;
+        }
+        return totalAmount;
+    }
 
 }
