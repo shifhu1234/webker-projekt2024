@@ -1,28 +1,46 @@
 
 div {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
-}
-h1{
-    font-family: "Signika Negative Light", cursive;
-    font-weight: bold;
-}
-h3{
-    font-family: "Signika Negative Light", cursive;
-    font-size: 2vh;
-}
-.main_component {
-    height: 80vh;
-}
-.heart{
-    font-weight: bold;
-    font-style: italic;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
 }
 
-mat-icon{
-    color: red;
-    vertical-align: middle;
+h1 {
+  font-family: "Signika Negative Light", cursive;
+  font-weight: bold;
+}
+
+h3 {
+  font-family: "Signika Negative Light", cursive;
+  font-size: 2vh;
+}
+
+.main_component {
+  height: 80vh;
+}
+
+.heart {
+  font-weight: bold;
+  font-style: italic;
+}
+
+mat-icon {
+  color: red;
+  vertical-align: middle;
+}
+
+a {
+  display: flow;
+  font-family: "Signika Negative Light", monospace;
+  font-weight: bold;
+  text-decoration: none;
+  color: #41B06E;
+  transition: font-size 0.3s;
+}
+
+
+a:hover {
+  font-size: 1.1em;
 }
