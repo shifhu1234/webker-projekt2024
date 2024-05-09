@@ -9,21 +9,20 @@
         <mat-icon>menu_book</mat-icon>
       </button>
       </div>
-      <div>Zőccség ódal</div>
-
+      <div><a routerLink="/main">Zőccség ódal</a></div>
 
       <div fxFlex fxLayout fxLayoutGap="10px" fxLayoutAlign="end center" fxHide.xs>
-        <div fxLayout>jello</div>
+<!--        <div fxLayout>jello</div>-->
 
         <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-          <li><a routerLink="/main">Main</a></li>
-          <li *ngIf="!(loggedInUser)"><a routerLink="/login">Login</a></li>
+          <li><a routerLink="/main">Főoldal</a></li>
+          <li *ngIf="!(loggedInUser)"><a routerLink="/login">Bejelentkezés</a></li>
           <li *ngIf="(loggedInUser)"><a routerLink="/login" (click)="logout()">Logout</a></li>
 <!--          <li><a routerLink="/signup">Register</a></li>-->
           <li><a routerLink="/products">Termékek</a></li>
           <li><a routerLink="/delivery">Szállítás</a></li>
           <li><a routerLink="/gallery">Gallery</a></li>
-          <li><a routerLink="/contact">Contact</a></li>
+          <li><a routerLink="/contact">Kapcsolat</a></li>
           <li><a routerLink="/basket">Kosár</a></li>
           <li *ngIf="(loggedInUser)"><a routerLink="/profile">Profil</a></li>
         </ul>

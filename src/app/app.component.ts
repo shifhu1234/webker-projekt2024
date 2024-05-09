@@ -3,7 +3,6 @@ import {NavigationEnd, Router} from '@angular/router';
 import {filter} from 'rxjs';
 import {MatSidenav} from "@angular/material/sidenav";
 import {AuthService} from "./shared/services/auth.service";
-import {jsonHelpUsage} from "@angular/cli/src/command-builder/utilities/json-help";
 
 @Component({
     selector: 'app-root',
@@ -42,7 +41,7 @@ export class AppComponent implements OnInit {
             this.loggedInUser = user;
             localStorage.setItem('user', JSON.stringify(this.loggedInUser))
         }, error => {
-            //console.log(error);
+            console.log(error);
             localStorage.setItem('user', JSON.stringify('null'));
         });
     }
@@ -66,7 +65,7 @@ export class AppComponent implements OnInit {
         this.authService.logout().then(()=>{
             //console.log("Logged out!");
         }).catch(error =>{
-            //console.log(error);
+            console.log(error);
         });
     }
 }

@@ -23,7 +23,10 @@ export class UserService {
 
     }
 
-
+  getLoggedInUserData(uid: string) {
+    // Felhasználó adatainak lekérése Firestore-ból az uid alapján
+    return this.afs.collection('Users').doc(uid).valueChanges();
+  }
 
     updateEmail(emailChange: string) {
         return this.auth.currentUser.then((user) => {

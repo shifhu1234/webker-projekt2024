@@ -35,27 +35,38 @@ export class ProfileComponent implements OnInit{
 
     ngOnInit(): void {
         // Jelenleg bejelentkezett felhasználó lekérése
-        this.afAuth.authState.subscribe(user => {
-            if (user) {
-                this.currentUser = user;
-                this.getLoggedInUserData(user.uid); // Felhasználó adatainak lekérése az adatbázisból
-            } else {
-                this.currentUser = null;
-            }
-        });
-    }
-
-
-    getLoggedInUserData(uid: string) {
-        // Felhasználó adatainak lekérése Firestore-ból az uid alapján
-        this.afs.collection('Users').doc(uid).valueChanges().subscribe(userData => {
-            //console.log('Felhasználó adatai:', userData);
+        // this.afAuth.authState.subscribe(user => {
+        //     if (user) {
+        //         this.currentUser = user;
+        //         this.getLoggedInUserData(user.uid); // Felhasználó adatainak lekérése az adatbázisból
+        //     } else {
+        //         this.currentUser = null;
+        //     }
+        // });
+      this.afAuth.authState.subscribe(user => {
+        if (user) {
+          this.currentUser = user;
+          // UserService osztály getLoggedInUserData függvényének meghívása
+          this.userService.getLoggedInUserData(user.uid).subscribe(userData => {
             this.loggedInUser = userData;
-            //console.log("loggedin: " + this.loggedInUser)
-            // Itt kezelheted a felhasználó adatait, pl. frissítheted a komponensben tárolt változókat
-        });
+          });
+        } else {
+          this.currentUser = null;
+        }
+      });
 
     }
+
+
+    // getLoggedInUserData(uid: string) {
+    //     // Felhasználó adatainak lekérése Firestore-ból az uid alapján
+    //     this.afs.collection('Users').doc(uid).valueChanges().subscribe(userData => {
+    //         //console.log('Felhasználó adatai:', userData);
+    //         this.loggedInUser = userData;
+    //         //console.log("loggedin: " + this.loggedInUser)
+    //         // Itt kezelheted a felhasználó adatait, pl. frissítheted a komponensben tárolt változókat
+    //     });
+    // }
 
 
     // emailChange = new FormControl<string>('');
