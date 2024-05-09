@@ -19,14 +19,16 @@
 }
 
 .card {
+  margin-bottom: 5vh;
   width: 50%;
-  height: 50%;
+  height: 75%;
   background-color: #fff;
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
   padding: 20px;
 }
+
 
 .card-body {
   text-align: center;

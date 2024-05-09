@@ -1,4 +1,9 @@
+mat-icon {
+  vertical-align: middle;
+}
+
 a{
+  vertical-align: middle;
   text-decoration: none;
   color: white;
 }
@@ -7,16 +12,35 @@ a:hover, a:active{
   color: lightgray;
 }
 
-.navigation-items{
-  list-style: none;
-  padding: 0;
-  margin: 0;
-}
-
 mat-sidenav{
   width: 250px;
 }
 mat-toolbar{
   background-color: #41B06E;
+}
+.favicon-container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+.favicon {
+  width: 32px;
+  height: 32px;
+  margin-left: 1vh; /* Opcionális: adj egy kis távolságot a szöveghez */
+}
+
+.navigation-items{
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+
+mat-icon{
+  margin-left: 1vh;
+  margin-right: 0.5vh;
 }
 

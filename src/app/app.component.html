@@ -3,27 +3,27 @@
     <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page" (onCloseSidenav)="onClose($event, sidenav)" [loggenInUser]="loggedInUser" (onLogout)="logout($event)"></app-menu>
   </mat-sidenav>
   <mat-sidenav-content>
-    <mat-toolbar color="primary">
+    <mat-toolbar color="primary" class="toolbar">
       <div fxHide.gt-xs>
       <button mat-icon-button (click)="onToggleSidenav(sidenav)">
         <mat-icon>menu_book</mat-icon>
       </button>
       </div>
-      <div><a routerLink="/main">Zőccség ódal</a></div>
+      <div class="favicon-container"><a routerLink="/main">Friss kosár</a><img src="favicon.ico" class="favicon" alt=""></div>
 
       <div fxFlex fxLayout fxLayoutGap="10px" fxLayoutAlign="end center" fxHide.xs>
 <!--        <div fxLayout>jello</div>-->
 
         <ul fxLayout fxLayoutGap="10px" class="navigation-items">
-          <li><a routerLink="/main">Főoldal</a></li>
-          <li *ngIf="!(loggedInUser)"><a routerLink="/login">Bejelentkezés</a></li>
+          <li><mat-icon>home</mat-icon><a routerLink="/main">Főoldal</a>  </li>
+          <li *ngIf="!(loggedInUser)"><mat-icon>login</mat-icon><a routerLink="/login">Bejelentkezés</a>  </li>
           <li *ngIf="(loggedInUser)"><a routerLink="/login" (click)="logout()">Logout</a></li>
 <!--          <li><a routerLink="/signup">Register</a></li>-->
-          <li><a routerLink="/products">Termékek</a></li>
-          <li><a routerLink="/delivery">Szállítás</a></li>
-          <li><a routerLink="/gallery">Gallery</a></li>
-          <li><a routerLink="/contact">Kapcsolat</a></li>
-          <li><a routerLink="/basket">Kosár</a></li>
+          <li><mat-icon>shopping_cart</mat-icon><a routerLink="/products">Termékek</a>  </li>
+          <li><mat-icon>local_shipping</mat-icon><a routerLink="/delivery">Szállítás</a></li>
+<!--          <li><a routerLink="/gallery">Gallery</a></li>-->
+          <li><mat-icon>alternate_email</mat-icon><a routerLink="/contact">Kapcsolat</a> </li>
+          <li><mat-icon>shopping_basket</mat-icon><a routerLink="/basket">Kosár</a> </li>
           <li *ngIf="(loggedInUser)"><a routerLink="/profile">Profil</a></li>
         </ul>
       </div>

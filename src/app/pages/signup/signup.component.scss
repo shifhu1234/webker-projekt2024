@@ -47,6 +47,7 @@ div {
   font-family: 'Banchrift', sans-serif;
 }
 .card {
+  margin-bottom: 5vh;
   width: 50%;
   height: 75%;
   background-color: #fff;
@@ -56,8 +57,13 @@ div {
   padding: 20px;
 }
 
-
+h1{
+  text-align: center;
+  align-self: center;
+  align-items: center;
+}
 .card-body {
+
   text-align: center;
 }
 
@@ -69,3 +75,14 @@ div {
 a:active{
   color: #41B06E;
 }
+.favicon {
+  width: 32px;
+  height: 32px;
+  margin-left: 1vh; /* Opcionális: adj egy kis távolságot a szöveghez */
+}
+.favicon-container {
+  text-align: center;
+  display: flex;
+  align-items: center;
+}
+

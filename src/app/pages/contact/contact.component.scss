@@ -7,6 +7,9 @@ mat-card-header{
   display: initial;
 }
 
+mat-icon{
+  vertical-align: middle;
+}
 .div-flex {
   display: flex;
   flex-direction: column;
@@ -17,3 +20,5 @@ mat-card-header{
 .main_component{
   height: 100vh;
 }
+
+

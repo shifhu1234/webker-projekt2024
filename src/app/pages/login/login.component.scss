@@ -45,6 +45,7 @@ mat-form-field {
 
 
 .card {
+  margin-bottom: 5vh;
   width: 50%;
   height: 75%;
   background-color: #fff;
@@ -55,6 +56,7 @@ mat-form-field {
 }
 
 .card-body {
+  align-items: center;
   text-align: center;
 }
 
@@ -75,4 +77,15 @@ mat-form-field {
 
 a:active{
   color: #41B06E;
+}
+
+.favicon {
+  width: 32px;
+  height: 32px;
+  margin-left: 1vh; /* Opcionális: adj egy kis távolságot a szöveghez */
+}
+.favicon-container {
+  text-align: center;
+  display: flex;
+  align-items: center;
 }
