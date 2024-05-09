@@ -13,7 +13,7 @@
     </mat-card>
   </div>
 
-<div *ngIf="isFilterActive"><button color="primary" mat-raised-button (click)="goBackToCategoires();">Vissza a kategóriákhoz</button></div>
+<div *ngIf="isFilterActive" class="back-to-categ-button"><button color="primary" mat-raised-button (click)="goBackToCategoires();">Vissza a kategóriákhoz</button></div>
   <div fxLayoutAlign="center" fxLayout="row wrap" class="category-container" *ngIf="isFilterActive">
     <mat-card fxFlex="calc(50% - 25px)" class="category-card" *ngFor="let category of filteredProducts; let i = index">
       <mat-card-header class="category-title">

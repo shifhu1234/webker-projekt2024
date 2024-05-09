@@ -28,5 +28,9 @@ export class ProductsService {
     const storageRef = this.storage.ref('images/' + imageName);
     return storageRef.getDownloadURL();
   }
-
+    getCategoryImages(categoryNames: string[]): Observable<string>[] {
+        return categoryNames.map((categoryName: string) => {
+            return this.getFirebaseImage(`${categoryName}Kategoria.jpg`);
+        });
+    }
 }

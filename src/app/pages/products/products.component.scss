@@ -19,6 +19,11 @@
   display: flex;
   flex-direction: column;
 }
+.back-to-categ-button {
+  position: fixed;
+  top: 50%;
+  left: 10%;
+}
 
 .outer-container {
   height: 100vh;
@@ -60,3 +65,4 @@ mat-card-content img {
   width: 400px;
   height: 200px;
 }
+

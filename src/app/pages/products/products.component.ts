@@ -7,6 +7,7 @@ import {ProductsService} from "../../shared/services/products.service";
 import {MatButtonModule} from "@angular/material/button";
 import {Observable} from "rxjs";
 import {combineChange} from "@angular/fire/compat/firestore";
+import {AngularFireStorage} from "@angular/fire/compat/storage";
 
 @Component({
   selector: 'app-products',
@@ -34,7 +35,7 @@ export class ProductsComponent implements OnInit, OnChanges {
   @Output() selectedCategory: EventEmitter<string> = new EventEmitter<string>();
   @Input() filteredProducts: Products[] = [];
 
-  constructor(private productsService: ProductsService) {
+  constructor(private productsService: ProductsService, private storage: AngularFireStorage) {
   }
 
   ngOnChanges(): void {
@@ -52,21 +53,32 @@ export class ProductsComponent implements OnInit, OnChanges {
     });
   }
 
-  private loadCategoryImages(): void {
-    this.productsService.getAfsProducts().subscribe((data: Products[]) => {
-      data.forEach((product: Products) => {
-        this.productsService.getFirebaseImage(product.image_url).subscribe((url: string) => {
-          this.categoryImages.push(url);
-        });
+  // private loadCategoryImages(): void {
+  //   this.productsService.getAfsProducts().subscribe((data: Products[]) => {
+  //     data.forEach((product: Products) => {
+  //       this.productsService.getFirebaseImage(product.image_url).subscribe((url: string) => {
+  //         this.categoryImages.push(url);
+  //       });
+  //     });
+  //   });
+  //
+
+  // }
+  // loadCategoryImages(): void {
+  //   this.categoriesName.forEach((category: string) => {
+  //     this.productsService.getFirebaseImage(`${category}Kategoria.jpg`).subscribe((url: string) => {
+  //       this.categoryImages.push(url);
+  //     });
+  //   });
+  // }
+  loadCategoryImages(): void {
+    const imageObservables: Observable<string>[] = this.productsService.getCategoryImages(this.categoriesName);
+    for (let i = 0; i < this.categoriesName.length; i++) {
+      imageObservables[i].subscribe((url: string) => {
+        this.categoryImages[i] = url;
       });
-    });
-
-    // this.categoriesName.forEach(category => {
-    //     const imageUrl = `assets/${category}Kategoria.jpg`;
-    //     this.categoryImages.push(imageUrl);
-    // });
+    }
   }
-
   private loadFilteredCategoryImages(categoryType: string): void {
     // this.categoryImagesFiltered = [];
     // this.filteredProducts.forEach(category => {
