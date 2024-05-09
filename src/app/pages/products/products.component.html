@@ -32,6 +32,8 @@
 <!--        <p>{{category.id}}</p>-->
 <!--*ngIf="categoryImagesFiltered[i].toLowerCase().includes(filteredProducts)" -->
         <img [src]="categoryImagesFiltered[i]" alt="Category Image" class="category-image">
+        <p>Ár: {{category.price}} Ft /kg </p>
+        <button mat-raised-button color="primary">Kosárba teszem</button>
       </mat-card-content>
 <!--      <mat-card-actions class="category-button">-->
 <!--        <button mat-raised-button color="primary" (click)="onSelectCategory(categoriesName[i])">Tovább</button>-->

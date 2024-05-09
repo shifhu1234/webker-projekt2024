@@ -3,240 +3,280 @@
     "id": "alma",
     "name": "Piros alma",
     "type": "fruit",
+    "price": 500,
     "image_url": "alma.jpg"
   },
   {
     "id": "szolo",
     "name": "Zöld szőlő",
     "type": "fruit",
+    "price": 600,
     "image_url": "szolo.jpg"
   },
   {
     "id": "narancs",
     "name": "Narancs",
     "type": "fruit",
+    "price": 700,
     "image_url": "narancs.jpg"
   },
   {
     "id": "korte",
     "name": "Körte",
     "type": "fruit",
+    "price": 550,
     "image_url": "korte.jpg"
   },
   {
     "id": "banan",
     "name": "Banán",
     "type": "fruit",
+    "price": 400,
     "image_url": "banan.jpg"
   },
   {
     "id": "eper",
     "name": "Eper",
     "type": "fruit",
+    "price": 900,
     "image_url": "eper.jpg"
   },
   {
     "id": "szilva",
     "name": "Szilva",
     "type": "fruit",
+    "price": 750,
     "image_url": "szilva.jpg"
   },
   {
     "id": "citrom",
     "name": "Citrom",
     "type": "fruit",
+    "price": 650,
     "image_url": "citrom.jpg"
   },
   {
     "id": "mango",
     "name": "Mangó",
     "type": "fruit",
+    "price": 1200,
     "image_url": "mango.jpg"
   },
   {
     "id": "barack",
     "name": "Barack",
     "type": "fruit",
+    "price": 850,
     "image_url": "barack.jpg"
   },
   {
     "id": "paprika",
     "name": "Paprika",
     "type": "vegetable",
+    "price": 300,
     "image_url": "paprika.jpg"
   },
   {
     "id": "paradicsom",
     "name": "Paradicsom",
     "type": "vegetable",
+    "price": 400,
     "image_url": "paradicsom.jpg"
   },
   {
     "id": "feherrepa",
     "name": "Fehér Répa",
     "type": "vegetable",
+    "price": 200,
     "image_url": "feherrepa.jpg"
   },
   {
     "id": "uborka",
     "name": "Uborka",
     "type": "vegetable",
+    "price": 250,
     "image_url": "uborka.jpg"
   },
   {
     "id": "hagyma",
     "name": "Hagyma",
     "type": "vegetable",
+    "price": 150,
     "image_url": "hagyma.jpg"
   },
   {
     "id": "brokkoli",
     "name": "Brokkoli",
     "type": "vegetable",
+    "price": 350,
     "image_url": "brokkoli.jpg"
   },
   {
     "id": "karalabe",
     "name": "Karalábé",
     "type": "vegetable",
+    "price": 180,
     "image_url": "karalabe.jpg"
   },
   {
     "id": "kelbimbo",
     "name": "Kelbimbó",
     "type": "vegetable",
+    "price": 320,
     "image_url": "kelbimbo.jpg"
   },
   {
     "id": "sargarepa",
     "name": "Sárgarépa",
     "type": "vegetable",
+    "price": 220,
     "image_url": "sargarepa.jpg"
   },
   {
     "id": "zeller",
     "name": "Zeller",
     "type": "vegetable",
+    "price": 280,
     "image_url": "zeller.jpg"
   },
   {
     "id": "akacmez",
     "name": "Akácméz",
     "type": "honey",
+    "price": 2000,
     "image_url": "akacmez.jpg"
   },
   {
     "id": "viragporos_mez",
     "name": "Virágporos méz",
     "type": "honey",
+    "price": 1800,
     "image_url": "viragporos_mez.jpg"
   },
   {
     "id": "rezgos_mez",
     "name": "Rezgős méz",
     "type": "honey",
+    "price": 2200,
     "image_url": "rezgos_mez.jpg"
   },
   {
     "id": "lavendulas_mez",
     "name": "Lavendulás méz",
     "type": "honey",
+    "price": 2400,
     "image_url": "lavendulas_mez.jpg"
   },
   {
     "id": "citromos_mez",
     "name": "Citromos méz",
     "type": "honey",
+    "price": 2100,
     "image_url": "citromos_mez.jpg"
   },
   {
     "id": "eukaliptusz_mez",
     "name": "Eukaliptusz méz",
     "type": "honey",
+    "price": 2300,
     "image_url": "eukaliptusz_mez.jpg"
   },
   {
     "id": "tolgyfas_mez",
     "name": "Tölgyfás méz",
     "type": "honey",
+    "price": 2500,
     "image_url": "tolgyfas_mez.jpg"
   },
   {
     "id": "szolovirag_mez",
     "name": "Szőlővirág méz",
     "type": "honey",
+    "price": 1900,
     "image_url": "szolovirag_mez.jpg"
   },
   {
     "id": "sargabarackos_mez",
     "name": "Sárgabarackos méz",
     "type": "honey",
+    "price": 2000,
     "image_url": "sargabarackos_mez.jpg"
   },
   {
     "id": "citrusos_mez",
     "name": "Citrusos méz",
     "type": "honey",
+    "price": 2300,
     "image_url": "citrusos_mez.jpg"
   },
   {
     "id": "spagetti",
     "name": "Spagetti",
     "type": "pasta",
+    "price": 400,
     "image_url": "spagetti.jpg"
   },
   {
     "id": "penne",
     "name": "Penne",
     "type": "pasta",
+    "price": 450,
     "image_url": "penne.jpg"
   },
   {
     "id": "farfalle",
     "name": "Farfalle",
     "type": "pasta",
+    "price": 500,
     "image_url": "farfalle.jpg"
   },
   {
     "id": "tagliatelle",
     "name": "Tagliatelle",
     "type": "pasta",
+    "price": 550,
     "image_url": "tagliatelle.jpg"
   },
   {
     "id": "fusilli",
     "name": "Fusilli",
     "type": "pasta",
+    "price": 450,
     "image_url": "fusilli.jpg"
   },
   {
     "id": "rigatoni",
     "name": "Rigatoni",
     "type": "pasta",
+    "price": 480,
     "image_url": "rigatoni.jpg"
   },
   {
     "id": "linguine",
     "name": "Linguine",
     "type": "pasta",
+    "price": 520,
     "image_url": "linguine.jpg"
   },
   {
     "id": "cavatappi",
     "name": "Cavatappi",
     "type": "pasta",
+    "price": 530,
     "image_url": "cavatappi.jpg"
   },
   {
     "id": "conchiglie",
     "name": "Conchiglie",
     "type": "pasta",
+    "price": 560,
     "image_url": "conchiglie.jpg"
   },
   {
     "id": "orecchiette",
     "name": "Orecchiette",
     "type": "pasta",
+    "price": 570,
     "image_url": "orecchiette.jpg"
   }
 ]
