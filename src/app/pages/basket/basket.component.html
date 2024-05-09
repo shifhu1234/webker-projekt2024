@@ -1,1 +1,3 @@
-<p>basket works!</p>
+<div *ngFor="let item of basketItems">
+    <p>{{ item.quantity }} kg {{ item.category.name }}</p>
+</div>

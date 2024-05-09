@@ -22,7 +22,6 @@ export class SignupComponent implements OnInit {
       lastname: new FormControl('')
     })
   });
-
   constructor(private router: Router, private location: Location, private authService: AuthService, private userService: UserService) { }
 
   ngOnInit(): void {
@@ -38,7 +37,8 @@ export class SignupComponent implements OnInit {
         name:{
           firstname: this.signUpForm.get('name.firstname')?.value as string,
           lastname: this.signUpForm.get('name.lastname')?.value as string
-        }
+        },
+        points: 30
       };
       this.userService.create(user).then(_ =>{
         console.log('USER ADDED SUCCESSFULLY.');

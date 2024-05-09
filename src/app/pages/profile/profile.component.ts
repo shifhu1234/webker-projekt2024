@@ -8,23 +8,24 @@ import {Router} from "@angular/router";
 import {UserService} from "../../shared/services/user.service";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {NgIf} from "@angular/common";
+import {NgIf, NgStyle} from "@angular/common";
 import {NameFormatPipe} from "../../shared/pipes/name-format.pipe";
 
 @Component({
     selector: 'app-profile',
     standalone: true,
-    imports: [
-        FormsModule,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        MatButtonModule,
-        ReactiveFormsModule,
-        FlexModule,
-        NgIf,
-        NameFormatPipe
-    ],
+  imports: [
+    FormsModule,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    MatButtonModule,
+    ReactiveFormsModule,
+    FlexModule,
+    NgIf,
+    NameFormatPipe,
+    NgStyle
+  ],
     templateUrl: './profile.component.html',
     styleUrl: './profile.component.scss'
 })
