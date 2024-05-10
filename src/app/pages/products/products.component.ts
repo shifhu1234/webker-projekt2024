@@ -13,6 +13,9 @@ import {BasketService} from "../../shared/services/basket.service";
 import {FormsModule} from "@angular/forms";
 import {user} from "@angular/fire/auth";
 import {AppComponent} from "../../app.component";
+import {MatSnackBar, MatSnackBarConfig} from "@angular/material/snack-bar";
+import {PopUpNoUserComponent} from "../../shared/pop-ups/pop-up-no-user/pop-up-no-user.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
     selector: 'app-products',
@@ -25,7 +28,7 @@ import {AppComponent} from "../../app.component";
         NgIf,
         MatSelectModule,
         FormsModule,
-        NgStyle
+        NgStyle,
     ],
     templateUrl: './products.component.html',
     styleUrl: './products.component.scss'
@@ -46,24 +49,50 @@ export class ProductsComponent implements OnInit, OnChanges {
     quantities: number[] = [1, 2, 3, 4, 5, 6];
     //selectedQuantities: number[] = new Array(this.filteredProducts.length).fill(1);
     selectedQuantities: number[] = [];
-    constructor(private productsService: ProductsService, private storage: AngularFireStorage, private basketService: BasketService, private appComponent: AppComponent) {
+
+    constructor(private productsService: ProductsService, private storage: AngularFireStorage,
+                private basketService: BasketService, private appComponent: AppComponent, private _snackBar: MatSnackBar, private dialogRef: MatDialog) {
     }
 
 
-  loggedInUser?: firebase.default.User | null;
+    loggedInUser?: firebase.default.User | null;
 
 
     //  getLoggedInUserData(uid: string) {
-  //     // Felhasználó adatainak lekérése Firestore-ból az uid alapján
-  //     return this.afs.collection('Users').doc(uid).valueChanges();
-  //   }
+    //     // Felhasználó adatainak lekérése Firestore-ból az uid alapján
+    //     return this.afs.collection('Users').doc(uid).valueChanges();
+    //   }
 
     addToBasket(quantity: any, category: Products) {
-        if (this.loggedInUser){
+        if (this.loggedInUser) {
             //console.log('aaaa bejelentkezvee')
             console.log(quantity, category);
+            this.openSnackBarSuccesful('Kosárba rakva!');
             this.basketService.addToBasket(quantity, category);
+        }else{
+            this.openDialogBuying('buying');
         }
+    }
+
+    openDialogBuying(pageName: any) {
+        if (!this.loggedInUser) {
+            this.dialogRef.open(PopUpNoUserComponent, {
+                data: {
+                    pageName: pageName
+                }
+            });
+        }
+    }
+
+    openSnackBarSuccesful(message: string) {
+        const config = new MatSnackBarConfig();
+        config.duration = 1000;
+        config.horizontalPosition = 'center'; // Set horizontal position to center
+        config.verticalPosition = 'center';
+        config.politeness = "polite";
+        config.horizontalPosition = 'center'; // Set horizontal position to center
+        config.verticalPosition = 'top'; //
+        this._snackBar.open(message, undefined, config);
     }
 
     ngOnChanges(): void {
@@ -71,9 +100,9 @@ export class ProductsComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-      this.loggedInUser = this.appComponent.getLoggedInUser();
-      //console.log('bejelentkezve: ', this.loggedInUser)
-      this.selectedQuantities = new Array(this.filteredProducts.length).fill(1);
+        this.loggedInUser = this.appComponent.getLoggedInUser();
+        //console.log('bejelentkezve: ', this.loggedInUser)
+        this.selectedQuantities = new Array(this.filteredProducts.length).fill(1);
         this.loadCategoryImages();
         this.productsService.getProducts().subscribe((data: Products[]) => {
             this.products = data;
@@ -168,5 +197,6 @@ export class ProductsComponent implements OnInit, OnChanges {
         this.isFilterActive = false;
         this.createCategoryCards();
     }
+
 
 }

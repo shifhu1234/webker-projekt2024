@@ -8,7 +8,7 @@ import {
 } from "@angular/material/dialog";
 import {MatButton} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
-import {NgStyle} from "@angular/common";
+import {NgIf, NgStyle} from "@angular/common";
 
 @Component({
   selector: 'app-pop-up-no-user',
@@ -20,17 +20,21 @@ import {NgStyle} from "@angular/common";
     MatDialogClose,
     MatDialogTitle,
     RouterLink,
-    NgStyle
+    NgStyle,
+    NgIf
   ],
   templateUrl: './pop-up-no-user.component.html',
   styleUrl: './pop-up-no-user.component.scss'
 })
 export class PopUpNoUserComponent implements OnInit{
-  userName: any;
+  isThisBuyingPopUp: boolean = false;
   ngOnInit(): void {
 
   }
 constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-this.userName = data.name;
-}
+  if(data.pageName === 'buying'){
+    this.isThisBuyingPopUp = true;
+  }
+  }
+
 }
