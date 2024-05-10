@@ -55,20 +55,20 @@ export class ProductsComponent implements OnInit, OnChanges {
               private dialogRef: MatDialog, private router: Router, private http: HttpClient) {}
 
 
-  uploadFile: any[] = [];
+  // uploadFile: any[] = [];
 
-  uploadFiles(){
-    this.http.get<any[]>('assets/products.json')
-      .subscribe(data => {
-        this.uploadFile = data;
-        for (const a of this.uploadFile){
-          console.log('AA '+ a.price);
-        }
-      });
-  }
+  // uploadFiles(){
+  //   this.http.get<any[]>('assets/products.json')
+  //     .subscribe(data => {
+  //       this.uploadFile = data;
+  //        for (const a of this.uploadFile){
+  //          console.log('AA '+ a.price);
+  //        }
+  //     });
+  // }
 
   ngOnInit(): void {
-    this.uploadFiles();
+    // this.uploadFiles();
     this.loggedInUser = this.appComponent.getLoggedInUser();
     this.selectedQuantities = new Array(this.filteredProducts.length).fill(1);
     this.loadCategoryImages();
@@ -101,9 +101,9 @@ export class ProductsComponent implements OnInit, OnChanges {
   }
 
   goBackToCategoires(): void {
-    for (const a of this.uploadFile){
-      console.log('BB '+ a.price);
-    }
+    // for (const a of this.uploadFile){
+    //   console.log('BB '+ a.price);
+    // }
 
     //this.productsService.uploadToFire(this.uploadFile);
     //isten vagyok

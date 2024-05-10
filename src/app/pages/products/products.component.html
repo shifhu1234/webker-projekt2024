@@ -16,7 +16,7 @@
     <div *ngIf="isFilterActive" class="back-to-categ-button">
         <button [ngStyle]="{'margin-bottom':'10vh'}" color="primary" mat-raised-button (click)="goBackToCategoires();">Vissza a kategóriákhoz</button>
     </div>
-    <div *ngIf="isFilterActive" class="back-to-categ-button">
+    <div *ngIf="isFilterActive && (loggedInUser)" class="back-to-categ-button">
         <button color="primary" mat-raised-button (click)="goToBasket();">Tovább a kosárhoz</button>
     </div>
     <div fxLayoutAlign="space-around" fxLayout="row wrap" class="category-container" *ngIf="isFilterActive">
