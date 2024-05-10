@@ -40,7 +40,7 @@ export class SignupComponent implements OnInit {
   onSubmit() {
     this.authService.signup(this.signUpForm.get('email')?.value as string, this.signUpForm.get('password')?.value as string).then(cred =>{
       console.log(cred);
-      const user: User= {
+      const user: User = {
         id: cred.user?.uid as string,
         email: this.signUpForm.get('email')?.value as string,
         username: this.signUpForm.get('email')?.value?.split('@')[0] as string,

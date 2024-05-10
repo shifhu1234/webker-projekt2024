@@ -13,24 +13,28 @@ export class ProductsService {
     constructor(private http: HttpClient, private afs: AngularFirestore, private storage: AngularFireStorage) {
     }
 
-    collectionName = 'images';
+    collectionName = 'Images';
 
-    getProducts(): Observable<Products[]> {
-        return this.http.get<Products[]>('assets/products.json');
-    }
+  getProducts(): Observable<Products[]> {
+    return this.http.get<Products[]>('assets/products.json');
+  }
 
-    getAfsProducts(): Observable<Products[]>{
-        return this.afs.collection<Products>(this.collectionName).valueChanges();
-        //return this.afs.collection<Products>(`${this.collectionName}/imgFruit`).valueChanges();
-    }
+  getAfsProducts(): Observable<Products[]> {
+    return this.afs.collection<Products>(this.collectionName).valueChanges();
+  }
 
   getFirebaseImage(imageName: string): Observable<any> {
-    const storageRef = this.storage.ref('images/' + imageName);
+    const storageRef = this.storage.ref('images/' + imageName); // helyes
     return storageRef.getDownloadURL();
   }
-    getCategoryImages(categoryNames: string[]): Observable<string>[] {
-        return categoryNames.map((categoryName: string) => {
-            return this.getFirebaseImage(`${categoryName}Kategoria.jpg`);
-        });
-    }
+
+  getCategoryImages(categoryNames: string[]): Observable<string>[] {
+    return categoryNames.map((categoryName: string) => {
+      return this.getFirebaseImage(`${categoryName}Kategoria.jpg`);
+    });
+  }
+
+  getProductsByCategory(category: string): Observable<Products[]> {
+    return this.afs.collection<Products>(this.collectionName, ref => ref.where('type', '==', category)).valueChanges();
+  }
 }

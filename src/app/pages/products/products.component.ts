@@ -42,58 +42,22 @@ export class ProductsComponent implements OnInit, OnChanges {
   categoryImagesFiltered: any = [];
   isFilterActive: boolean = false;
   imagesLoaded: boolean = false;
-
   @Output() selectedCategory: EventEmitter<string> = new EventEmitter<string>();
   @Input() filteredProducts: Products[] = [];
-
   quantities: number[] = [1, 2, 3, 4, 5, 6];
-  //selectedQuantities: number[] = new Array(this.filteredProducts.length).fill(1);
   selectedQuantities: number[] = [];
   transaction: Transaction[] = [];
   loggedInUser?: firebase.default.User | null;
 
   constructor(private productsService: ProductsService, private storage: AngularFireStorage,
-              private basketService: BasketService, private appComponent: AppComponent, private _snackBar: MatSnackBar, private dialogRef: MatDialog, private router: Router) {
-  }
-
-  addToBasket(quantity: number, category: Products) {
-    if (this.loggedInUser && quantity >= 1) {
-      this.basketService.addToBasket(quantity, category, this.loggedInUser.uid);
-      this.openSnackBarSuccesful('Kosárba rakva!');
-    } else {
-      this.openDialogBuying('buying');
-    }
-  }
-
-  openDialogBuying(pageName: any) {
-    if (!this.loggedInUser) {
-      this.dialogRef.open(PopUpNoUserComponent, {
-        data: {
-          pageName: pageName
-        }
-      });
-    }
-  }
-
-  openSnackBarSuccesful(message: string) {
-    const config = new MatSnackBarConfig();
-    config.duration = 1000;
-    config.horizontalPosition = 'center';
-    config.politeness = "polite";
-    config.verticalPosition = 'top'; //
-    this._snackBar.open(message, undefined, config);
-  }
-
-  ngOnChanges(): void {
-    this.createCategoryCards();
-  }
+              private basketService: BasketService, private appComponent: AppComponent, private _snackBar: MatSnackBar,
+              private dialogRef: MatDialog, private router: Router) {}
 
   ngOnInit(): void {
     this.loggedInUser = this.appComponent.getLoggedInUser();
-    //console.log('bejelentkezve: ', this.loggedInUser)
     this.selectedQuantities = new Array(this.filteredProducts.length).fill(1);
     this.loadCategoryImages();
-    this.productsService.getProducts().subscribe((data: Products[]) => {
+    this.productsService.getAfsProducts().subscribe((data: Products[]) => {
       this.products = data;
       this.imagesLoaded = true;
     });
@@ -109,44 +73,39 @@ export class ProductsComponent implements OnInit, OnChanges {
   }
 
   onSelectCategory(category: string): void {
-    this.filteredProducts = [];
-    for (const item of this.products as any)
-      if (category as string === item.type as string) {
-        this.filteredProducts.push(item);
-      }
-    this.isFilterActive = true;
-    this.loadFilteredCategoryImages(category);
-    this.selectedCategory.emit(category);
-    this.createCategoryCards();
+    this.productsService.getProductsByCategory(category).subscribe((data: Products[]) => {
+      this.filteredProducts = data;
+      this.isFilterActive = true;
+      this.selectedCategory.emit(category);
+      this.loadFilteredCategoryImages(category);
+      this.createCategoryCards();
+    });
   }
 
-  goBackToCategoires() {
+  goBackToCategoires(): void {
     this.filteredProducts = [];
     this.isFilterActive = false;
     this.createCategoryCards();
   }
 
-  goToBasket() {
+  goToBasket(): void {
     this.router.navigateByUrl('/basket');
   }
 
   private loadFilteredCategoryImages(categoryType: string): void {
-
     this.categoryImagesFiltered = [];
     this.filteredProducts.forEach((category: Products) => {
-      if (category.type === categoryType) { // Ellenőrizd, hogy a termék kategóriája megegyezik-e a megadott kategóriával
+      if (category.type === categoryType) {
         this.productsService.getFirebaseImage(category.image_url).subscribe((url: string) => {
-          this.categoryImagesFiltered.push(url)
-
+          this.categoryImagesFiltered.push(url);
         });
       }
     });
-
   }
 
   private createCategoryCards(): void {
     if (this.imagesLoaded) {
-      this.categoryImagesFiltered = []; // Régi képek törlése
+      this.categoryImagesFiltered = [];
       for (let i = 0; i < this.filteredProducts.length; i++) {
         const category = this.filteredProducts[i];
         this.productsService.getFirebaseImage(category.image_url).subscribe((url: string) => {
@@ -154,5 +113,37 @@ export class ProductsComponent implements OnInit, OnChanges {
         });
       }
     }
+  }
+
+  addToBasket(quantity: number, category: Products): void {
+    if (this.loggedInUser && quantity >= 1) {
+      this.basketService.addToBasket(quantity, category, this.loggedInUser.uid);
+      this.openSnackBarSuccesful('Kosárba rakva!');
+    } else {
+      this.openDialogBuying('buying');
+    }
+  }
+
+  openDialogBuying(pageName: any): void {
+    if (!this.loggedInUser) {
+      this.dialogRef.open(PopUpNoUserComponent, {
+        data: {
+          pageName: pageName
+        }
+      });
+    }
+  }
+
+  openSnackBarSuccesful(message: string): void {
+    const config = new MatSnackBarConfig();
+    config.duration = 1000;
+    config.horizontalPosition = 'center';
+    config.politeness = "polite";
+    config.verticalPosition = 'top'; //
+    this._snackBar.open(message, undefined, config);
+  }
+
+  ngOnChanges(): void {
+    this.createCategoryCards();
   }
 }
