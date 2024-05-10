@@ -90,10 +90,8 @@ export class ProductsComponent implements OnInit, OnChanges {
     openSnackBarSuccesful(message: string) {
         const config = new MatSnackBarConfig();
         config.duration = 1000;
-        config.horizontalPosition = 'center'; // Set horizontal position to center
-        config.verticalPosition = 'center';
+        config.horizontalPosition = 'center';
         config.politeness = "polite";
-        config.horizontalPosition = 'center'; // Set horizontal position to center
         config.verticalPosition = 'top'; //
         this._snackBar.open(message, undefined, config);
     }
@@ -101,7 +99,6 @@ export class ProductsComponent implements OnInit, OnChanges {
     ngOnChanges(): void {
         this.createCategoryCards();
     }
-
     ngOnInit(): void {
         this.loggedInUser = this.appComponent.getLoggedInUser();
         //console.log('bejelentkezve: ', this.loggedInUser)
