@@ -17,6 +17,7 @@ import {MatSnackBar, MatSnackBarConfig} from "@angular/material/snack-bar";
 import {PopUpNoUserComponent} from "../../shared/pop-ups/pop-up-no-user/pop-up-no-user.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
+import {Transaction} from "../../shared/models/Transaction";
 
 @Component({
     selector: 'app-products',
@@ -50,7 +51,7 @@ export class ProductsComponent implements OnInit, OnChanges {
     quantities: number[] = [1, 2, 3, 4, 5, 6];
     //selectedQuantities: number[] = new Array(this.filteredProducts.length).fill(1);
     selectedQuantities: number[] = [];
-
+    transaction: Transaction[] = [];
     constructor(private productsService: ProductsService, private storage: AngularFireStorage,
                 private basketService: BasketService, private appComponent: AppComponent, private _snackBar: MatSnackBar, private dialogRef: MatDialog, private router: Router) {
     }
@@ -63,6 +64,7 @@ export class ProductsComponent implements OnInit, OnChanges {
     //     // Felhasználó adatainak lekérése Firestore-ból az uid alapján
     //     return this.afs.collection('Users').doc(uid).valueChanges();
     //   }
+
 
     addToBasket(quantity: any, category: Products) {
         if (this.loggedInUser && quantity >= 1) {

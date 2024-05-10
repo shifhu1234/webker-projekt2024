@@ -1,9 +1,9 @@
+import {Products} from "./Products";
+
 export interface Transaction {
     id: string;
-    items: {
-        itemId: string;
-        itemAmount: string;
-    }
+    item: Products;
+    itemAmount: number;
     totalPrice: number;
     time: string;
 }
