@@ -28,12 +28,18 @@ import {NgIf, NgStyle} from "@angular/common";
 })
 export class PopUpNoUserComponent implements OnInit{
   isThisBuyingPopUp: boolean = false;
+  isThisFirstRegistration: boolean = false;
+  holder: boolean = false;
   ngOnInit(): void {
-
+    this.isThisFirstRegistration = true;
   }
 constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
   if(data.pageName === 'buying'){
     this.isThisBuyingPopUp = true;
+  }
+  if (data.pageName === 'firstRegister'){
+    this.isThisFirstRegistration = false;
+    this.holder = true;
   }
   }
 

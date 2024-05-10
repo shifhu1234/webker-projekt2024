@@ -5,6 +5,9 @@ import {AuthService} from "../../shared/services/auth.service";
 import {User} from "../../shared/models/User";
 import {UserService} from "../../shared/services/user.service";
 import {Router} from "@angular/router";
+import {Products} from "../../shared/models/Products";
+import {PopUpNoUserComponent} from "../../shared/pop-ups/pop-up-no-user/pop-up-no-user.component";
+import {MatDialog} from "@angular/material/dialog";
 
 @Component({
   selector: 'app-signup',
@@ -22,11 +25,18 @@ export class SignupComponent implements OnInit {
       lastname: new FormControl('')
     })
   });
-  constructor(private router: Router, private location: Location, private authService: AuthService, private userService: UserService) { }
+  constructor(private router: Router, private location: Location, private authService: AuthService, private userService: UserService, private dialogRef: MatDialog) { }
 
   ngOnInit(): void {
   }
 
+  openDialogBuying(pageName: any) {
+      this.dialogRef.open(PopUpNoUserComponent, {
+        data: {
+          pageName: pageName
+        }
+      });
+  }
   onSubmit() {
     this.authService.signup(this.signUpForm.get('email')?.value as string, this.signUpForm.get('password')?.value as string).then(cred =>{
       console.log(cred);
@@ -41,6 +51,7 @@ export class SignupComponent implements OnInit {
         points: 30
       };
       this.userService.create(user).then(_ =>{
+        this.openDialogBuying('firstRegister');
         console.log('USER ADDED SUCCESSFULLY.');
         this.router.navigateByUrl('/main');
       }).catch(error =>{
