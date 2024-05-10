@@ -4,6 +4,7 @@ import {map, Observable} from "rxjs";
 import {Products} from "../models/Products";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireStorage} from "@angular/fire/compat/storage";
+import {User} from "../models/User";
 
 @Injectable({
     providedIn: 'root'
@@ -36,5 +37,12 @@ export class ProductsService {
 
   getProductsByCategory(category: string): Observable<Products[]> {
     return this.afs.collection<Products>(this.collectionName, ref => ref.where('type', '==', category)).valueChanges();
+  }
+
+  uploadToFire(product: Products[]){
+    for(const a of product){
+      this.afs.collection<Products>(this.collectionName).doc(a.id).set(a);
+
+    }
   }
 }
