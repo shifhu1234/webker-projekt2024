@@ -11,6 +11,8 @@ import {AngularFireStorage} from "@angular/fire/compat/storage";
 import {MatSelectModule} from "@angular/material/select";
 import {BasketService} from "../../shared/services/basket.service";
 import {FormsModule} from "@angular/forms";
+import {user} from "@angular/fire/auth";
+import {AppComponent} from "../../app.component";
 
 @Component({
     selector: 'app-products',
@@ -44,12 +46,24 @@ export class ProductsComponent implements OnInit, OnChanges {
     quantities: number[] = [1, 2, 3, 4, 5, 6];
     //selectedQuantities: number[] = new Array(this.filteredProducts.length).fill(1);
     selectedQuantities: number[] = [];
-    constructor(private productsService: ProductsService, private storage: AngularFireStorage, private basketService: BasketService) {
+    constructor(private productsService: ProductsService, private storage: AngularFireStorage, private basketService: BasketService, private appComponent: AppComponent) {
     }
 
+
+  loggedInUser?: firebase.default.User | null;
+
+
+    //  getLoggedInUserData(uid: string) {
+  //     // Felhasználó adatainak lekérése Firestore-ból az uid alapján
+  //     return this.afs.collection('Users').doc(uid).valueChanges();
+  //   }
+
     addToBasket(quantity: any, category: Products) {
-        console.log(quantity, category);
-        this.basketService.addToBasket(quantity, category);
+        if (this.loggedInUser){
+            //console.log('aaaa bejelentkezvee')
+            console.log(quantity, category);
+            this.basketService.addToBasket(quantity, category);
+        }
     }
 
     ngOnChanges(): void {
@@ -57,7 +71,9 @@ export class ProductsComponent implements OnInit, OnChanges {
     }
 
     ngOnInit(): void {
-        this.selectedQuantities = new Array(this.filteredProducts.length).fill(1);
+      this.loggedInUser = this.appComponent.getLoggedInUser();
+      //console.log('bejelentkezve: ', this.loggedInUser)
+      this.selectedQuantities = new Array(this.filteredProducts.length).fill(1);
         this.loadCategoryImages();
         this.productsService.getProducts().subscribe((data: Products[]) => {
             this.products = data;

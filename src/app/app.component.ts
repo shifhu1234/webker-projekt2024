@@ -16,6 +16,10 @@ export class AppComponent implements OnInit {
   routes: Array<string> = [];
   loggedInUser?: firebase.default.User | null;
 
+
+  getLoggedInUser(){
+    return this.loggedInUser;
+  }
   /* router: Router;
   constructor(router: Router) {
     this.router = router;
@@ -26,11 +30,13 @@ export class AppComponent implements OnInit {
   }
 
   openDialog(pageName: any) {
-    this.dialogRef.open(PopUpNoUserComponent, {
-      data: {
-        pageName: pageName
-      }
-    });
+    if (!this.loggedInUser){
+      this.dialogRef.open(PopUpNoUserComponent, {
+        data: {
+          pageName: pageName
+        }
+      });
+    }
   }
 
   ngOnInit() {
@@ -49,6 +55,7 @@ export class AppComponent implements OnInit {
     this.authService.isUserLoggedIn().subscribe(user => {
       //console.log(user);
       this.loggedInUser = user;
+      //console.log('bejelnetkezveve: ' + this.loggedInUser)
       localStorage.setItem('user', JSON.stringify(this.loggedInUser))
     }, error => {
       console.log(error);
