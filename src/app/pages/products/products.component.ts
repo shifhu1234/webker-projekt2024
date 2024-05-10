@@ -16,6 +16,7 @@ import {AppComponent} from "../../app.component";
 import {MatSnackBar, MatSnackBarConfig} from "@angular/material/snack-bar";
 import {PopUpNoUserComponent} from "../../shared/pop-ups/pop-up-no-user/pop-up-no-user.component";
 import {MatDialog} from "@angular/material/dialog";
+import {Router} from "@angular/router";
 
 @Component({
     selector: 'app-products',
@@ -51,7 +52,7 @@ export class ProductsComponent implements OnInit, OnChanges {
     selectedQuantities: number[] = [];
 
     constructor(private productsService: ProductsService, private storage: AngularFireStorage,
-                private basketService: BasketService, private appComponent: AppComponent, private _snackBar: MatSnackBar, private dialogRef: MatDialog) {
+                private basketService: BasketService, private appComponent: AppComponent, private _snackBar: MatSnackBar, private dialogRef: MatDialog, private router: Router) {
     }
 
 
@@ -196,6 +197,9 @@ export class ProductsComponent implements OnInit, OnChanges {
         this.filteredProducts = [];
         this.isFilterActive = false;
         this.createCategoryCards();
+    }
+    goToBasket(){
+        this.router.navigateByUrl('/basket');
     }
 
 

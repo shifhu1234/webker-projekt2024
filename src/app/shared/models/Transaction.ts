@@ -1,7 +1,9 @@
 export interface Transaction {
     id: string;
-    itemId: string;
-    amount: string;
-    price: number;
+    items: {
+        itemId: string;
+        itemAmount: string;
+    }
+    totalPrice: number;
     time: string;
 }
