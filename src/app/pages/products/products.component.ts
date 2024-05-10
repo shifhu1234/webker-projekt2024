@@ -64,7 +64,7 @@ export class ProductsComponent implements OnInit, OnChanges {
     //   }
 
     addToBasket(quantity: any, category: Products) {
-        if (this.loggedInUser) {
+        if (this.loggedInUser && quantity >= 1) {
             //console.log('aaaa bejelentkezvee')
             console.log(quantity, category);
             this.openSnackBarSuccesful('Kosárba rakva!');
