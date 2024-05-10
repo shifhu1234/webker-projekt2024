@@ -4,7 +4,7 @@ import {
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
-  MatDialogModule, MatDialogTitle
+  MatDialogTitle
 } from "@angular/material/dialog";
 import {MatButton} from "@angular/material/button";
 import {RouterLink} from "@angular/router";
@@ -26,21 +26,23 @@ import {NgIf, NgStyle} from "@angular/common";
   templateUrl: './pop-up-no-user.component.html',
   styleUrl: './pop-up-no-user.component.scss'
 })
-export class PopUpNoUserComponent implements OnInit{
+export class PopUpNoUserComponent implements OnInit {
   isThisBuyingPopUp: boolean = false;
   isThisFirstRegistration: boolean = false;
   holder: boolean = false;
+
+  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+    if (data.pageName === 'buying') {
+      this.isThisBuyingPopUp = true;
+    }
+    if (data.pageName === 'firstRegister') {
+      this.isThisFirstRegistration = false;
+      this.holder = true;
+    }
+  }
+
   ngOnInit(): void {
     this.isThisFirstRegistration = true;
-  }
-constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-  if(data.pageName === 'buying'){
-    this.isThisBuyingPopUp = true;
-  }
-  if (data.pageName === 'firstRegister'){
-    this.isThisFirstRegistration = false;
-    this.holder = true;
-  }
   }
 
 }

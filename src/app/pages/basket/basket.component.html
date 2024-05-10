@@ -1,4 +1,4 @@
-<div *ngFor="let item of basketItems">
-    <p>{{ item.quantity }} kg {{ item.category.name }} ár: {{item.quantity * item.category.price}} Ft</p>
+<div *ngFor="let item of basketTransactions">
+    <p>{{ item.itemAmount }} kg {{ item.item.name }} ár: {{item.itemAmount * item.item.price}} Ft</p>
 </div>
 <p>{{totalAmount}}</p>

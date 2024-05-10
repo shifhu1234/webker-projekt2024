@@ -1,6 +1,9 @@
 import {Component, OnInit} from '@angular/core';
 import {BasketService} from "../../shared/services/basket.service";
 import {NgForOf} from "@angular/common";
+import {Transaction} from "../../shared/models/Transaction";
+import {UserService} from "../../shared/services/user.service";
+import {AppComponent} from "../../app.component";
 
 @Component({
   selector: 'app-basket',
@@ -12,20 +15,27 @@ import {NgForOf} from "@angular/common";
   styleUrl: './basket.component.scss'
 })
 export class BasketComponent implements OnInit{
-  basketItems: any[] = [];
+  basketTransactions: Transaction[] = [];
   totalAmount: number = 0;
-  constructor(private basketService: BasketService) { }
+  loggedInUser?: firebase.default.User | null;
+  constructor(private basketService: BasketService, private userService: UserService, private appComponent: AppComponent) {}
+  userId?: string;
 
   ngOnInit(): void {
-    this.basketItems = this.basketService.getBasketItems();
-    this.calculateTotalAmount();
-    console.log("basket: "+ this.basketItems);
-    for (const a of this.basketItems){
-      console.log(a.price)
+    this.loggedInUser = this.appComponent.getLoggedInUser();
+    if (this.loggedInUser){
+      console.log("uid " + this.loggedInUser.uid)
+      this.userId = this.loggedInUser.uid;
+      this.basketTransactions = this.basketService.getBasketTransactions(this.userId);
+      this.calculateTotalAmount();
     }
   }
 
   calculateTotalAmount() {
-    this.totalAmount = this.basketService.calculateTotalAmount();
+    let totalAmount = 0;
+    for (const transaction of this.basketTransactions) {
+      totalAmount += transaction.totalPrice;
+    }
+    this.totalAmount = totalAmount;
   }
 }

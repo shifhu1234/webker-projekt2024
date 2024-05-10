@@ -1,30 +1,46 @@
 import {Injectable} from '@angular/core';
 import {Products} from "../models/Products";
+import {Transaction} from "../models/Transaction";
 
 @Injectable({
     providedIn: 'root'
 })
 export class BasketService {
 
-    basketItems: any[] = [];
+  transactions: Transaction[] = [];
 
-    constructor() {
-    }
+  constructor() {}
 
+  addToBasket(quantity: number, category: Products, userId: string) {
+    const totalPrice = quantity * category.price;
+    const newTransaction: Transaction = {
+      id: this.generateTransactionId(),
+      item: category,
+      itemAmount: quantity,
+      totalPrice: totalPrice,
+      time: new Date().toISOString(),
+      userId: userId
+    };
+    this.transactions.push(newTransaction);
+    console.log("hozzaadott: " + newTransaction.item.name)
+  }
 
-    addToBasket(quantity: number, category: Products) {
-        this.basketItems.push({ quantity: quantity, category: category });
-    }
+  getBasketTransactions(userId: string): Transaction[] {
+    return this.transactions.filter(transaction => transaction.userId === userId);
+  }
 
-    getBasketItems() {
-        return this.basketItems;
+  calculateTotalAmount(userId: string): number {
+    let totalAmount = 0;
+    const userTransactions = this.getBasketTransactions(userId);
+    for (const transaction of userTransactions) {
+      totalAmount += transaction.totalPrice;
     }
-    calculateTotalAmount(): number {
-        let totalAmount = 0;
-        for (const item of this.basketItems) {
-            totalAmount += item.quantity * item.category.price;
-        }
-        return totalAmount;
-    }
+    return totalAmount;
+  }
+
+  private generateTransactionId(): string {
+    // Implement your own logic to generate transaction id
+    return Math.random().toString(36).substring(2);
+  }
 
 }

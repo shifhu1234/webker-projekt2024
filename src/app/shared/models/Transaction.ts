@@ -6,4 +6,5 @@ export interface Transaction {
     itemAmount: number;
     totalPrice: number;
     time: string;
+    userId: string;
 }
