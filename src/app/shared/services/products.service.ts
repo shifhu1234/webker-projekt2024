@@ -43,10 +43,5 @@ export class ProductsService {
 
   }
 
-  // uploadToFire(product: Products[]){
-  //   for(const a of product){
-  //     this.afs.collection<Products>(this.collectionName).doc(a.id).set(a);
-  //
-  //   }
-  // }
+
 }

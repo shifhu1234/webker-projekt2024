@@ -1,0 +1,124 @@
+mat-card-content{
+  align-items: center;
+  text-align: center;
+  align-content: center;
+  align-self: center;
+}
+mat-form-field{
+  align-self: center;
+
+}
+
+mat-card-content{
+  position: fixed;
+}
+input{
+  position: fixed;
+}
+mat-card-content{
+  position: fixed;
+}
+
+.container {
+  display: flex;
+  flex-direction: row; /* A flexbox elrendezés sorokban van */
+  align-items: flex-start; /* A tartalmakat az elem felső részén helyezi el */
+}
+
+.container .mat-form-field {
+  margin-right: 10px; /* Távolság az input és a kuponok között */
+  min-width: 100px; /* Minimális szélesség beállítása az input mezőhöz */
+}
+
+.container ul {
+  list-style-type: none; /* listastílus eltávolítása */
+  padding: 10px;
+  margin: 0;
+}
+li{
+  font-weight: bold;
+  font-size: 1.5vh;
+}
+
+.container ul li{
+  background-color: #f0f0f0; /* háttérszín */
+  border-radius: 5px; /* kerekített sarok */
+  padding: 10pxx; /* belső tér */
+  margin-bottom: 10px; /* távolság az egyes kuponok között */
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* árnyék */
+}
+
+
+mat-card-header {
+  display: initial;
+}
+
+mat-icon {
+  vertical-align: middle;
+}
+
+.div-flex {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 80%;
+}
+
+.main_component {
+  height: 80vh;
+  width: 160vh;
+  align-items: center;
+  margin: auto;
+}
+
+mat-card {
+  width: 100%;
+  height: 100%;
+  align-self: center;
+}
+
+
+mat-icon {
+  color: red;
+  vertical-align: middle;
+}
+
+
+h1 {
+  font-family: "Signika Negative Light", cursive;
+  font-weight: bold;
+  font-size: 5vh;
+}
+
+h3 {
+  font-family: "Signika Negative Light", cursive;
+  font-size: 2vh;
+  text-align: left;
+  font-weight: bold;
+}
+
+
+.deliveryh3 {
+  font-size: 3vh;
+  text-align: center;
+  padding-bottom: 30%;
+}
+
+a {
+  display: flow;
+  font-family: "Signika Negative Light", monospace;
+  font-weight: bold;
+  text-decoration: none;
+  color: #41B06E;
+}
+
+img{
+  width: 30vh;
+  height: 20vh;
+}
+
+p {
+  font-size: 1.75vh;
+  text-align: left;
+}

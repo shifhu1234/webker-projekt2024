@@ -2,9 +2,14 @@ import {Component, OnInit} from '@angular/core';
 import {Observable} from "rxjs";
 import {Coupons} from "../../shared/models/Coupons";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {AsyncPipe, NgForOf} from "@angular/common";
+import {AsyncPipe, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {CouponsFormatPipe} from "../../shared/pipes/coupons-format.pipe";
+import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/material/card";
+import {MatIcon} from "@angular/material/icon";
+import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
+import {FlexModule} from "@angular/flex-layout";
+import {Router, RouterLink} from "@angular/router";
 
 @Component({
   selector: 'app-coupons',
@@ -13,7 +18,19 @@ import {CouponsFormatPipe} from "../../shared/pipes/coupons-format.pipe";
     AsyncPipe,
     NgForOf,
     FormsModule,
-    CouponsFormatPipe
+    CouponsFormatPipe,
+    MatCard,
+    MatCardContent,
+    MatCardHeader,
+    MatCardTitle,
+    MatIcon,
+    NgStyle,
+    MatInput,
+    MatFormField,
+    MatLabel,
+    FlexModule,
+    NgIf,
+    RouterLink
   ],
   templateUrl: './coupons.component.html',
   styleUrl: './coupons.component.scss'
@@ -23,10 +40,22 @@ export class CouponsComponent implements OnInit{
   coupons?: Coupons[];
   filterValue: number = 0;
 
-  constructor(private firestore: AngularFirestore) {}
+  constructor(private firestore: AngularFirestore, private router: Router) {}
 
   ngOnInit(): void {
     this.getCoupons();
+  }
+
+  onInputChange(newValue: number) {
+
+    if (newValue > 100) {
+      this.filterValue = 100;
+    }
+    this.getCoupons();
+  }
+
+  redirectToBasket() {
+    this.router.navigate(['/basket']);
   }
 
   getCoupons() {
@@ -36,6 +65,7 @@ export class CouponsComponent implements OnInit{
 
     this.couponsFromCollection.subscribe(value => {
       this.coupons = value;
+      console.log("val: "+ value)
     })
   }
 }
