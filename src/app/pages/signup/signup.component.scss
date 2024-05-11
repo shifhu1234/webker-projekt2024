@@ -1,34 +1,37 @@
 .div-flex {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    text-align: center;
-    height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  text-align: center;
+  height: 100%;
 }
 
 .main_component {
-    height: 100vh;
+  height: 100vh;
 }
 
 form div {
-    padding: 5px 0px 5px 0px;
+  padding: 5px 0px 5px 0px;
 }
 
-form{
+form {
   display: inline-grid;
   width: 50%;
   align-self: center;
 }
 
-a{
+a {
   font-size: 2vh;
 }
-.buttons{
+
+.buttons {
   padding: 5px;
 }
-button{
+
+button {
   width: 200px;
 }
+
 div {
   display: flex;
   flex-direction: column;
@@ -36,16 +39,19 @@ div {
   text-align: center;
   height: 100%;
 }
-.main_component *{
+
+.main_component * {
   font-family: "Signika Negative Light", cursive;
   font-weight: bold;
 }
+
 .main_component {
   height: 100vh;
   align-items: center;
   overflow: hidden;
   font-family: 'Banchrift', sans-serif;
 }
+
 .card {
   margin-bottom: 5vh;
   width: 50%;
@@ -57,11 +63,12 @@ div {
   padding: 20px;
 }
 
-h1{
+h1 {
   text-align: center;
   align-self: center;
   align-items: center;
 }
+
 .card-body {
 
   text-align: center;
@@ -72,14 +79,16 @@ h1{
   margin-bottom: 20px;
 }
 
-a:active{
+a:active {
   color: #41B06E;
 }
+
 .favicon {
   width: 32px;
   height: 32px;
-  margin-left: 1vh; /* Opcionális: adj egy kis távolságot a szöveghez */
+  margin-left: 1vh;
 }
+
 .favicon-container {
   text-align: center;
   display: flex;

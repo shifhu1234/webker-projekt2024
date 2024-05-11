@@ -11,38 +11,38 @@ import {RouterLink} from "@angular/router";
 import {NgIf, NgStyle} from "@angular/common";
 
 @Component({
-  selector: 'app-pop-up-no-user',
-  standalone: true,
-  imports: [
-    MatDialogContent,
-    MatDialogActions,
-    MatButton,
-    MatDialogClose,
-    MatDialogTitle,
-    RouterLink,
-    NgStyle,
-    NgIf
-  ],
-  templateUrl: './pop-up-no-user.component.html',
-  styleUrl: './pop-up-no-user.component.scss'
+    selector: 'app-pop-up-no-user',
+    standalone: true,
+    imports: [
+        MatDialogContent,
+        MatDialogActions,
+        MatButton,
+        MatDialogClose,
+        MatDialogTitle,
+        RouterLink,
+        NgStyle,
+        NgIf
+    ],
+    templateUrl: './pop-up-no-user.component.html',
+    styleUrl: './pop-up-no-user.component.scss'
 })
 export class PopUpNoUserComponent implements OnInit {
-  isThisBuyingPopUp: boolean = false;
-  isThisFirstRegistration: boolean = false;
-  holder: boolean = false;
+    isThisBuyingPopUp: boolean = false;
+    isThisFirstRegistration: boolean = false;
+    holder: boolean = false;
 
-  constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
-    if (data.pageName === 'buying') {
-      this.isThisBuyingPopUp = true;
+    constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
+        if (data.pageName === 'buying') {
+            this.isThisBuyingPopUp = true;
+        }
+        if (data.pageName === 'firstRegister') {
+            this.isThisFirstRegistration = false;
+            this.holder = true;
+        }
     }
-    if (data.pageName === 'firstRegister') {
-      this.isThisFirstRegistration = false;
-      this.holder = true;
-    }
-  }
 
-  ngOnInit(): void {
-    this.isThisFirstRegistration = true;
-  }
+    ngOnInit(): void {
+        this.isThisFirstRegistration = true;
+    }
 
 }

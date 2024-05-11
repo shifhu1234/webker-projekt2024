@@ -3,11 +3,6 @@
   font-weight: bold;
 }
 
-
-//mat-dialog-content{
-//  font-family: "Bodoni MT Poster Compressed", cursive;
-//  font-weight: bold;
-//}
 a {
   text-decoration: none;
   color: #9C27B0;
@@ -23,11 +18,11 @@ a::after {
   width: 0;
   height: 2px;
   background-color: #9C27B0;
-  transition: width 0.3s; /* Áttűnése a szélességnek */
+  transition: width 0.3s;
 }
 
 a:hover::after {
-  width: 100%; /* A csík teljes szélessége, ha az egér fölötte van */
+  width: 100%;
 }
 
 a:active::after {

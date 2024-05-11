@@ -1,16 +1,19 @@
 *:not(mat-icon) {
   font-family: "Bodoni MT Poster Compressed", cursive;
 }
+
 mat-icon {
   vertical-align: middle;
 }
 
-mat-sidenav{
+mat-sidenav {
   width: 250px;
 }
-mat-toolbar{
+
+mat-toolbar {
   background-color: #41B06E;
 }
+
 .favicon-container {
   text-align: center;
   display: flex;
@@ -20,10 +23,10 @@ mat-toolbar{
 .favicon {
   width: 32px;
   height: 32px;
-  margin-left: 1vh; /* Opcionális: adj egy kis távolságot a szöveghez */
+  margin-left: 1vh;
 }
 
-.navigation-items{
+.navigation-items {
   list-style: none;
   padding: 0;
   margin: 0;
@@ -32,24 +35,15 @@ mat-toolbar{
   align-items: center;
 }
 
-mat-icon{
+mat-icon {
   margin-left: 1vh;
   margin-right: 0.5vh;
 }
 
-.before-login-icon{
+.before-login-icon {
   margin-right: 4vh;
 }
 
-//a{
-//  vertical-align: middle;
-//  text-decoration: none;
-//  color: white;
-//}
-//
-//a:hover, a:active{
-//  color: lightgray;
-//}
 a {
   text-decoration: none;
   color: white;
@@ -65,16 +59,17 @@ a::after {
   width: 0;
   height: 2px;
   background-color: white;
-  transition: width 0.3s; /* Áttűnése a szélességnek */
+  transition: width 0.3s;
 }
 
 a:hover::after {
   width: 100%;
 }
-a:active::after{
+
+a:active::after {
   background-color: lightgray;
 }
 
-a:active{
-  color:lightgray;
+a:active {
+  color: lightgray;
 }

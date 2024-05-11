@@ -42,18 +42,17 @@ import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
     styleUrl: './pop-up-transaction.component.scss'
 })
 export class PopUpTransactionComponent implements OnInit, OnDestroy {
-    afterTransaction: boolean = false;
     valtozo: boolean = false;
     totalPrice: number = 0;
     loggedInUser?: any;    // firebase.default.User | null;
     loggedInUserUID: any;
-    selected?: string;
     transactionForm = new FormGroup({
         email: new FormControl(''),
         name: new FormControl(''),
         address: new FormControl(''),
         paymentMethod: new FormControl('')
     });
+
     constructor(
         @Inject(MAT_DIALOG_DATA) public data: any,
         private dialogRef: MatDialogRef<PopUpTransactionComponent>,
@@ -69,7 +68,6 @@ export class PopUpTransactionComponent implements OnInit, OnDestroy {
         this.userService.getLoggedInUserData(this.loggedInUserUID).subscribe(user => {
             this.loggedInUser = user;
         });
-        //this.selected = this.transactionForm.get('paymentMethod')?.value as string;
     }
 
     ngOnDestroy(): void {
@@ -87,11 +85,8 @@ export class PopUpTransactionComponent implements OnInit, OnDestroy {
             this.transactionService.addTransaction(transaction)
                 .then(() => {
                     console.log('Transaction added successfully!');
-                    // Close the dialog after successful transaction creation
-                    //this.afterTransaction = true;
-                    this.route.navigateByUrl('/profile');
-                    // this.dialogRef.close();
-                    //this.afterTransaction = false;
+                    this.route.navigateByUrl('/profile').then(_ => {
+                    });
                 })
                 .catch(error => {
                     console.error('Error adding transaction: ', error);

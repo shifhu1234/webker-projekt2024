@@ -1,6 +1,6 @@
 <mat-sidenav-container>
   <mat-sidenav #sidenav>
-    <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page" (onCloseSidenav)="onClose($event, sidenav)" [loggenInUser]="loggedInUser" (onLogout)="logout($event)"></app-menu>
+    <app-menu (selectedPage)="changePage($event)" [currentPage]="page" *ngIf="page" (onCloseSidenav)="onClose($event, sidenav)" [loggedInUser]="loggedInUser" (onLogout)="logout($event)"></app-menu>
   </mat-sidenav>
   <mat-sidenav-content>
     <mat-toolbar color="primary" class="toolbar">
@@ -10,9 +10,7 @@
       </button>
       </div>
       <div class="favicon-container"><a routerLink="/main">Friss kosár</a><img src="favicon.ico" class="favicon" alt=""></div>
-
       <div fxFlex fxLayout fxLayoutGap="10px" fxLayoutAlign="end center" fxHide.xs>
-
         <ul fxLayout fxLayoutGap="10px" class="navigation-items">
           <li><mat-icon>home</mat-icon><a routerLink="/main">Főoldal</a></li>
           <li><mat-icon>shopping_cart</mat-icon><a routerLink="/products">Termékek</a>  </li>

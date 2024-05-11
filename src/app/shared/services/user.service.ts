@@ -19,34 +19,27 @@ export class UserService {
         return this.afs.collection<User>(this.collectionName).doc(user.id).set(user);
     }
 
-    getAll() {
-
+    getLoggedInUserData(uid: string) {
+        return this.afs.collection('Users').doc(uid).valueChanges();
     }
-
-  getLoggedInUserData(uid: string) {
-    return this.afs.collection('Users').doc(uid).valueChanges();
-  }
 
     updateEmail(emailChange: string) {
         return this.auth.currentUser.then((user) => {
             if (user) {
-                const updatedUser = { ...user, email: emailChange };
+                const updatedUser = {...user, email: emailChange};
                 localStorage.setItem('user', JSON.stringify(updatedUser));
 
                 return user.updateEmail(emailChange)
                     .then(() => {
-                        console.log('EMAIL SIKERESEN FRISITVE');
-
                         return this.afs.collection('Users').doc(user.uid).update({
                             email: emailChange
                         }).then(() => {
-                            console.log('SIKERES FRISSITES');
                         }).catch((error) => {
-                            console.error('Hiba', error);
+                            console.error(error);
                         });
                     })
                     .catch((error) => {
-                        console.error('Hiba', error);
+                        console.error(error);
                         throw error;
                     });
             } else {
@@ -63,7 +56,7 @@ export class UserService {
                         console.log('Jelszó sikeresen frissítve');
                     })
                     .catch((error) => {
-                        console.error('Hiba a jelszó frissítésekor', error);
+                        console.error(error);
                         throw error;
                     });
             } else {
@@ -78,28 +71,26 @@ export class UserService {
     delete(): Promise<void> {
         return this.auth.currentUser.then(user => {
             if (user) {
-                // Felhasználó törlése az autentikációs rendszerből
                 return user.delete()
                     .then(() => {
-                        // Felhasználói adatok törlése a Firestore-ból
                         return this.afs.collection('Users').doc(user.uid).delete()
                             .then(() => {
                                 console.log('Felhasználói profil sikeresen törölve');
                             })
                             .catch(error => {
-                                console.error('Hiba a felhasználói adatok törlésekor', error);
+                                console.error(error);
                                 throw error;
                             });
                     })
                     .catch(error => {
-                        console.error('Hiba a felhasználó törlésekor', error);
+                        console.error(error);
                         throw error;
                     });
             } else {
                 throw new Error('Nincs bejelentkezett felhasználó');
             }
         }).catch(error => {
-            console.error('Hiba a felhasználó törlésekor', error);
+            console.error(error);
             throw error;
         });
     }
