@@ -44,7 +44,8 @@
           </tbody>
         </table>
         <div *ngIf="userTransactions?.length === 0">
-          <p>Nincsenek tranzakciók.</p>
+          <p>Még nem vásároltál semmit.</p>
+          <a routerLink="/products">Termékeink</a>
         </div>
       </form>
     </div>

@@ -1,4 +1,16 @@
 
+a {
+  font-family: "Signika Negative Light", monospace;
+  font-weight: bold;
+  text-decoration: none;
+  color: #41B06E;
+  transition: font-size 0.3s;
+}
+
+
+a:hover {
+  font-size: 1.1em;
+}
 
 table {
   width: 100%;

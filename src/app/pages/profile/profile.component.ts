@@ -4,7 +4,7 @@ import {MatFormField, MatLabel} from "@angular/material/form-field";
 import {MatInput} from "@angular/material/input";
 import {MatButtonModule} from "@angular/material/button";
 import {FlexModule} from "@angular/flex-layout";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {UserService} from "../../shared/services/user.service";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
@@ -29,7 +29,8 @@ import {collectionSnapshots} from "@angular/fire/firestore";
         FlexModule,
         NgIf,
         NameFormatPipe,
-        NgStyle
+        NgStyle,
+        RouterLink
     ],
     templateUrl: './profile.component.html',
     styleUrl: './profile.component.scss'
