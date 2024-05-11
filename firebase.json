@@ -1,9 +1,12 @@
 {
-  "hosting": [
-    {
-      "target": "webker-projekt-2024",
-      "source": ".",
-      "frameworksBackend": {}
-    }
-  ]
+  "hosting": {
+    "public": "dist/webker-projekt-2024",
+    "ignore": [],
+    "rewrites": [
+      {
+        "source": "**",
+        "destination": "/index.html"
+      }
+    ]
+  }
 }
