@@ -1,6 +1,5 @@
-/* You can add global styles to this file, and also import other style files */
 
-$bgcolor: azure;
+$bgcolor: white;
 *::-webkit-scrollbar {
   display: none;
 }
@@ -10,13 +9,13 @@ html {
 
 html, body {
   height: 100%;
-  overflow: hidden; /* Hide overflow */
+  overflow: hidden;
 }
 
 body {
   margin: 0;
   font-family: "Signika Negative Light", sans-serif;
-  overflow-y: scroll; /* Enable vertical scrolling */
+  overflow-y: scroll;
 }
 
 .loading-indicator {
