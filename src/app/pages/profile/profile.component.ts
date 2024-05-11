@@ -8,90 +8,139 @@ import {Router} from "@angular/router";
 import {UserService} from "../../shared/services/user.service";
 import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
-import {NgIf, NgStyle} from "@angular/common";
+import {CommonModule, NgIf, NgStyle} from "@angular/common";
 import {NameFormatPipe} from "../../shared/pipes/name-format.pipe";
+import {TransactionService} from "../../shared/services/transaction.service";
+import {async, Observable} from "rxjs";
+import {PaymentTransactions} from "../../shared/models/PaymentTransactions";
+import {collectionSnapshots} from "@angular/fire/firestore";
 
 @Component({
     selector: 'app-profile',
     standalone: true,
-  imports: [
-    FormsModule,
-    MatFormField,
-    MatInput,
-    MatLabel,
-    MatButtonModule,
-    ReactiveFormsModule,
-    FlexModule,
-    NgIf,
-    NameFormatPipe,
-    NgStyle
-  ],
+    imports: [
+        CommonModule,
+        FormsModule,
+        MatFormField,
+        MatInput,
+        MatLabel,
+        MatButtonModule,
+        ReactiveFormsModule,
+        FlexModule,
+        NgIf,
+        NameFormatPipe,
+        NgStyle
+    ],
     templateUrl: './profile.component.html',
     styleUrl: './profile.component.scss'
 })
-export class ProfileComponent implements OnInit{
+export class ProfileComponent implements OnInit {
 
     loggedInUser: any;
     currentUser: any = null;
-
-    ngOnInit(): void {
-        // Jelenleg bejelentkezett felhasználó lekérése
-        // this.afAuth.authState.subscribe(user => {
-        //     if (user) {
-        //         this.currentUser = user;
-        //         this.getLoggedInUserData(user.uid); // Felhasználó adatainak lekérése az adatbázisból
-        //     } else {
-        //         this.currentUser = null;
-        //     }
-        // });
-      this.afAuth.authState.subscribe(user => {
-        if (user) {
-          this.currentUser = user;
-          // UserService osztály getLoggedInUserData függvényének meghívása
-          this.userService.getLoggedInUserData(user.uid).subscribe(userData => {
-            this.loggedInUser = userData;
-          });
-        } else {
-          this.currentUser = null;
-        }
-      });
-
-    }
-
-
-    // getLoggedInUserData(uid: string) {
-    //     // Felhasználó adatainak lekérése Firestore-ból az uid alapján
-    //     this.afs.collection('Users').doc(uid).valueChanges().subscribe(userData => {
-    //         //console.log('Felhasználó adatai:', userData);
-    //         this.loggedInUser = userData;
-    //         //console.log("loggedin: " + this.loggedInUser)
-    //         // Itt kezelheted a felhasználó adatait, pl. frissítheted a komponensben tárolt változókat
-    //     });
-    // }
-
-
-    // emailChange = new FormControl<string>('');
-    // passwordChange = new FormControl<string>('');
-    // passwordAgainChange = new FormControl<string>('');
-
+    userTransactions: any;
     userDataChangeGroup = new FormGroup({
         emailChange: new FormControl<string>(''),
         passwordChange: new FormControl<string>(''),
         passwordAgainChange: new FormControl<string>('')
     });
 
-    constructor(private userService: UserService, private router: Router, private afs: AngularFirestore, private afAuth: AngularFireAuth) {
-        // const user = JSON.parse(localStorage.getItem('user') || '{}');
-        // this.loggedInUser = user;
-
-        /*if (this.loggedInUser && this.loggedInUser.email) {
-            const emailParts = this.loggedInUser.email.split('@');
-            if (emailParts.length > 0) {
-                this.loggedInUser.name = emailParts[0];
-            }
-        }*/
+    constructor(private userService: UserService, private router: Router, private afs: AngularFirestore, private afAuth: AngularFireAuth, private transactionService: TransactionService) {
     }
 
+    ngOnInit(): void {
+        this.afAuth.authState.subscribe(user => {
+            if (user) {
+                this.currentUser = user;
+                //console.log("jelenlegi: "+this.currentUser.uid);
+                this.userService.getLoggedInUserData(user.uid).subscribe(userData => {
+                    this.loggedInUser = userData;
+                    if (this.loggedInUser) {
+                        this.getUserTransactions(this.currentUser.uid).subscribe(transactions => {
+                            //console.log("USERID: "+ this.currentUser.uid)
+                            this.userTransactions = transactions;
+                            this.userTransactions.forEach((transaction: { formattedDate: any; date: any; }) => {
+                                transaction.formattedDate = this.formatDate(transaction.date);
+                            });
+                            // console.log("user: "+ this.userTransactions)
+                        });
+                    }
+                });
+            } else {
+                this.currentUser = null;
+            }
+        });
+    }
+    formatDate(timestamp: any): string {
+        const date = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000);
+        return date.toLocaleString(); // Vagy a megfelelő formázási metódust használhatod itt
+    }
+
+    getUserTransactions(userId: string): Observable<PaymentTransactions[]> {
+        return this.transactionService.returnUserTransactions(userId);
+    }
+
+    // changeUserData() {
+    //     const emailChangeValue = this.userDataChangeGroup.get('emailChange')?.value as string;
+    //     const passwordChangeValue = this.userDataChangeGroup.get('passwordChange')?.value as string;
+    //     const passwordAgainChangeValue = this.userDataChangeGroup.get('passwordAgainChange')?.value as string;
+    //
+    //     const updateEmailPromise = emailChangeValue && emailChangeValue.includes('@') ?
+    //         this.userService.updateEmail(emailChangeValue) : Promise.resolve();
+    //
+    //     const updatePasswordPromise = passwordChangeValue &&
+    //     passwordAgainChangeValue &&
+    //     (passwordChangeValue === passwordAgainChangeValue) &&
+    //     (passwordChangeValue.length >= 6) ?
+    //         this.userService.updatePassword(passwordChangeValue) : Promise.resolve();
+    //
+    //     Promise.all([updateEmailPromise, updatePasswordPromise])
+    //         .then(() => {
+    //             console.log('Minden frissítés sikeres');
+    //             location.reload();
+    //         })
+    //         .catch(error => {
+    //             console.error('Hiba a frissítés során', error);
+    //         });
+    // }
+
+
+    // aszinkron...
+    // const emailChangeValue = this.userDataChangeGroup.get('emailChange')?.value as string;
+    // if (emailChangeValue && emailChangeValue.includes('@')) {
+    //     this.userService.updateEmail(emailChangeValue)
+    //         .then(() => {
+    //             console.log('Email sikeresen frissítve');
+    //             //location.reload();
+    //         })
+    //         .catch((error) => {
+    //             console.error('Hiba', error);
+    //         });
+    // } else {
+    //     // Ha az email nem megfelelő, itt kezelheted le
+    // }
+    //
+    // const passwordChangeValue = this.userDataChangeGroup.get('passwordChange')?.value as string;
+    // const passwordAgainChangeValue = this.userDataChangeGroup.get('passwordAgainChange')?.value as string;
+    //
+    // if (
+    //     passwordChangeValue &&
+    //     passwordAgainChangeValue &&
+    //     (passwordChangeValue === passwordAgainChangeValue) &&
+    //     (passwordChangeValue.length >= 6)
+    // ) {
+    //     this.userService.updatePassword(passwordChangeValue)
+    //         .then(() => {
+    //             console.log('Jelszó sikeresen frissítve');
+    //         })
+    //         .catch((error) => {
+    //             console.error('Hiba', error);
+    //         });
+    // } else {
+    //     console.log("A jelszó nem megfelelő");
+    // }
+    //
+    // location.reload();
 
     changeUserData() {
         const emailChangeValue = this.userDataChangeGroup.get('emailChange')?.value as string;
@@ -144,69 +193,6 @@ export class ProfileComponent implements OnInit{
         }
     }
 
-    // changeUserData() {
-    //     const emailChangeValue = this.userDataChangeGroup.get('emailChange')?.value as string;
-    //     const passwordChangeValue = this.userDataChangeGroup.get('passwordChange')?.value as string;
-    //     const passwordAgainChangeValue = this.userDataChangeGroup.get('passwordAgainChange')?.value as string;
-    //
-    //     const updateEmailPromise = emailChangeValue && emailChangeValue.includes('@') ?
-    //         this.userService.updateEmail(emailChangeValue) : Promise.resolve();
-    //
-    //     const updatePasswordPromise = passwordChangeValue &&
-    //     passwordAgainChangeValue &&
-    //     (passwordChangeValue === passwordAgainChangeValue) &&
-    //     (passwordChangeValue.length >= 6) ?
-    //         this.userService.updatePassword(passwordChangeValue) : Promise.resolve();
-    //
-    //     Promise.all([updateEmailPromise, updatePasswordPromise])
-    //         .then(() => {
-    //             console.log('Minden frissítés sikeres');
-    //             location.reload();
-    //         })
-    //         .catch(error => {
-    //             console.error('Hiba a frissítés során', error);
-    //         });
-    // }
-
-
-        // aszinkron...
-        // const emailChangeValue = this.userDataChangeGroup.get('emailChange')?.value as string;
-        // if (emailChangeValue && emailChangeValue.includes('@')) {
-        //     this.userService.updateEmail(emailChangeValue)
-        //         .then(() => {
-        //             console.log('Email sikeresen frissítve');
-        //             //location.reload();
-        //         })
-        //         .catch((error) => {
-        //             console.error('Hiba', error);
-        //         });
-        // } else {
-        //     // Ha az email nem megfelelő, itt kezelheted le
-        // }
-        //
-        // const passwordChangeValue = this.userDataChangeGroup.get('passwordChange')?.value as string;
-        // const passwordAgainChangeValue = this.userDataChangeGroup.get('passwordAgainChange')?.value as string;
-        //
-        // if (
-        //     passwordChangeValue &&
-        //     passwordAgainChangeValue &&
-        //     (passwordChangeValue === passwordAgainChangeValue) &&
-        //     (passwordChangeValue.length >= 6)
-        // ) {
-        //     this.userService.updatePassword(passwordChangeValue)
-        //         .then(() => {
-        //             console.log('Jelszó sikeresen frissítve');
-        //         })
-        //         .catch((error) => {
-        //             console.error('Hiba', error);
-        //         });
-        // } else {
-        //     console.log("A jelszó nem megfelelő");
-        // }
-        //
-        // location.reload();
-
-
     deleteProfile(): void {
         if (confirm('Biztosan törölni szeretnéd a felhasználói profilodat?')) {
             // Törlés megerősítve, hívjuk meg a UserService deleteProfile metódusát
@@ -221,6 +207,7 @@ export class ProfileComponent implements OnInit{
         }
     }
 
+    protected readonly length = length;
 }
 
 

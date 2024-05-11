@@ -9,6 +9,7 @@
       <h2>Jelenlegi név: {{ loggedInUser | nameFormat }}</h2>
       <h2>Jelenlegi email: {{ loggedInUser?.email }}</h2>
       <h2>FrissPontjaid száma: {{ loggedInUser?.points }}</h2>
+
       <form [formGroup]="userDataChangeGroup">
         <mat-form-field class="form-field">
           <mat-label for="emailChange">Email cím változtatása</mat-label>
@@ -26,7 +27,25 @@
         </div>
         <button mat-raised-button [ngStyle]="{'margin-right':'1vh'}" color="primary" (click)="changeUserData()">Profil frissítése</button>
         <button mat-raised-button color="warn" (click)="deleteProfile()">Profil törlése</button>
-
+        <table *ngIf="userTransactions" class="transaction-table">
+          <thead>
+          <tr>
+            <th>Tranzakció azonosítő</th>
+            <th>Dátum</th>
+            <th>Ár</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr *ngFor="let transaction of userTransactions">
+            <td>{{ transaction.id }}</td>
+            <td>{{ formatDate(transaction.date) }}</td>
+            <td>{{ transaction.totalPrice }} Ft</td>
+          </tr>
+          </tbody>
+        </table>
+        <div *ngIf="userTransactions?.length === 0">
+          <p>Nincsenek tranzakciók.</p>
+        </div>
       </form>
     </div>
   </div>
