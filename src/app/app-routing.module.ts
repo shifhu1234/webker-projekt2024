@@ -22,11 +22,6 @@ const routes: Routes = [
     loadChildren: () => import('./pages/profile/profile.module').then(m => m.ProfileModule)
   },
   {
-    path: 'gallery',
-    loadChildren: () => import('./pages/gallery/gallery.module').then(m => m.GalleryModule),
-    canActivate: [AuthGuard]
-  },
-  {
     path: 'contact',
     loadChildren: () => import('./pages/contact/contact.module').then(m => m.ContactModule)
   },

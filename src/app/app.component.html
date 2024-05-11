@@ -12,14 +12,11 @@
       <div class="favicon-container"><a routerLink="/main">Friss kosár</a><img src="favicon.ico" class="favicon" alt=""></div>
 
       <div fxFlex fxLayout fxLayoutGap="10px" fxLayoutAlign="end center" fxHide.xs>
-<!--        <div fxLayout>jello</div>-->
 
         <ul fxLayout fxLayoutGap="10px" class="navigation-items">
           <li><mat-icon>home</mat-icon><a routerLink="/main">Főoldal</a></li>
-<!--          <li><a routerLink="/signup">Register</a></li>-->
           <li><mat-icon>shopping_cart</mat-icon><a routerLink="/products">Termékek</a>  </li>
           <li><mat-icon>local_shipping</mat-icon><a routerLink="/delivery">Szállítás</a></li>
-<!--          <li><a routerLink="/gallery">Gallery</a></li>-->
           <li><mat-icon>alternate_email</mat-icon><a routerLink="/contact">Rólunk</a> </li>
           <li><mat-icon>settings</mat-icon><a (click)="openDialog('Kuponok')" routerLink="/coupons">Kuponok</a> </li>
           <li><mat-icon>shopping_basket</mat-icon><a (click)="openDialog('Kosár')" class="before-login-icon" routerLink="/basket">Kosár</a> </li>
@@ -32,23 +29,3 @@
     <router-outlet></router-outlet>
   </mat-sidenav-content>
 </mat-sidenav-container>
-
-<!-- <ng-container [ngSwitch]="page">
-  <ng-container *ngSwitchCase="'main'">
-    <div class="main_component">
-      <app-main></app-main>
-    </div>
-  </ng-container>
-  <ng-container *ngSwitchCase="'gallery'">
-    <app-gallery></app-gallery>
-  </ng-container>
-  <ng-container *ngSwitchCase="'contact'">
-    <app-contact>
-      <h1>This is the contact page.</h1>
-    </app-contact>
-  </ng-container>
-  <ng-container *ngSwitchDefault>
-    <h1>Page not found...</h1>
-  </ng-container>
-</ng-container> -->
-
