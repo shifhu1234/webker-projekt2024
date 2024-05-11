@@ -1,16 +1,36 @@
-
-<ng-content></ng-content>
-
 <div class="main_component div-flex">
-    <mat-card class="div-flex">
-        <mat-card-header>
-            <mat-card-title>Kapcsolat</mat-card-title>
-        </mat-card-header>
-        <mat-card-content>
-          <h3>: Hétfőtől péntekig: 7.30-19.00 Szombaton: 7.30-14.00 Telefonszám: Email:</h3>
-            <h2><mat-icon>call</mat-icon>+36 222 1111</h2>
-            <h2><mat-icon>email</mat-icon> text&#64;gmail.com</h2>
-        </mat-card-content>
-    </mat-card>
-</div>
+  <mat-card class="div-flex">
+    <mat-card-header>
+      <mat-card-title class="deliveryh3">Kapcsolat</mat-card-title>
+    </mat-card-header>
+    <mat-card-content>
+      <br>
+      <div >
+<!--        <h3>Hétfőtől péntekig: 7.30-19.00 Szombaton: 7.30-14.00</h3>-->
+        <p [ngStyle]="{'text-align':'center'}">Boltunk és webshopunk sok-sok éves tapasztalatra épülve nyújtja különlegesen prémium szolgáltatásait minden
+          vásárlónak, aki megtisztel minket bizalmával.</p>
+        <p [ngStyle]="{'text-align':'center'}"> A kiváló prémium minőségre garanciát vállalunk. Minden egyes csomagunkat ellenőrizzük, hogy aztán a Te
+          küszöbödig vihesse futárunk.</p>
 
+        <h2>Nyitva tartás a boltban:
+          <br>
+          H-P: 8:00 - 19:00
+          SZ: 8:30 - 13.00
+          V: ZÁRVA
+        </h2>
+
+        <h2>
+         <mat-icon>call</mat-icon>
+          +36 30 420 1337
+        </h2>
+        <h2>
+          <mat-icon>email</mat-icon>
+          frisskosar&#64;gmail.com
+        </h2>
+      </div>
+      <div>
+        <img [src]="imageUrl | async" alt="Kapcsolat kép">
+      </div>
+    </mat-card-content>
+  </mat-card>
+</div>

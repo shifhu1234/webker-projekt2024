@@ -1,15 +1,12 @@
-mat-card{
-  width: 80%;
-  height: 80%;
-  align-self: center;
-}
-mat-card-header{
+
+mat-card-header {
   display: initial;
 }
 
-mat-icon{
+mat-icon {
   vertical-align: middle;
 }
+
 .div-flex {
   display: flex;
   flex-direction: column;
@@ -17,8 +14,63 @@ mat-icon{
   text-align: center;
   height: 80%;
 }
-.main_component{
-  height: 100vh;
+
+.main_component {
+  height: 80vh;
+  width: 160vh;
+  align-items: center;
+  margin: auto;
+}
+
+mat-card {
+  width: 80%;
+  height: 80%;
+  align-self: center;
 }
 
 
+mat-icon {
+  color: red;
+  vertical-align: middle;
+}
+
+
+h1 {
+  font-family: "Signika Negative Light", cursive;
+  font-weight: bold;
+  font-size: 5vh;
+}
+
+h3 {
+  font-family: "Signika Negative Light", cursive;
+  font-size: 2vh;
+  text-align: left;
+  font-weight: bold;
+}
+
+
+.deliveryh3 {
+  font-size: 3vh;
+}
+
+a {
+  display: flow;
+  font-family: "Signika Negative Light", monospace;
+  font-weight: bold;
+  text-decoration: none;
+  color: #41B06E;
+  transition: font-size 0.3s;
+}
+
+img{
+  width: 30vh;
+  height: 20vh;
+}
+a:hover {
+  font-size: 1.1em;
+}
+
+p {
+  font-size: 1.75vh;
+  text-align: left;
+}
