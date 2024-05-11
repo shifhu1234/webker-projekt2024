@@ -1,7 +1,7 @@
 <<<<<<< HEAD
 # webker-projekt2024
 =======
-# Week04
+# webfejl-projekt-2024
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 13.2.3.
 
