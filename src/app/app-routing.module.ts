@@ -36,6 +36,11 @@ const routes: Routes = [
     canActivate: [AuthGuard]
   },
   {
+    path: 'coupons',
+    loadChildren: () => import('./pages/coupons/coupons.module').then(m => m.CouponsModule),
+    canActivate: [AuthGuard]
+  },
+  {
     path: 'not-found',
     loadChildren: () => import('./pages/not-found/not-found.module').then(m => m.NotFoundModule)
   },
