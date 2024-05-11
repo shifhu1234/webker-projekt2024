@@ -75,7 +75,7 @@ export class PopUpTransactionComponent implements OnInit, OnDestroy {
             const transaction: PaymentTransactions = {
                 id: this.generateTransactionId(),
                 address: this.transactionForm.get('address')?.value as string,
-                buyer_name: this.transactionForm.get('name')?.value as string,
+                //buyer_name: this.loggedInUser.name,
                 date: new Date(),
                 totalPrice: this.totalPrice,
                 user_id: this.loggedInUserUID || ''

@@ -12,7 +12,6 @@ export class TransactionService {
     constructor(private firestore: AngularFirestore) {}
 
     addTransaction(transaction: PaymentTransactions){
-        console.log('FASZPICSFASZFASZPICSFASZFASZPICSFASZFASZPICSFASZ: ', transaction);
         return this.firestore.collection<PaymentTransactions>(this.collectionName).doc(transaction.id).set(transaction);
         // return this.firestore.collection<PaymentTransactions>(this.collectionName).add(transaction);
     }
