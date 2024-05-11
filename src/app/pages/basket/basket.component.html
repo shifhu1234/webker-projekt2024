@@ -23,13 +23,11 @@
                         *ngIf="!discount">0%</span></p>
                 <div class="payment-button-container">
                     <button color="primary" mat-raised-button (click)="openTransactionDialog()">Fizetés</button>
-
                 </div>
                 <br><button color="accent" mat-raised-button [routerLink]="['/products']">További termékek hozzáadása</button>
                 <br><button color="accent" mat-raised-button [routerLink]="['/coupons']">Másik kupon hozzáadása</button>
                 <br><button color="accent" mat-raised-button (click)="removeCoupon()">Kupon eltávolítása</button>
             </div>
-
         </mat-card-content>
     </mat-card>
 </div>

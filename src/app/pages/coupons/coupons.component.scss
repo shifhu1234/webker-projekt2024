@@ -1,60 +1,63 @@
-li{
+li {
   cursor: pointer;
   padding: 1vh;
 }
-li:hover, mat-label:hover{
+
+li:hover, mat-label:hover {
   background-color: #73cb97 !important;
 }
 
-
-mat-card-content{
+mat-card-content {
   align-items: center;
   text-align: center;
   align-content: center;
   align-self: center;
 }
-mat-form-field{
+
+mat-form-field {
   align-self: center;
-
 }
 
-mat-card-content{
+mat-card-content {
   position: fixed;
 }
-input{
+
+input {
   position: fixed;
 }
-mat-card-content{
+
+mat-card-content {
   position: fixed;
 }
 
 .container {
   display: flex;
-  flex-direction: row; /* A flexbox elrendezés sorokban van */
-  align-items: flex-start; /* A tartalmakat az elem felső részén helyezi el */
+  flex-direction: row;
+  align-items: flex-start;
 }
 
 .container .mat-form-field {
-  margin-right: 10px; /* Távolság az input és a kuponok között */
-  min-width: 100px; /* Minimális szélesség beállítása az input mezőhöz */
+  margin-right: 10px;
+  min-width: 100px;
 }
 
 .container ul {
-  list-style-type: none; /* listastílus eltávolítása */
+  list-style-type: none;
   padding: 10px;
   margin: 0;
 }
-li{
+
+li {
   font-weight: bold;
   font-size: 1.5vh;
 }
 
-.container ul li{
-  background-color: #f0f0f0; /* háttérszín */
-  border-radius: 5px; /* kerekített sarok */
-  padding: 10pxx; /* belső tér */
-  margin-bottom: 10px; /* távolság az egyes kuponok között */
-  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* árnyék */
+.container ul li {
+  background-color: #f0f0f0;
+  border-radius: 5px;
+  padding: 10pxx;
+  margin-bottom: 10px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
 }
 
 
@@ -122,7 +125,7 @@ a {
   color: black;
 }
 
-img{
+img {
   width: 30vh;
   height: 20vh;
 }

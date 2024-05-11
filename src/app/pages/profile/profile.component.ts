@@ -6,14 +6,13 @@ import {MatButtonModule} from "@angular/material/button";
 import {FlexModule} from "@angular/flex-layout";
 import {Router, RouterLink} from "@angular/router";
 import {UserService} from "../../shared/services/user.service";
-import {AngularFirestore} from "@angular/fire/compat/firestore";
 import {AngularFireAuth} from "@angular/fire/compat/auth";
 import {CommonModule, NgIf, NgStyle} from "@angular/common";
 import {NameFormatPipe} from "../../shared/pipes/name-format.pipe";
 import {TransactionService} from "../../shared/services/transaction.service";
-import {async, Observable} from "rxjs";
+import {Observable} from "rxjs";
 import {PaymentTransactions} from "../../shared/models/PaymentTransactions";
-import {collectionSnapshots} from "@angular/fire/firestore";
+import {FirebaseDateFormatPipe} from "../../shared/pipes/firebase-date-format.pipe";
 
 @Component({
     selector: 'app-profile',
@@ -30,7 +29,8 @@ import {collectionSnapshots} from "@angular/fire/firestore";
         NgIf,
         NameFormatPipe,
         NgStyle,
-        RouterLink
+        RouterLink,
+        FirebaseDateFormatPipe
     ],
     templateUrl: './profile.component.html',
     styleUrl: './profile.component.scss'
@@ -46,24 +46,21 @@ export class ProfileComponent implements OnInit {
         passwordAgainChange: new FormControl<string>('')
     });
 
-    constructor(private userService: UserService, private router: Router, private afs: AngularFirestore, private afAuth: AngularFireAuth, private transactionService: TransactionService) {
+    constructor(private userService: UserService, private router: Router, private afAuth: AngularFireAuth, private transactionService: TransactionService) {
     }
 
     ngOnInit(): void {
         this.afAuth.authState.subscribe(user => {
             if (user) {
                 this.currentUser = user;
-                //console.log("jelenlegi: "+this.currentUser.uid);
                 this.userService.getLoggedInUserData(user.uid).subscribe(userData => {
                     this.loggedInUser = userData;
                     if (this.loggedInUser) {
                         this.getUserTransactions(this.currentUser.uid).subscribe(transactions => {
-                            //console.log("USERID: "+ this.currentUser.uid)
                             this.userTransactions = transactions;
-                            this.userTransactions.forEach((transaction: { formattedDate: any; date: any; }) => {
-                                transaction.formattedDate = this.formatDate(transaction.date);
-                            });
-                            // console.log("user: "+ this.userTransactions)
+                            // this.userTransactions.forEach((transaction: { formattedDate: any; date: any; }) => {
+                            //     transaction.formattedDate = this.formatDate(transaction.date);
+                            // });
                         });
                     }
                 });
@@ -72,14 +69,11 @@ export class ProfileComponent implements OnInit {
             }
         });
     }
-    formatDate(timestamp: any): string {
-        const date = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000);
-        return date.toLocaleString(); // Vagy a megfelelő formázási metódust használhatod itt
-    }
 
-    getUserTransactions(userId: string): Observable<PaymentTransactions[]> {
-        return this.transactionService.returnUserTransactions(userId);
-    }
+    // formatDate(timestamp: any): string {
+    //     const date = new Date(timestamp.seconds * 1000 + timestamp.nanoseconds / 1000000);
+    //     return date.toLocaleString();
+    // }
 
     // changeUserData() {
     //     const emailChangeValue = this.userDataChangeGroup.get('emailChange')?.value as string;
@@ -143,6 +137,30 @@ export class ProfileComponent implements OnInit {
     //
     // location.reload();
 
+    getUserTransactions(userId: string): Observable<PaymentTransactions[]> {
+        return this.transactionService.returnUserTransactions(userId);
+    }
+
+    passwordCheck(passwordChangeValue: string, passwordAgainChangeValue: string) {
+        if (passwordChangeValue &&
+            passwordAgainChangeValue &&
+            (passwordChangeValue === passwordAgainChangeValue) &&
+            (passwordChangeValue.length >= 6)) {
+            this.userService.updatePassword(passwordChangeValue)
+                .then(() => {
+                    console.log('Jelszó sikeresen frissítve');
+                    console.log('Minden frissítés sikeres');
+                    location.reload();
+                })
+                .catch(error => {
+                    console.error('Hiba a jelszó frissítésekor', error);
+                });
+        } else {
+            console.log('Minden frissítés sikeres');
+            location.reload();
+        }
+    }
+
     changeUserData() {
         const emailChangeValue = this.userDataChangeGroup.get('emailChange')?.value as string;
         const passwordChangeValue = this.userDataChangeGroup.get('passwordChange')?.value as string;
@@ -152,45 +170,13 @@ export class ProfileComponent implements OnInit {
             this.userService.updateEmail(emailChangeValue)
                 .then(() => {
                     console.log('Email sikeresen frissítve');
-                    if (passwordChangeValue &&
-                        passwordAgainChangeValue &&
-                        (passwordChangeValue === passwordAgainChangeValue) &&
-                        (passwordChangeValue.length >= 6)) {
-                        this.userService.updatePassword(passwordChangeValue)
-                            .then(() => {
-                                console.log('Jelszó sikeresen frissítve');
-                                console.log('Minden frissítés sikeres');
-                                location.reload();
-                            })
-                            .catch(error => {
-                                console.error('Hiba a jelszó frissítésekor', error);
-                            });
-                    } else {
-                        console.log('Minden frissítés sikeres');
-                        location.reload();
-                    }
+                    this.passwordCheck(passwordChangeValue, passwordAgainChangeValue);
                 })
                 .catch(error => {
                     console.error('Hiba az email frissítésekor', error);
                 });
         } else {
-            if (passwordChangeValue &&
-                passwordAgainChangeValue &&
-                (passwordChangeValue === passwordAgainChangeValue) &&
-                (passwordChangeValue.length >= 6)) {
-                this.userService.updatePassword(passwordChangeValue)
-                    .then(() => {
-                        console.log('Jelszó sikeresen frissítve');
-                        console.log('Minden frissítés sikeres');
-                        location.reload();
-                    })
-                    .catch(error => {
-                        console.error('Hiba a jelszó frissítésekor', error);
-                    });
-            } else {
-                console.log('Minden frissítés sikeres');
-                location.reload();
-            }
+            this.passwordCheck(passwordChangeValue, passwordAgainChangeValue);
         }
     }
 
@@ -200,15 +186,14 @@ export class ProfileComponent implements OnInit {
             this.userService.delete()
                 .then(() => {
                     // Sikeres törlés, navigáljunk a bejelentkező oldalra vagy a kezdőlapra
-                    this.router.navigateByUrl('/');
+                    this.router.navigateByUrl('/').then(_ => {
+                    });
                 })
                 .catch(error => {
                     console.error('Hiba a profil törlésekor', error);
                 });
         }
     }
-
-    protected readonly length = length;
 }
 
 

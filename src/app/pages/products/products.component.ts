@@ -15,9 +15,7 @@ import {MatSnackBar, MatSnackBarConfig} from "@angular/material/snack-bar";
 import {PopUpNoUserComponent} from "../../shared/pop-ups/pop-up-no-user/pop-up-no-user.component";
 import {MatDialog} from "@angular/material/dialog";
 import {Router} from "@angular/router";
-import {Transaction} from "../../shared/models/Transaction";
 import {HttpClient} from '@angular/common/http';
-import {User} from "../../shared/models/User";
 
 @Component({
     selector: 'app-products',
@@ -57,7 +55,6 @@ export class ProductsComponent implements OnInit, OnChanges {
 
 
     ngOnInit(): void {
-        // this.uploadFiles();
         this.loggedInUser = this.appComponent.getLoggedInUser();
         this.selectedQuantities = new Array(this.filteredProducts.length).fill(1);
         this.loadCategoryImages();
@@ -65,8 +62,6 @@ export class ProductsComponent implements OnInit, OnChanges {
             this.products = data;
             this.imagesLoaded = true;
         });
-
-
     }
 
     loadCategoryImages(): void {
@@ -89,7 +84,6 @@ export class ProductsComponent implements OnInit, OnChanges {
     }
 
     goBackToCategoires(): void {
-        //this.productsService.uploadToFire(this.uploadFile);
         this.filteredProducts = [];
 
         this.isFilterActive = false;

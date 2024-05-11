@@ -1,36 +1,31 @@
 <div class="main_component div-flex">
-  <mat-card class="div-flex">
-    <mat-card-header>
-      <mat-card-title class="deliveryh3">
-        Kuponok
-        <h4 class="mat-h4">Kuponok kereséséhez írd be a kedvezmény mértékét!</h4>
-      </mat-card-title>
-    </mat-card-header>
-
-    <mat-card-content>
-
-      <div class="container" fxLayout="row" fxLayoutGap="10px">
-
-        <mat-form-field fxFlex="50%">
-          <input inputmode="numeric" matInput type="number" [(ngModel)]="filterValue"
-                 (ngModelChange)="onInputChange($event)"
-                 placeholder="Kedvezmény %" max="100">
-        </mat-form-field>
-        <ul fxFlex="50%" *ngIf="coupons">
-          <li *ngFor="let coupon of coupons" class="coupon-item">
-            <a (click)="goToBasket(coupon.discount)">
-              <mat-label>
-                {{ coupon.name }}: {{coupon.id}} <br> - {{ coupon.discount | couponsFormat }} kedvezmény
-              </mat-label>
-            </a>
-          </li>
-
-          <li *ngIf="coupons?.length === 0" class="coupon-item">
-            <mat-label>Nincs ilyen kupon kedvezmény!</mat-label>
-          </li>
-        </ul>
-      </div>
-
-    </mat-card-content>
-  </mat-card>
+    <mat-card class="div-flex">
+        <mat-card-header>
+            <mat-card-title class="deliveryh3">
+                Kuponok
+                <h4 class="mat-h4">Kuponok kereséséhez írd be a kedvezmény mértékét!</h4>
+            </mat-card-title>
+        </mat-card-header>
+        <mat-card-content>
+            <div class="container" fxLayout="row" fxLayoutGap="10px">
+                <mat-form-field fxFlex="50%">
+                    <input inputmode="numeric" matInput type="number" [(ngModel)]="filterValue"
+                           (ngModelChange)="onInputChange($event)"
+                           placeholder="Kedvezmény %" max="100">
+                </mat-form-field>
+                <ul fxFlex="50%" *ngIf="coupons">
+                    <li *ngFor="let coupon of coupons" class="coupon-item">
+                        <a (click)="goToBasket(coupon.discount)">
+                            <mat-label>
+                                {{ coupon.name }}: {{coupon.id}} <br> - {{ coupon.discount | couponsFormat }} kedvezmény
+                            </mat-label>
+                        </a>
+                    </li>
+                    <li *ngIf="coupons?.length === 0" class="coupon-item">
+                        <mat-label>Nincs ilyen kupon kedvezmény!</mat-label>
+                    </li>
+                </ul>
+            </div>
+        </mat-card-content>
+    </mat-card>
 </div>

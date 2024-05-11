@@ -12,60 +12,60 @@ import {FlexModule} from "@angular/flex-layout";
 import {Router, RouterLink} from "@angular/router";
 
 @Component({
-  selector: 'app-coupons',
-  standalone: true,
-  imports: [
-    AsyncPipe,
-    NgForOf,
-    FormsModule,
-    CouponsFormatPipe,
-    MatCard,
-    MatCardContent,
-    MatCardHeader,
-    MatCardTitle,
-    MatIcon,
-    NgStyle,
-    MatInput,
-    MatFormField,
-    MatLabel,
-    FlexModule,
-    NgIf,
-    RouterLink
-  ],
-  templateUrl: './coupons.component.html',
-  styleUrl: './coupons.component.scss'
+    selector: 'app-coupons',
+    standalone: true,
+    imports: [
+        AsyncPipe,
+        NgForOf,
+        FormsModule,
+        CouponsFormatPipe,
+        MatCard,
+        MatCardContent,
+        MatCardHeader,
+        MatCardTitle,
+        MatIcon,
+        NgStyle,
+        MatInput,
+        MatFormField,
+        MatLabel,
+        FlexModule,
+        NgIf,
+        RouterLink
+    ],
+    templateUrl: './coupons.component.html',
+    styleUrl: './coupons.component.scss'
 })
-export class CouponsComponent implements OnInit{
-  couponsFromCollection?: Observable<Coupons[]>;
-  coupons?: Coupons[];
-  filterValue: number = 0;
+export class CouponsComponent implements OnInit {
+    couponsFromCollection?: Observable<Coupons[]>;
+    coupons?: Coupons[];
+    filterValue: number = 0;
 
-  constructor(private firestore: AngularFirestore, private router: Router) {}
-
-  ngOnInit(): void {
-    this.getCoupons();
-  }
-
-  onInputChange(newValue: number) {
-
-    if (newValue > 100) {
-      this.filterValue = 100;
+    constructor(private firestore: AngularFirestore, private router: Router) {
     }
-    this.getCoupons();
-  }
 
-  goToBasket(discount: number) {
-    this.router.navigate(['/basket'], { queryParams: { discount: discount } });
-  }
+    ngOnInit(): void {
+        this.getCoupons();
+    }
 
-  getCoupons() {
-    this.couponsFromCollection = this.firestore.collection<Coupons>('Coupons', ref =>
-      ref.where('discount', '>=', this.filterValue*0.01).orderBy('discount', 'desc')
-    ).valueChanges();
+    onInputChange(newValue: number) {
 
-    this.couponsFromCollection.subscribe(value => {
-      this.coupons = value;
-      console.log("val: "+ value)
-    })
-  }
+        if (newValue > 100) {
+            this.filterValue = 100;
+        }
+        this.getCoupons();
+    }
+
+    goToBasket(discount: number) {
+        this.router.navigate(['/basket'], {queryParams: {discount: discount}});
+    }
+
+    getCoupons() {
+        this.couponsFromCollection = this.firestore.collection<Coupons>('Coupons', ref =>
+            ref.where('discount', '>=', this.filterValue * 0.01).orderBy('discount', 'desc')
+        ).valueChanges();
+
+        this.couponsFromCollection.subscribe(value => {
+            this.coupons = value;
+        })
+    }
 }

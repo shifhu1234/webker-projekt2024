@@ -1,8 +1,3 @@
-//html, body {
-//  margin: 0;
-//  height: 100%;
-//  overflow: hidden;
-//}
 
 div {
   display: flex;
@@ -11,10 +6,12 @@ div {
   text-align: center;
   height: 100%;
 }
-.main_component *{
+
+.main_component * {
   font-family: "Signika Negative Light", cursive;
   font-weight: bold;
 }
+
 .main_component {
   height: 100vh;
   align-items: center;
@@ -24,10 +21,11 @@ div {
   flex-direction: column;
   justify-content: center;
 }
-a{
-  //color: #41B06E;
+
+a {
   font-size: 2vh;
 }
+
 span {
   padding: 5px 5px 5px 5px;
 }
@@ -36,13 +34,6 @@ mat-form-field {
   width: 50%;
   align-self: center;
 }
-
-//.login-button {
-//  background-color: red !important;
-//  color: white;
-//}
-
-
 
 .card {
   margin-bottom: 5vh;
@@ -75,15 +66,16 @@ mat-form-field {
   margin-top: 20px;
 }
 
-a:active{
+a:active {
   color: #41B06E;
 }
 
 .favicon {
   width: 32px;
   height: 32px;
-  margin-left: 1vh; /* Opcionális: adj egy kis távolságot a szöveghez */
+  margin-left: 1vh;
 }
+
 .favicon-container {
   text-align: center;
   display: flex;

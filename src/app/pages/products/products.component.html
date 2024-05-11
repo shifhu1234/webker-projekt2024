@@ -12,9 +12,10 @@
             </mat-card-actions>
         </mat-card>
     </div>
-
     <div *ngIf="isFilterActive" class="back-to-categ-button">
-        <button [ngStyle]="{'margin-bottom':'10vh'}" color="primary" mat-raised-button (click)="goBackToCategoires();">Vissza a kategóriákhoz</button>
+        <button [ngStyle]="{'margin-bottom':'10vh'}" color="primary" mat-raised-button (click)="goBackToCategoires();">
+            Vissza a kategóriákhoz
+        </button>
     </div>
     <div *ngIf="isFilterActive && (loggedInUser)" class="back-to-categ-button">
         <button color="primary" mat-raised-button (click)="goToBasket();">Tovább a kosárhoz</button>
@@ -41,10 +42,8 @@
                 <button (click)="addToBasket(selectedQuantities[i], category);" mat-raised-button color="accent">Kosárba
                     teszem
                 </button>
-                <!--        <app-snack-bar-basket></app-snack-bar-basket>-->
             </mat-card-content>
         </mat-card>
-
     </div>
 </div>
 
