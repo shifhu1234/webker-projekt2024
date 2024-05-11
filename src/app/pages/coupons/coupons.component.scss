@@ -1,3 +1,10 @@
+li{
+  cursor: pointer;
+}
+li:hover, mat-label:hover{
+  background-color: #73cb97 !important;
+}
+
 mat-card-content{
   align-items: center;
   text-align: center;
