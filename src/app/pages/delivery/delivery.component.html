@@ -1,5 +1,5 @@
 <div class="main_component">
-  <h1>Kiszállítási információk</h1>
+  <h1 [ngStyle]="{'padding-top':'10%'}">Kiszállítási információk</h1>
   <h3 [ngStyle]="{'text-align':'center'}">A megrendelt áru átvételére a következő lehetőségek közül választhatsz
     áruházunkban:</h3>
 
@@ -52,9 +52,9 @@
       <td>2.990 Ft</td>
       <td>2.490 Ft</td>
     </tr>
-<!--    <tr>-->
-<!--      <td>Ingyenes házhoz szállítás</td>-->
-<!--    </tr>-->
+    <!--    <tr>-->
+    <!--      <td>Ingyenes házhoz szállítás</td>-->
+    <!--    </tr>-->
     </thead>
     <tbody>
     <!-- Ide írd be a táblázat tartalmát -->
@@ -75,14 +75,30 @@
     -->
     </tbody>
   </table>
-
+  <br>
   <h3 class="deliveryh3">BOLTI ÁTVÉTEL</h3>
   <p> A személyes átvételre a bolt nyitva tartási
     idejében van lehetőség HÉTFŐTŐL PÉNTEKIG.
 
     <a routerLink="/contact">Nyitvatartás, telefonszám és email</a>
 
+
   </p>
+  <h3 class="deliveryh3">
+    EGYÉB INFORMÁCIÓK
+  </h3>
+  <p>A kisebb megrendeléstől az egész teherautós igényekig mindent tudunk teljesíteni.</p>
+
+  <p> Ha nagyobb mennyiséget szeretnél rendelni (éttermek, közületek részére), kérjük, lépj kapcsolatba
+    ügyfélszolgálatunkkal!
+
+  <p> Amennyiben meghatározott, fontos eseményre szeretnél vásárolni, javasoljuk, hogy korábban add le megrendelésedet,
+    és
+    a megjegyzés rovatban tüntesd fel, hogy mikorra szeretnéd a teljesítést.</p>
+
+  <p> A megrendelt és a kiszállított mennyiség között néhány dekagrammos eltérés mutatkozhat a termék fizikai
+    adottságából fakadóan.</p>
+
   <br>
   <h3 [ngStyle]="{  'font-weight': 'bold',
   'font-style': 'italic', 'text-align':'center'}">Friss kosár - Prémium áru szívvel-lélekkel
