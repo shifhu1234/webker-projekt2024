@@ -62,27 +62,11 @@ export class BasketComponent implements OnInit{
     }
 
     openTransactionDialog(): void {
-        // const transaction: PaymentTransactions = {
-        //     id: 'FASZ1',
-        //     address: 'kicsi',
-        //     buyer_name: 'pistaa',
-        //     date: new Date(),
-        //     totalPrice: this.totalAmount,
-        //     user_id: this.loggedInUser?.uid || ''
-        // };
-        //
-        // this.transactionService.addTransaction(transaction).then(() => {
-        //     console.log('Transaction added successfully!');
-        // }).catch(error => {
-        //     console.error('Error adding transaction: ', error);
-        // });
-
-        //console.log(new Date(), this.loggedInUser?.uid, this.totalAmountNoCoupons);
         this.dialogRef.open(PopUpTransactionComponent, {
             width: '400px',
             data: {
                 totalAmount: this.totalAmountNoCoupons,
-                loggedInUser: this.loggedInUser,
+                loggedInUserUID: this.loggedInUser?.uid,
             }
         });
     }

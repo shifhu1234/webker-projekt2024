@@ -8,7 +8,7 @@ export class NameFormatPipe implements PipeTransform {
 
   transform(value: any): string {
     if (value && value.name && value.name.firstname && value.name.lastname) {
-      return `${value.name.lastname} ${value.name.firstname} `;
+      return `${value.name.lastname} ${value.name.firstname}`;
     } else {
       return '';
     }

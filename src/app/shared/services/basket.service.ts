@@ -22,7 +22,7 @@ export class BasketService {
       userId: userId
     };
     this.transactions.push(newTransaction);
-    console.log("hozzaadott: " + newTransaction.item.name)
+    //console.log("hozzaadott: " + newTransaction.item.name)
   }
 
   getBasketTransactions(userId: string): Transaction[] {
@@ -39,7 +39,7 @@ export class BasketService {
   }
 
   private generateTransactionId(): string {
-    // Implement your own logic to generate transaction id
+
     return Math.random().toString(36).substring(2);
   }
 

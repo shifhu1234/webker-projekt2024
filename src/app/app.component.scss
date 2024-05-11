@@ -69,7 +69,7 @@ a::after {
 }
 
 a:hover::after {
-  width: 100%; /* A csík teljes szélessége, ha az egér fölötte van */
+  width: 100%;
 }
 a:active::after{
   background-color: lightgray;
