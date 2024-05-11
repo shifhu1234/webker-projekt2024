@@ -65,7 +65,7 @@ export class BasketComponent implements OnInit{
         this.dialogRef.open(PopUpTransactionComponent, {
             width: '400px',
             data: {
-                totalAmount: this.totalAmountNoCoupons,
+                totalAmount: this.totalAmount,
                 loggedInUserUID: this.loggedInUser?.uid,
             }
         });
