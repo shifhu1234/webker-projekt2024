@@ -1,0 +1,37 @@
+/* app-pop-up-transaction.component.scss */
+
+//mat-form-field, mat-label, .transaction-form, div{
+//  align-items: center;
+//  align-content: center;
+//  align-self: center;
+//  text-align: center;
+//}
+
+.transaction-form {
+  align-items: center;
+  align-content: center;
+  align-self: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center; /* Az elemeket középre igazítja függőlegesen */
+}
+:host {
+  display: block;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+}
+
+label {
+  margin-bottom: 0.5rem;
+}
+
+input, select {
+  padding: 0.2rem;
+}
+button {
+  align-self: flex-end;
+}
