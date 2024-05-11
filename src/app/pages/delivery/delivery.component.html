@@ -1,8 +1,100 @@
-<div class="delivery-information">
-    <h2>Kiszállítási információk</h2>
-    <p>A megrendelt áru átvételére a következő lehetőségek közül választhatsz áruházunkban:</p>
-    <h3>HÁZHOZ SZÁLLÍTÁS</h3>
-    <p>Solymáron, Pilisszentivánon, Pilisvörösváron, Piliscsabán, Magdolnavölgyben és a II. kerület egyes részein (I. zóna, részletek a táblázatban alább) saját futárszolgálatunk segítségével díjmentesen juttatjuk el Hozzád a megrendelt terméket a soron következő szállítási napon. Az ingyenes kiszállítási opció igénybevételének minimuma a megjelölt településeken a 10.000 Forint értékű megrendelés. Az I., a XII. és a II. kerület egyes részein, valamint Remeteszőlős, Piliscsév, Budakeszi, Pilisjászfalu, Üröm, Pilisborosjenő, Nagykovácsi területére (II. zóna, részletek a táblázatban alább) a kiszállítás igénybevételéhez a megrendelés minimális összege 10.000 Ft, a kiszállítás díja pedig 1.490 Ft. Budapest III., IV., V., VI., VII., VIII., IX., XI., XIII., XIV., XV., XVI. kerületeiben és Budakalászon (III. zóna) a rendelési minimum 15.000 Ft, ha szeretnéd igénybe venni a házhoz szállítási opciót, melynek díja 2.490 Ft.</p>
-    <h3>BOLTI ÁTVÉTEL</h3>
-    <p>A fenti területeken kívül az országon belül bárhonnan fogadunk megrendelést, ezekben az esetekben azonban csak személyes átvételre van lehetőség. Minden esetben és minden zónában kérhetsz személyes átvételt solymári boltunkban, mely az Interspar melletti üzletsoron található. A személyes átvételre a bolt nyitva tartási idejében van lehetőség HÉTFŐTŐL PÉNTEKIG. Nyitva tartás: Hétfőtől péntekig: 7.30-19.00 Szombaton: 7.30-14.00 Telefonszám: Email:</p>
+<div class="main_component">
+  <h1>Kiszállítási információk</h1>
+  <h3 [ngStyle]="{'text-align':'center'}">A megrendelt áru átvételére a következő lehetőségek közül választhatsz
+    áruházunkban:</h3>
+
+  <h3 class="deliveryh3"> HÁZHOZ SZÁLLÍTÁS</h3>
+  <p>
+    Szeged területén túl is szívesen kiszállítjuk a rendeléseket. Mindenhova eljuttatjuk az árut, hogy Önnek ne kelljen
+    különösebben foglalkoznia a beszerzéssel.
+
+  </p>
+
+  <h3>Szállítási díjak:</h3>
+
+
+  <table>
+    <thead>
+    <tr>
+
+      <th></th>
+      <th>Szeged és környéke</th>
+      <th>Észak-Magyarország</th>
+      <th>Észak-Alföld</th>
+      <th>Dél-Alföld</th>
+      <th>Pest</th>
+      <th>Budapest</th>
+      <th>Közép-Dunántúl</th>
+      <th>Nyugat-Dunántúl</th>
+      <th>Dél-Dunántúl</th>
+    </tr>
+    <tr>
+      <td>Minimum rendelési összeg</td>
+      <td>5.000</td>
+      <td>15.000 Ft</td>
+      <td>12.500 Ft</td>
+      <td>5.000 Ft</td>
+      <td>15.000 Ft</td>
+      <td>15.000 Ft</td>
+      <td>15.000 Ft</td>
+      <td>17.500 Ft</td>
+      <td>10.000 Ft</td>
+    </tr>
+    <tr>
+      <td>Szállítási díj</td>
+      <td>Ingyenes</td>
+      <td>2.490 Ft</td>
+      <td>2.490 Ft</td>
+      <td>1.490 Ft</td>
+      <td>2.490 Ft</td>
+      <td>2.490 Ft</td>
+      <td>2.490 Ft</td>
+      <td>2.990 Ft</td>
+      <td>2.490 Ft</td>
+    </tr>
+<!--    <tr>-->
+<!--      <td>Ingyenes házhoz szállítás</td>-->
+<!--    </tr>-->
+    </thead>
+    <tbody>
+    <!-- Ide írd be a táblázat tartalmát -->
+    <!-- Példa: -->
+    <!--
+    <tr>
+      <td>Budapest</td>
+      <td>$20</td>
+      <td>$5</td>
+      <td>$50 felett</td>
+    </tr>
+    <tr>
+      <td>Pest megye</td>
+      <td>$30</td>
+      <td>$8</td>
+      <td>$70 felett</td>
+    </tr>
+    -->
+    </tbody>
+  </table>
+
+  <h3 class="deliveryh3">BOLTI ÁTVÉTEL</h3>
+  <p> A személyes átvételre a bolt nyitva tartási
+    idejében van lehetőség HÉTFŐTŐL PÉNTEKIG.
+
+    <a routerLink="/contact">Nyitvatartás, telefonszám és email</a>
+
+  </p>
+  <br>
+  <h3 [ngStyle]="{  'font-weight': 'bold',
+  'font-style': 'italic', 'text-align':'center'}">Friss kosár - Prémium áru szívvel-lélekkel
+    <mat-icon>favorite</mat-icon>
+  </h3>
+  <h2><a routerLink="/products">Tekintsd meg legfrissebb termékeinket!</a></h2>
+</div>
+
+<div [ngStyle]="{'visibility':'hidden'}">
+  <h2>
+    <strong>Ha esetleg ezt az errort látnád a konzolban, akkor kapcsolj ki minden böngészős bővítmény.</strong><br>
+    Unchecked runtime.lastError: A listener indicated an asynchronous response by returning true, but the message
+    channel closed before a response was received
+  </h2>
 </div>

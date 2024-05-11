@@ -133,7 +133,6 @@ export class ProductsComponent implements OnInit, OnChanges {
 // });
 
 
-
   goToBasket(): void {
     this.router.navigateByUrl('/basket');
   }

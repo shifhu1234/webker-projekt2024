@@ -36,13 +36,17 @@ export class ProductsService {
   }
 
   getProductsByCategory(category: string): Observable<Products[]> {
-    return this.afs.collection<Products>(this.collectionName, ref => ref.where('type', '==', category)).valueChanges();
+    return this.afs.collection<Products>(
+      this.collectionName,
+      ref => ref.where('type', '==', category).orderBy('id', 'asc')
+    ).valueChanges();
+
   }
 
-  uploadToFire(product: Products[]){
-    for(const a of product){
-      this.afs.collection<Products>(this.collectionName).doc(a.id).set(a);
-
-    }
-  }
+  // uploadToFire(product: Products[]){
+  //   for(const a of product){
+  //     this.afs.collection<Products>(this.collectionName).doc(a.id).set(a);
+  //
+  //   }
+  // }
 }
