@@ -30,8 +30,8 @@
           frisskosar&#64;gmail.com
         </h2>
       </div>
-      <div>
-        <img [src]="imageUrl | async" alt="Kapcsolat kép">
+      <div *ngIf="imageUrl">
+        <img [ngClass]="{'contactImg': imageUrl}" [src]="imageUrl | async" alt="Kapcsolat kép">
       </div>
     </mat-card-content>
   </mat-card>

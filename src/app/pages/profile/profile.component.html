@@ -8,7 +8,7 @@
 <!--      <h2 >Jelenlegi név: {{ loggedInUser?.name.lastname}} {{ loggedInUser?.name.firstname}}</h2>-->
       <h2>Jelenlegi név: {{ loggedInUser | nameFormat }}</h2>
       <h2>Jelenlegi email: {{ loggedInUser?.email }}</h2>
-      <h2>FrissPontjaid száma: {{ loggedInUser.points }}</h2>
+      <h2>FrissPontjaid száma: {{ loggedInUser?.points }}</h2>
       <form [formGroup]="userDataChangeGroup">
         <mat-form-field class="form-field">
           <mat-label for="emailChange">Email cím változtatása</mat-label>

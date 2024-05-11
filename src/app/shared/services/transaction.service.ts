@@ -1,7 +1,5 @@
 import {Injectable} from '@angular/core';
 import {AngularFirestore} from "@angular/fire/compat/firestore";
-import {Transaction} from "../models/Transaction";
-import {User} from "../models/User";
 import {PaymentTransactions} from "../models/PaymentTransactions";
 
 @Injectable({
@@ -9,10 +7,14 @@ import {PaymentTransactions} from "../models/PaymentTransactions";
 })
 export class TransactionService {
 
-    constructor(private firestore: AngularFirestore) { }
+    collectionName = 'Transactions';
 
-    addTransaction(transaction: PaymentTransactions) {
-        //console.log(transaction);
-        return this.firestore.collection<PaymentTransactions>('Transactions').doc(transaction.id).set(transaction);
+    constructor(private firestore: AngularFirestore) {}
+
+    addTransaction(transaction: PaymentTransactions){
+        console.log('FASZPICSFASZFASZPICSFASZFASZPICSFASZFASZPICSFASZ: ', transaction);
+        return this.firestore.collection<PaymentTransactions>(this.collectionName).doc(transaction.id).set(transaction);
+        // return this.firestore.collection<PaymentTransactions>(this.collectionName).add(transaction);
     }
 }
+

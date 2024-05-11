@@ -36,7 +36,7 @@ import {PaymentTransactions} from "../../shared/models/PaymentTransactions";
     templateUrl: './basket.component.html',
     styleUrl: './basket.component.scss'
 })
-export class BasketComponent implements OnInit, OnChanges {
+export class BasketComponent implements OnInit{
     basketTransactions: Transaction[] = [];
     totalAmount: number = 0;
     loggedInUser?: firebase.default.User | null;
@@ -44,11 +44,7 @@ export class BasketComponent implements OnInit, OnChanges {
     discount: number = 0;
     totalAmountNoCoupons: number = 0;
 
-    constructor(private basketService: BasketService, private userService: UserService, private appComponent: AppComponent, private route: ActivatedRoute, private dialogRef: MatDialog, private transactionService: TransactionService) {
-    }
-
-    ngOnChanges(): void {
-        // this.discount = 0;
+    constructor(private basketService: BasketService, private appComponent: AppComponent, private route: ActivatedRoute, private dialogRef: MatDialog, private transactionService: TransactionService) {
     }
 
     ngOnInit(): void {
@@ -66,18 +62,30 @@ export class BasketComponent implements OnInit, OnChanges {
     }
 
     openTransactionDialog(): void {
-        console.log(new Date(), this.loggedInUser?.uid, this.totalAmountNoCoupons);
+        // const transaction: PaymentTransactions = {
+        //     id: 'FASZ1',
+        //     address: 'kicsi',
+        //     buyer_name: 'pistaa',
+        //     date: new Date(),
+        //     totalPrice: this.totalAmount,
+        //     user_id: this.loggedInUser?.uid || ''
+        // };
+        //
+        // this.transactionService.addTransaction(transaction).then(() => {
+        //     console.log('Transaction added successfully!');
+        // }).catch(error => {
+        //     console.error('Error adding transaction: ', error);
+        // });
+
+        //console.log(new Date(), this.loggedInUser?.uid, this.totalAmountNoCoupons);
         this.dialogRef.open(PopUpTransactionComponent, {
             width: '400px',
             data: {
                 totalAmount: this.totalAmountNoCoupons,
-                loggedInUser: this.loggedInUser
+                loggedInUser: this.loggedInUser,
             }
         });
-
-
     }
-
 
     calculateTotalAmount() {
         let totalAmount = 0;
