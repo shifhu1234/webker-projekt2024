@@ -54,8 +54,8 @@ export class CouponsComponent implements OnInit{
     this.getCoupons();
   }
 
-  redirectToBasket() {
-    this.router.navigate(['/basket']);
+  goToBasket(discount: number) {
+    this.router.navigate(['/basket'], { queryParams: { discount: discount } });
   }
 
   getCoupons() {

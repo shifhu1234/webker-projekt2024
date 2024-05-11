@@ -13,7 +13,7 @@ import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
 import {NgIf, NgStyle} from "@angular/common";
 import {PaymentTransactions} from "../../models/PaymentTransactions";
 import {TransactionService} from "../../services/transaction.service";
-import {Router} from "@angular/router";
+import {Router, RouterLink} from "@angular/router";
 import {NameFormatPipe} from "../../pipes/name-format.pipe";
 import {UserService} from "../../services/user.service";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
@@ -35,12 +35,14 @@ import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
         NgIf,
         NgStyle,
         NameFormatPipe,
-        ReactiveFormsModule
+        ReactiveFormsModule,
+        RouterLink
     ],
     templateUrl: './pop-up-transaction.component.html',
     styleUrl: './pop-up-transaction.component.scss'
 })
 export class PopUpTransactionComponent implements OnInit, OnDestroy {
+    afterTransaction: boolean = false;
     valtozo: boolean = false;
     totalPrice: number = 0;
     loggedInUser?: any;    // firebase.default.User | null;
@@ -81,12 +83,15 @@ export class PopUpTransactionComponent implements OnInit, OnDestroy {
                 user_id: this.loggedInUserUID || ''
             };
 
+
             this.transactionService.addTransaction(transaction)
                 .then(() => {
                     console.log('Transaction added successfully!');
                     // Close the dialog after successful transaction creation
+                    //this.afterTransaction = true;
                     this.route.navigateByUrl('/profile');
                     // this.dialogRef.close();
+                    //this.afterTransaction = false;
                 })
                 .catch(error => {
                     console.error('Error adding transaction: ', error);

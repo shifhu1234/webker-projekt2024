@@ -18,7 +18,7 @@
                     </tr>
                 </table>
                 <p>Végösszeg: <span *ngIf="discount">{{totalAmount}} Ft</span> <span
-                        *ngIf="!discount">{{ totalAmountNoCoupons }} Ft</span></p>
+                        *ngIf="!discount">{{ totalAmountNoDiscount }} Ft</span></p>
                 <p>Kedvezmény mértéke: <span *ngIf="discount"> {{ discount | couponsFormat }}</span><span
                         *ngIf="!discount">0%</span></p>
                 <div class="payment-button-container">

@@ -1,9 +1,11 @@
 li{
   cursor: pointer;
+  padding: 1vh;
 }
 li:hover, mat-label:hover{
   background-color: #73cb97 !important;
 }
+
 
 mat-card-content{
   align-items: center;
@@ -117,7 +119,7 @@ a {
   font-family: "Signika Negative Light", monospace;
   font-weight: bold;
   text-decoration: none;
-  color: #41B06E;
+  color: black;
 }
 
 img{
