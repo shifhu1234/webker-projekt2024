@@ -12,6 +12,8 @@ import {ActivatedRoute, RouterLink} from "@angular/router";
 import {MatButton} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
 import {PopUpTransactionComponent} from "../../shared/pop-ups/pop-up-transaction/pop-up-transaction.component";
+import {TransactionService} from "../../shared/services/transaction.service";
+import {PaymentTransactions} from "../../shared/models/PaymentTransactions";
 
 @Component({
     selector: 'app-basket',
@@ -42,7 +44,7 @@ export class BasketComponent implements OnInit, OnChanges {
     discount: number = 0;
     totalAmountNoCoupons: number = 0;
 
-    constructor(private basketService: BasketService, private userService: UserService, private appComponent: AppComponent, private route: ActivatedRoute, private dialogRef: MatDialog) {
+    constructor(private basketService: BasketService, private userService: UserService, private appComponent: AppComponent, private route: ActivatedRoute, private dialogRef: MatDialog, private transactionService: TransactionService) {
     }
 
     ngOnChanges(): void {
@@ -64,13 +66,18 @@ export class BasketComponent implements OnInit, OnChanges {
     }
 
     openTransactionDialog(): void {
+        console.log(new Date(), this.loggedInUser?.uid, this.totalAmountNoCoupons);
         this.dialogRef.open(PopUpTransactionComponent, {
-            width: '20%',
+            width: '400px',
             data: {
-                totalAmount: this.totalAmountNoCoupons
+                totalAmount: this.totalAmountNoCoupons,
+                loggedInUser: this.loggedInUser
             }
         });
+
+
     }
+
 
     calculateTotalAmount() {
         let totalAmount = 0;

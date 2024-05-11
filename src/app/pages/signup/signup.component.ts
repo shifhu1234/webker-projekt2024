@@ -39,7 +39,7 @@ export class SignupComponent implements OnInit {
   }
   onSubmit() {
     this.authService.signup(this.signUpForm.get('email')?.value as string, this.signUpForm.get('password')?.value as string).then(cred =>{
-      console.log(cred);
+      //console.log(cred);
       const user: User = {
         id: cred.user?.uid as string,
         email: this.signUpForm.get('email')?.value as string,
@@ -52,7 +52,7 @@ export class SignupComponent implements OnInit {
       };
       this.userService.create(user).then(_ =>{
         this.openDialogBuying('firstRegister');
-        console.log('USER ADDED SUCCESSFULLY.');
+        //console.log('USER ADDED SUCCESSFULLY.');
         this.router.navigateByUrl('/main');
       }).catch(error =>{
         console.log(error);
@@ -61,7 +61,7 @@ export class SignupComponent implements OnInit {
     }).catch(error=>{
       console.log(error);
     });
-    console.log(this.signUpForm.value);
+    //console.log(this.signUpForm.value);
   }
 
 
