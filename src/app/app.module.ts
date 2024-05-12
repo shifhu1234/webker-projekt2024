@@ -21,55 +21,56 @@ import {FIREBASE_OPTIONS} from '@angular/fire/compat'
 import {initializeApp, provideFirebaseApp} from "@angular/fire/app";
 
 @NgModule({
-    declarations: [
-        AppComponent,
-        MenuComponent
-    ],
-    imports: [
-        BrowserModule,
-        AppRoutingModule,
-        FormsModule,
-        HttpClientModule,
-        MatSidenavModule,
-        MatToolbarModule,
-        MatIconButton,
-        MatIcon,
-        FlexLayoutModule,
-        MatNavList,
-        MatListItem,
-        //AngularFireModule.initializeApp(environment.firebase),
-        //provideFirebaseApp(() => initializeApp(environment.firebase)),
-        //AngularFireModule.initializeApp(environment.firebase),
-        provideFirebaseApp(() => initializeApp({
-            "apiKey": "AIzaSyDins7KBe3vEBr57f_Vj-4ZFKSWstpBJW8",
-            "authDomain": "webfejl-projekt-2024.firebaseapp.com",
-            "projectId": "webfejl-projekt-2024",
-            "storageBucket": "webfejl-projekt-2024.appspot.com",
-            "messagingSenderId": "237724793716",
-            "appId": "1:237724793716:web:ea394c11a58f1c1ce90a21",
-            "measurementId": "G-GD9JWHNEYS"
-        })),        //provideFirebaseApp(() => initializeApp(environment.firebase)),
-        provideAuth(() => getAuth()),
-        provideFirestore(() => getFirestore()),
-        provideStorage(() => getStorage())
-    ],
-    providers: [
-        provideAnimationsAsync(),
-        provideHttpClient(),
-        {
-            provide: FIREBASE_OPTIONS, useValue: {
-                "apiKey": "AIzaSyDins7KBe3vEBr57f_Vj-4ZFKSWstpBJW8",
-                "authDomain": "webfejl-projekt-2024.firebaseapp.com",
-                "projectId": "webfejl-projekt-2024",
-                "storageBucket": "webfejl-projekt-2024.appspot.com",
-                "messagingSenderId": "237724793716",
-                "appId": "1:237724793716:web:ea394c11a58f1c1ce90a21",
-                "measurementId": "G-GD9JWHNEYS"
-            }
-        }
-    ],
+  declarations: [
+    AppComponent,
+    MenuComponent
+  ],
+  imports: [
+    BrowserModule,
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule,
+    MatSidenavModule,
+    MatToolbarModule,
+    MatIconButton,
+    MatIcon,
+    FlexLayoutModule,
+    MatNavList,
+    MatListItem,
+    //AngularFireModule.initializeApp(environment.firebase),
+    //provideFirebaseApp(() => initializeApp(environment.firebase)),
+    //AngularFireModule.initializeApp(environment.firebase),
+    //Ha az enviroment.firebase valtozot hasznalom akarmilyen modon, folyamatosan deploy hibat kapok, muszaj volt atirnom.
+    provideFirebaseApp(() => initializeApp({
+      "apiKey": "AIzaSyDins7KBe3vEBr57f_Vj-4ZFKSWstpBJW8",
+      "authDomain": "webfejl-projekt-2024.firebaseapp.com",
+      "projectId": "webfejl-projekt-2024",
+      "storageBucket": "webfejl-projekt-2024.appspot.com",
+      "messagingSenderId": "237724793716",
+      "appId": "1:237724793716:web:ea394c11a58f1c1ce90a21",
+      "measurementId": "G-GD9JWHNEYS"
+    })),        //provideFirebaseApp(() => initializeApp(environment.firebase)),
+    provideAuth(() => getAuth()),
+    provideFirestore(() => getFirestore()),
+    provideStorage(() => getStorage())
+  ],
+  providers: [
+    provideAnimationsAsync(),
+    provideHttpClient(),
+    {
+      provide: FIREBASE_OPTIONS, useValue: {
+        "apiKey": "AIzaSyDins7KBe3vEBr57f_Vj-4ZFKSWstpBJW8",
+        "authDomain": "webfejl-projekt-2024.firebaseapp.com",
+        "projectId": "webfejl-projekt-2024",
+        "storageBucket": "webfejl-projekt-2024.appspot.com",
+        "messagingSenderId": "237724793716",
+        "appId": "1:237724793716:web:ea394c11a58f1c1ce90a21",
+        "measurementId": "G-GD9JWHNEYS"
+      }
+    }
+  ],
 
-    bootstrap: [AppComponent]
+  bootstrap: [AppComponent]
 })
 export class AppModule {
 }
