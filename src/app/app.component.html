@@ -20,7 +20,7 @@
           <li><mat-icon>shopping_basket</mat-icon><a (click)="openDialog('Kosár')" class="before-login-icon" routerLink="/basket">Kosár</a> </li>
           <li *ngIf="!(loggedInUser)"><mat-icon>login</mat-icon><a routerLink="/login">Bejelentkezés</a>  </li>
           <li *ngIf="(loggedInUser)"><mat-icon>account_circle</mat-icon><a routerLink="/profile">Profil</a></li>
-          <li *ngIf="(loggedInUser)"><mat-icon>logout</mat-icon><a routerLink="/login" (click)="logout()">Logout</a></li>
+          <li *ngIf="(loggedInUser)"><mat-icon>logout</mat-icon><a routerLink="/login" (click)="logout()">Kijelentkezés</a></li>
         </ul>
       </div>
     </mat-toolbar>
