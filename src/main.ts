@@ -9,11 +9,14 @@ import {bootstrapApplication} from "@angular/platform-browser";
 
 if (environment.production) {
   enableProdMode();
-  bootstrapApplication(AppComponent, {
-    providers: [
-      provideHttpClient(),
-    ],
-  }).then(_ => {});
+  // bootstrapApplication(AppComponent, {
+  //   providers: [
+  //     provideHttpClient(),
+  //   ],
+  // }).then(_ => {});
+
+  platformBrowserDynamic().bootstrapModule(AppModule)
+    .catch(err => console.error(err));
 }
 // bootstrapApplication(AppComponent, {
 //   providers: [
@@ -22,5 +25,4 @@ if (environment.production) {
 // }).then(_ => {});
 // platformBrowserDynamic().bootstrapModule(AppModule)
 //   .catch(err => console.error(err));
-platformBrowserDynamic().bootstrapModule(AppModule)
-  .catch(err => console.error(err));
+
