@@ -39,27 +39,33 @@ export class LoginComponent implements OnInit, OnDestroy {
         if (error.code == "auth/user-not-found") {
           this.dialogRef.open(PopUpErrorRegistrationComponent, {
             width: '350px',
-            data: {message: 'Nem létező email cím (nem létezik a fiók)!'}
+            data: {message: 'Nem létező email cím (nem létezik a fiók)!',pageName: 'pageLogin'}
+          });
+        }else{
+          //auth/wrong-password
+          this.dialogRef.open(PopUpErrorRegistrationComponent, {
+            width: '350px',
+            data: {message: 'Helytelen bejelentkezési adatok!',pageName: 'pageLogin'}
           });
         }
-        //console.log(error);
+        console.log(error);
         this.loading = false;
       });
     } else {
       if (this.email.invalid) {
         this.dialogRef.open(PopUpErrorRegistrationComponent, {
           width: '350px',
-          data: {message: 'Helytelen email címet adtál meg!'}
+          data: {message: 'Helytelen email címet adtál meg!',pageName: 'pageLogin'}
         });
       } else if (this.password.invalid) {
         this.dialogRef.open(PopUpErrorRegistrationComponent, {
           width: '350px',
-          data: {message: 'Helytelen jelszót adtál meg!'}
+          data: {message: 'Helytelen jelszót adtál meg!',pageName: 'pageLogin'}
         });
       } else {
         this.dialogRef.open(PopUpErrorRegistrationComponent, {
           width: '350px',
-          data: {message: 'Nem töltöttél ki minden mezőt!'}
+          data: {message: 'Nem töltöttél ki minden mezőt!',pageName: 'pageLogin'}
         });
       }
     }

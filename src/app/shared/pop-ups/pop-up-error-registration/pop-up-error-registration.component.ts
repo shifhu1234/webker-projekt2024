@@ -27,9 +27,17 @@ import {NgIf} from "@angular/common";
 })
 export class PopUpErrorRegistrationComponent  implements OnInit{
   message: any;
+  title: any;
   constructor(@Inject(MAT_DIALOG_DATA) public data: any) {
   }
   ngOnInit(): void {
     this.message = this.data.message;
+    if (this.data.pageName === 'pageRegistration'){
+      this.title = 'Sikertelen regisztráció!';
+    }else if( this.data.pageName === 'pageLogin'){
+      this.title = 'Sikertelen bejelentkezés!';
+    }else{
+      this.title = 'Hiba!'
+    }
   }
 }
