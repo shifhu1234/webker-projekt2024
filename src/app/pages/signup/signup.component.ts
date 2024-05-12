@@ -70,7 +70,7 @@ export class SignupComponent implements OnInit {
                 data: {message: 'A megadott e-mail cím már használatban van egy másik fiókban!'}
               });
             }
-            console.log(error);
+            //console.log(error);
           });
 
         }).catch(error => {
@@ -80,7 +80,7 @@ export class SignupComponent implements OnInit {
               data: {message: 'A megadott e-mail cím már használatban van egy másik fiókban!'}
             });
           }
-          console.log(error);
+          //console.log(error);
         });
       }else{
         if (this.signUpForm.get('email')?.hasError('email') || this.signUpForm.get('email')?.invalid){
