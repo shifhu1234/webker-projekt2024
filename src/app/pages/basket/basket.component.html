@@ -10,11 +10,18 @@
                         <th>Mennyiség</th>
                         <th>Termék</th>
                         <th>Ár</th>
+                      <th></th>
                     </tr>
                     <tr *ngFor="let item of basketTransactions">
                         <td>{{ item.itemAmount }} kg</td>
                         <td>{{ item.item.name }}</td>
                         <td>{{ item.itemAmount * item.item.price }} Ft</td>
+                      <td>
+                      <button [ngClass]="{'td-delete': this.item}" mat-icon-button color="warn" (click)="removeItemFromBasket(item)">
+                        <mat-icon [ngClass]="{'td-delete': this.item}">delete</mat-icon>
+                      </button>
+                    </td>
+
                     </tr>
                 </table>
                 <p>Végösszeg: <span *ngIf="discount">{{totalAmount}} Ft</span> <span

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {BasketService} from "../../shared/services/basket.service";
-import {NgForOf, NgIf} from "@angular/common";
+import {NgClass, NgForOf, NgIf, NgStyle} from "@angular/common";
 import {Transaction} from "../../shared/models/Transaction";
 import {AppComponent} from "../../app.component";
 import {CouponsFormatPipe} from "../../shared/pipes/coupons-format.pipe";
@@ -8,28 +8,34 @@ import {MatCard, MatCardContent, MatCardHeader, MatCardTitle} from "@angular/mat
 import {MatFormField, MatInput, MatLabel} from "@angular/material/input";
 import {ReactiveFormsModule} from "@angular/forms";
 import {ActivatedRoute, Router, RouterLink} from "@angular/router";
-import {MatButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {MatDialog} from "@angular/material/dialog";
 import {PopUpTransactionComponent} from "../../shared/pop-ups/pop-up-transaction/pop-up-transaction.component";
+import {MatIcon} from "@angular/material/icon";
+import {Products} from "../../shared/models/Products";
 
 @Component({
     selector: 'app-basket',
     standalone: true,
-    imports: [
-        NgForOf,
-        CouponsFormatPipe,
-        MatCard,
-        MatCardContent,
-        MatCardHeader,
-        MatCardTitle,
-        MatFormField,
-        MatInput,
-        MatLabel,
-        ReactiveFormsModule,
-        MatButton,
-        NgIf,
-        RouterLink
-    ],
+  imports: [
+    NgForOf,
+    CouponsFormatPipe,
+    MatCard,
+    MatCardContent,
+    MatCardHeader,
+    MatCardTitle,
+    MatFormField,
+    MatInput,
+    MatLabel,
+    ReactiveFormsModule,
+    MatButton,
+    NgIf,
+    RouterLink,
+    MatIcon,
+    MatIconButton,
+    NgStyle,
+    NgClass
+  ],
     templateUrl: './basket.component.html',
     styleUrl: './basket.component.scss'
 })
@@ -89,4 +95,10 @@ export class BasketComponent implements OnInit {
         this.discount = 0;
         this.router.navigate(['/basket']);
     }
+
+  removeItemFromBasket(item: Transaction): void {
+    this.basketService.removeItemFromBasket(this.loggedInUser?.uid as any, item.item);
+    this.basketTransactions = this.basketService.getBasketTransactions(this.loggedInUser?.uid as any);
+    this.calculateTotalAmount();
+  }
 }

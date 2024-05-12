@@ -28,6 +28,12 @@ export class BasketService {
     };
     this.transactions.push(newTransaction);
   }
+  removeItemFromBasket(userId: string, item: Products): void {
+    const index = this.transactions.findIndex(transaction => transaction.userId === userId && transaction.item === item);
+    if (index !== -1) {
+      this.transactions.splice(index, 1);
+    }
+  }
 
   getBasketTransactions(userId: string): Transaction[] {
     return this.transactions.filter(transaction => transaction.userId === userId);
