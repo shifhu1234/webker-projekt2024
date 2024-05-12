@@ -1,8 +1,8 @@
 <div *ngIf="!isThisBuyingPopUp && !holder">
-    <h2 [ngStyle]="{'font-weight':'bold', 'font-family': 'Bodoni MT Poster Compressed, cursive'}" mat-dialog-title>Nem
+    <h2 [ngStyle]="{'font-weight':'bold', 'font-family': 'Signika Negative Light, monospace'}" mat-dialog-title>Nem
         vagy
         bejelentkezve!</h2>
-    <mat-dialog-content [ngStyle]="{'font-weight':'bold', 'font-family': 'Bodoni MT Poster Compressed, cursive'}">
+    <mat-dialog-content [ngStyle]="{'font-weight':'bold', 'font-family': 'Signika Negative Light, monospace'}">
         <a mat-dialog-close routerLink="/signup">Regisztrálj</a> vagy
         <a mat-dialog-close routerLink="/login">jelentkezz</a> be a {{data.pageName}} oldal használatához!
     </mat-dialog-content>
@@ -12,10 +12,10 @@
 </div>
 
 <div *ngIf="isThisBuyingPopUp && !holder">
-    <h2 [ngStyle]="{'font-weight':'bold', 'font-family': 'Bodoni MT Poster Compressed, cursive'}" mat-dialog-title>Nem
+    <h2 [ngStyle]="{'font-weight':'bold', 'font-family': 'Signika Negative Light, monospace'}" mat-dialog-title>Nem
         vagy
         bejelentkezve!</h2>
-    <mat-dialog-content [ngStyle]="{'font-weight':'bold', 'font-family': 'Bodoni MT Poster Compressed, cursive'}">
+    <mat-dialog-content [ngStyle]="{'font-weight':'bold', 'font-family': 'Signika Negative Light, monospace'}">
         <a mat-dialog-close routerLink="/signup">Regisztrálj</a> vagy
         <a mat-dialog-close routerLink="/login">jelentkezz</a> be, ha szeretnél vásárolni!
     </mat-dialog-content>
@@ -25,9 +25,9 @@
 </div>
 
 <div *ngIf="isThisFirstRegistration && holder">
-    <h2 [ngStyle]="{'font-weight':'bold', 'font-family': 'Bodoni MT Poster Compressed, cursive'}" mat-dialog-title>
+    <h2 [ngStyle]="{'font-weight':'bold', 'font-family': 'Signika Negative Light, monospace'}" mat-dialog-title>
         Sikeres regisztráció! Jóváírtunk <a mat-dialog-close routerLink="/profile">számodra</a> 30 FrissPontot!</h2>
-    <mat-dialog-content [ngStyle]="{'font-weight':'bold', 'font-family': 'Bodoni MT Poster Compressed, cursive'}">
+    <mat-dialog-content [ngStyle]="{'font-weight':'bold', 'font-family': 'Signika Negative Light, monospace'}">
         Tekintsd meg legfrissebb
         <a mat-dialog-close routerLink="/products">Termékeinket</a> vagy
         <a mat-dialog-close routerLink="/login">Kuponjainkat</a>.
