@@ -95,5 +95,11 @@ export class UserService {
         });
     }
 
+  updatePoints(uid: string, pointsToAdd: number) {
+    return this.afs.collection<User>(this.collectionName).doc(uid).update({
+      points: pointsToAdd
+    });
+  }
+
 
 }

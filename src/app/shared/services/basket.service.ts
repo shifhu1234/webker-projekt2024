@@ -11,7 +11,9 @@ export class BasketService {
 
     constructor() {
     }
-
+  emptyBasket() {
+    this.transactions = [];
+  }
     addToBasket(quantity: number, category: Products, userId: string) {
         const totalPrice = quantity * category.price;
         const newTransaction: Transaction = {

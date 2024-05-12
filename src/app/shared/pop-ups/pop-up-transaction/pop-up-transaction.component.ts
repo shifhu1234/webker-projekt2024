@@ -17,6 +17,7 @@ import {Router, RouterLink} from "@angular/router";
 import {NameFormatPipe} from "../../pipes/name-format.pipe";
 import {UserService} from "../../services/user.service";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {BasketService} from "../../services/basket.service";
 
 @Component({
     selector: 'app-pop-up-transaction',
@@ -58,7 +59,8 @@ export class PopUpTransactionComponent implements OnInit, OnDestroy {
         private dialogRef: MatDialogRef<PopUpTransactionComponent>,
         private transactionService: TransactionService,
         private route: Router,
-        private userService: UserService
+        private userService: UserService,
+        private basketService: BasketService
     ) {
     }
 
@@ -80,17 +82,24 @@ export class PopUpTransactionComponent implements OnInit, OnDestroy {
                 totalPrice: this.totalPrice,
                 user_id: this.loggedInUserUID || ''
             };
-
-
-            this.transactionService.addTransaction(transaction)
+          this.transactionService.addTransaction(transaction)
+            .then(() => {
+              const pointsToAdd = Math.floor(this.totalPrice / 100) + this.loggedInUser.points;
+              this.userService.updatePoints(this.loggedInUserUID, pointsToAdd)
                 .then(() => {
-                    console.log('Transaction added successfully!');
-                    this.route.navigateByUrl('/profile').then(_ => {
-                    });
+                  this.basketService.emptyBasket();
+                  console.log('Pontok sikeresen frissítve');
                 })
                 .catch(error => {
-                    console.error('Error adding transaction: ', error);
+                  console.error(error);
                 });
+
+              this.route.navigateByUrl('/profile').then(_ => {});
+            })
+            .catch(error => {
+              console.error(error);
+            });
+
         }
     }
 
