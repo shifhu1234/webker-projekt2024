@@ -16,7 +16,7 @@ export class MenuComponent implements OnInit, AfterViewInit {
     @Output() onLogout: EventEmitter<boolean> = new EventEmitter();
 
     constructor(private dialogRef: MatDialog) {
-        console.log('constructor called.');
+
     }
 
     openDialog(pageName: any) {
@@ -30,11 +30,9 @@ export class MenuComponent implements OnInit, AfterViewInit {
     }
 
     ngOnInit(): void {
-        console.log('ngOnInit called.');
     }
 
     ngAfterViewInit(): void {
-        console.log('ngAfterViewInit called.');
     }
 
     menuSwitch() {
