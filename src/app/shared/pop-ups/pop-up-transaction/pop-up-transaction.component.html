@@ -1,52 +1,54 @@
 <!-- app-pop-up-transaction.component.html -->
 <div *ngIf="totalPrice">
-    <h2 mat-dialog-title>Fizetés</h2>
-    <form class="transaction-form" [formGroup]="transactionForm" (ngSubmit)="sendTransaction()">
-        <mat-dialog-content>
-            <mat-form-field>
-                <mat-label>Email</mat-label>
-                <input matInput type="text" formControlName="email" value="{{loggedInUser?.email}}">
-            </mat-form-field>
+  <h2 mat-dialog-title>Fizetés</h2>
+  <form class="transaction-form" [formGroup]="transactionForm" (ngSubmit)="sendTransaction()">
+    <mat-dialog-content>
+      <mat-form-field>
+        <mat-label>Email</mat-label>
+        <input matInput type="text" formControlName="email" value="{{loggedInUser?.email}}" required>
+      </mat-form-field>
 
-            <mat-form-field>
-                <mat-label>Név</mat-label>
-                <input matInput type="text" formControlName="name" value="{{ loggedInUser | nameFormat }}">
-            </mat-form-field>
+      <mat-form-field>
+        <mat-label>Név</mat-label>
+        <input matInput type="text" formControlName="name" value="{{ loggedInUser | nameFormat }}" required>
+      </mat-form-field>
 
-            <br>
-            <mat-form-field>
-                <mat-label>Fizetési mód</mat-label>
-                <mat-select id="paymentMethod" formControlName="paymentMethod">
-                    <mat-option value="card">Bankkártya</mat-option>
-                    <mat-option value="cash">Utánvét</mat-option>
-                </mat-select>
-            </mat-form-field>
+      <br>
+      <mat-form-field>
+        <mat-label>Fizetési mód</mat-label>
+        <mat-select id="paymentMethod" formControlName="paymentMethod" required>
+          <mat-option value="card">Bankkártya</mat-option>
+          <mat-option value="cash">Utánvét</mat-option>
+        </mat-select>
+      </mat-form-field>
 
-            <br>
-            <mat-form-field>
-                <mat-label>Lakcím</mat-label>
-                <input matInput type="text" formControlName="address">
-            </mat-form-field>
-            <br>
+      <br>
+      <mat-form-field>
+        <mat-label>Lakcím</mat-label>
+        <input matInput type="text" formControlName="address" required>
+      </mat-form-field>
+      <br>
 
-            <mat-label [ngStyle]="{'font-weight':'bold'}">Teljes fizetendő összeg: <span
-                    [ngStyle]="{'font-size':'2vh', 'color':'#41B06E'}" style="font-size: 2vh">{{totalPrice}} Ft</span>
-            </mat-label>
-        </mat-dialog-content>
-        <mat-dialog-actions>
-            <button mat-raised-button mat-dialog-close color="primary">Mégsem</button>
-            <button mat-raised-button mat-dialog-close type="submit" color="primary">Fizetés</button>
-        </mat-dialog-actions>
-    </form>
+      <mat-label [ngStyle]="{'font-weight':'bold'}">Teljes fizetendő összeg: <span
+        [ngStyle]="{'font-size':'2vh', 'color':'#41B06E'}" style="font-size: 2vh">{{totalPrice}} Ft</span>
+      </mat-label>
+    </mat-dialog-content>
+    <mat-dialog-actions>
+      <button mat-raised-button mat-dialog-close color="primary">Mégsem</button>
+      <button mat-raised-button mat-dialog-close type="submit" color="primary">Fizetés</button>
+    </mat-dialog-actions>
+  </form>
 </div>
 <div *ngIf="!totalPrice">
 
-    <h2 mat-dialog-title>Fizetés</h2>
-    <mat-dialog-content>
-        <mat-label>Üres a kosarad!</mat-label>
-    </mat-dialog-content>
+  <h2 mat-dialog-title>Fizetés</h2>
+  <mat-dialog-content>
+    <mat-label>Üres a kosarad!</mat-label>
+  </mat-dialog-content>
 
-    <mat-dialog-actions>
-        <button mat-raised-button mat-dialog-close color="primary">Vissza</button>
-    </mat-dialog-actions>
+  <mat-dialog-actions>
+    <button mat-raised-button mat-dialog-close color="primary">Vissza</button>
+  </mat-dialog-actions>
 </div>
+
+

@@ -1,10 +1,10 @@
 import {Component, Inject, OnDestroy, OnInit} from '@angular/core';
 import {
   MAT_DIALOG_DATA,
+  MatDialog,
   MatDialogActions,
   MatDialogClose,
   MatDialogContent,
-  MatDialogRef,
   MatDialogTitle
 } from "@angular/material/dialog";
 import {MatOption, MatSelect} from "@angular/material/select";
@@ -18,6 +18,7 @@ import {NameFormatPipe} from "../../pipes/name-format.pipe";
 import {UserService} from "../../services/user.service";
 import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
 import {BasketService} from "../../services/basket.service";
+import {PopUpErrorTransactionComponent} from "../pop-up-error-transaction/pop-up-error-transaction.component";
 
 @Component({
   selector: 'app-pop-up-transaction',
@@ -53,10 +54,11 @@ export class PopUpTransactionComponent implements OnInit, OnDestroy {
     address: new FormControl(''),
     paymentMethod: new FormControl('')
   });
+  noInfoTransaction: boolean = false;
 
   constructor(
     @Inject(MAT_DIALOG_DATA) public data: any,
-    private dialogRef: MatDialogRef<PopUpTransactionComponent>,
+    private dialogRef: MatDialog,
     private transactionService: TransactionService,
     private route: Router,
     private userService: UserService,
@@ -82,6 +84,8 @@ export class PopUpTransactionComponent implements OnInit, OnDestroy {
         totalPrice: this.totalPrice,
         user_id: this.loggedInUserUID || ''
       };
+
+
       this.transactionService.addTransaction(transaction)
         .then(() => {
           const pointsToAdd = Math.floor(this.totalPrice / 100) + this.loggedInUser.points;
@@ -105,12 +109,22 @@ export class PopUpTransactionComponent implements OnInit, OnDestroy {
   }
 
   sendTransaction() {
-    this.valtozo = true;
-    this.dialogRef.close();
+    this.noInfoTransaction = false;
+
+    if (this.transactionForm.get('address')?.value
+      && this.transactionForm.get('paymentMethod')?.value) {
+      this.valtozo = true;
+      this.dialogRef.closeAll();
+    } else {
+      this.noInfoTransaction = true;
+      this.dialogRef.open(PopUpErrorTransactionComponent, {
+        width: '250px',
+        data: {message: 'Nem töltöttél ki minden mezőt!'}
+      });
+    }
   }
 
   private generateTransactionId(): string {
-
     return Math.random().toString(36).substring(2);
   }
 }
