@@ -15,10 +15,12 @@ if (environment.production) {
     ],
   }).then(_ => {});
 }
-bootstrapApplication(AppComponent, {
-  providers: [
-    provideHttpClient(),
-  ],
-}).then(_ => {});
+// bootstrapApplication(AppComponent, {
+//   providers: [
+//     provideHttpClient(),
+//   ],
+// }).then(_ => {});
+// platformBrowserDynamic().bootstrapModule(AppModule)
+//   .catch(err => console.error(err));
 platformBrowserDynamic().bootstrapModule(AppModule)
   .catch(err => console.error(err));
