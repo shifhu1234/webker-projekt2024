@@ -16,7 +16,7 @@ import {TransactionService} from "../../services/transaction.service";
 import {Router, RouterLink} from "@angular/router";
 import {NameFormatPipe} from "../../pipes/name-format.pipe";
 import {UserService} from "../../services/user.service";
-import {FormControl, FormGroup, ReactiveFormsModule} from "@angular/forms";
+import {FormControl, FormGroup, ReactiveFormsModule, Validators} from "@angular/forms";
 import {BasketService} from "../../services/basket.service";
 import {PopUpErrorTransactionComponent} from "../pop-up-error-transaction/pop-up-error-transaction.component";
 
@@ -49,10 +49,10 @@ export class PopUpTransactionComponent implements OnInit, OnDestroy {
   loggedInUser?: any;    // firebase.default.User | null;
   loggedInUserUID: any;
   transactionForm = new FormGroup({
-    email: new FormControl(''),
-    name: new FormControl(''),
-    address: new FormControl(''),
-    paymentMethod: new FormControl('')
+    email: new FormControl('', [Validators.required, Validators.email]),
+    name: new FormControl('', [Validators.required]),
+    address: new FormControl('', [Validators.required]),
+    paymentMethod: new FormControl('', [Validators.required])
   });
   noInfoTransaction: boolean = false;
 
