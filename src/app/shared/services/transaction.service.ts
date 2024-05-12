@@ -16,6 +16,8 @@ export class TransactionService {
         return this.firestore.collection<PaymentTransactions>(this.collectionName).doc(transaction.id).set(transaction);
     }
 
+    
+
     returnUserTransactions(user_id: string) {
         return this.firestore.collection<PaymentTransactions>(this.collectionName, ref => ref.where('user_id', '==', user_id)).valueChanges();
     }

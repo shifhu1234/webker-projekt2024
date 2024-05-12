@@ -6,10 +6,10 @@
         <mat-card-content>
             <br>
             <div>
-                <p [ngStyle]="{'text-align':'center'}">Boltunk és webshopunk sok-sok éves tapasztalatra épülve nyújtja
+                <p [ngStyle]="{'text-align':'center', 'font-size':'2vh'}">Boltunk és webshopunk sok-sok éves tapasztalatra épülve nyújtja
                     különlegesen prémium szolgáltatásait minden
                     vásárlónak, aki megtisztel minket bizalmával.</p>
-                <p [ngStyle]="{'text-align':'center'}"> A kiváló prémium minőségre garanciát vállalunk. Minden egyes
+                <p [ngStyle]="{'text-align':'center', 'font-size':'2vh'}"> A kiváló prémium minőségre garanciát vállalunk. Minden egyes
                     csomagunkat ellenőrizzük, hogy aztán a Te
                     küszöbödig vihesse futárunk.</p>
 
@@ -34,6 +34,15 @@
             <div *ngIf="imageUrl">
                 <img [ngClass]="{'contactImg': imageUrl}" [src]="imageUrl | async" alt="Kapcsolat kép">
             </div>
+
+          <div>
+            <h2 class="socialMedia">Kövess minket közösségi média oldalainkon!</h2>
+            <a href="https://www.youtube.com/watch?v=wPs77cysK_4" target="_blank"><img  class="icos" src="../../../assets/facebook-contact.ico" alt=""></a>
+            <a href="https://www.youtube.com/watch?v=QwLvrnlfdNo" target="_blank"><img class="icos" src="../../../assets/tiktok-contact.ico" alt=""></a>
+            <a href="https://www.youtube.com/watch?v=xvFZjo5PgG0" target="_blank"><img class="icos" src="../../../assets/youtube-contact.ico" alt=""></a>
+            <a href="https://youtu.be/D9OxhdQnmBM?si=eG0cmkPiMJGyHkBF&t=33" target="_blank"><img class="icos" src="../../../assets/instagram-contact.ico" alt=""></a>
+          </div>
+
         </mat-card-content>
     </mat-card>
 </div>

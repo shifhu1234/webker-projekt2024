@@ -73,6 +73,10 @@ export class BasketComponent implements OnInit {
         });
     }
 
+  emptyBasket(){
+      this.basketService.emptyBasket();
+      location.reload();
+  }
     calculateTotalAmount(): void {
         this.totalAmountNoDiscount = this.basketTransactions.reduce((total, transaction) => {
             return total + transaction.totalPrice;
