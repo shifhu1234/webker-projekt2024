@@ -31,9 +31,9 @@
                 <p class="price">Ár: {{category.price}} Ft /kg </p>
                 <mat-form-field>
                     <mat-label>Mennyiség (kg)</mat-label>
-                    <mat-select [ngStyle]="{'font-family':'Signika Negative Light', 'font-weight':'bold'}"
+                    <mat-select [ngStyle]="{'font-family':'sans-serif', 'font-weight':'bold'}"
                                 [(ngModel)]="selectedQuantities[i]">
-                        <mat-option [ngStyle]="{'font-family':'Signika Negative Light', 'font-weight':'bold'}"
+                        <mat-option [ngStyle]="{'font-family':'sans-serif', 'font-weight':'bold'}"
                                     *ngFor="let quantity of quantities" [value]="quantity">
                             {{ quantity }} kg - {{ quantity * category.price }} Ft
                         </mat-option>
@@ -46,7 +46,3 @@
         </mat-card>
     </div>
 </div>
-
-
-
-
