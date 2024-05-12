@@ -1,5 +1,5 @@
 import {Component, OnDestroy, OnInit} from '@angular/core';
-import {FormControl} from '@angular/forms';
+import {FormControl, Validators} from '@angular/forms';
 import {Router} from '@angular/router';
 import {Subscription} from 'rxjs';
 import {AuthService} from "../../shared/services/auth.service";
@@ -11,8 +11,9 @@ import {AuthService} from "../../shared/services/auth.service";
 })
 export class LoginComponent implements OnInit, OnDestroy {
 
-    email = new FormControl<string>('');
-    password = new FormControl<string>('');
+    email = new FormControl<string>('', [Validators.required, Validators.email]);
+    password = new FormControl<string>('', [Validators.required, Validators.minLength(6)]);
+
 
     loadingSubscription?: Subscription;
     loading: boolean = false;
